@@ -1,13 +1,7 @@
 import {TButton} from '../../utils/taurus';
 
-// Vue.use(Collapse);
-
 new Vue({
-  el: '#collapse',// 指定使用指令的Dom节点
-  directives: {
-    Collapse
-  },
-
+  el: '#collapse', // 指定使用指令的Dom节点
   components: {
     TButton
   },
@@ -20,11 +14,6 @@ new Vue({
   },
   data: {
     btnText: '展开'
-  },
-  methods: {
-    expandedVal: function () {
-      this.expanded = !this.expanded;
-    }
   },
   watch: {
     'expanded': function (val) {
