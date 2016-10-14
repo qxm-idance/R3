@@ -1,11 +1,10 @@
 import {TButton} from '../../utils/taurus';
 
-// Vue.use(Collapse);
 
 new Vue({
   el: '#collapse',// 指定使用指令的Dom节点
   directives: {
-    Collapse
+    collapse
   },
 
   components: {
