@@ -1,6 +1,7 @@
 import {TButton} from '../../utils/taurus';
 new Vue({
   el: '#collapse',
+
   components: {
     TButton
   },

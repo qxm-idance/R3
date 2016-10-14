@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Modal-Box Demo</title>
     <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
-    <link href="/assets/css/main.css" rel="stylesheet">
+    <link href="/assets/css/all.css" rel="stylesheet">
 </head>
 <body>
 <div id="defaultModal" style="margin-bottom:50px;">
@@ -28,6 +28,39 @@
             <t-button text="Cancel" class="button--action" v-on:btn-click="onCancel"></t-button>
         </div>
     </t-modal-box>
+</div>
+<div id="action-modal-info-overlay" class="modal-box__overlay modal-box--is-open">
+    <div class="modal-box--with-action-buttons modal-box__content gradient-line padding-whole--none modal-box--size-small">
+        <div class="modal-box__close-btn icon icon-document"></div>
+        <div class="modal-box__container text--center">
+            <div class="modal-box__icon-box modal-box__icon-box--blue trailer">
+                <span class="icon icon-document"></span>
+            </div>
+            <div class="text-size--13 leader--xlarge">
+                <p class="text-size--30 text-light trailer">Remove Agreement </p>
+                <p class="trailer--small">Are you sure you want to remove the agreement from your cart? </p>
+                <p class="trailer">The atreement cleared.</p>
+            </div>
+            <ul class="modal-box__action-buttons">
+                <slot>
+                    <li>
+                        <form action="">
+                            <button class="button button--default">
+                                <span class="button-text">Cancel</span>
+                            </button>
+                        </form>
+                    </li>
+                    <li>
+                        <form action="">
+                            <button class="button button--action">
+                                <span class="button__text">Remote</span>
+                            </button>
+                        </form>
+                    </li>
+                </slot>
+            </ul>
+        </div>
+    </div>
 </div>
 </body>
 </html>
