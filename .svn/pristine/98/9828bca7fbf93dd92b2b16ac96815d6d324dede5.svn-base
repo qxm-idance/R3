@@ -1,0 +1,176 @@
+import Vue from 'vue';
+import cookieHelper from '../../utils/cookie-helper';
+import ModalBox from '../../components/modal-box/modal-box';
+import restfulService from '../../plugins/restful-service';
+Vue.use(restfulService);
+new Vue({
+  el: '#app', // the template entry,you can also select id (#id)
+  components: {// register plugin
+    't-modal-box': ModalBox,
+    'simple-grid': {
+      template: '#grid-template',
+      props: ['dataList', 'columns', 'isDelete'],
+      methods: {
+        loadEntry: function (key) {
+          this.$dispatch('load-entry', key);
+        },
+        deleteEntry: function (entry) {
+          this.$dispatch('delete-entry', entry);
+        }
+      }
+    }
+  },
+  data: function () { // store data
+    return {
+      isCreate: false,
+      isQuery: false,
+      isDelete: false,
+      showModal: false,
+      searchId: '',
+      sizeModal: 'large',
+      gridColumns: [{
+        name: 'customerId',
+        isKey: true
+      }, {
+        name: 'companyName'
+      }, {
+        name: 'contactName'
+      }, {
+        name: 'phone'
+      }],
+      url: 'http://10.11.17.188:8080/site/api/product/productList',
+      gridData: [],
+      item: {}
+    };
+  },
+  events: { // event
+  },
+  methods: { // methods
+    setCookie: function () {
+      cookieHelper.writeCookie('locale', 'zn');
+    },
+    loadCustomer: function (customerId) {
+      var vm = this;
+      vm.gridData.forEach(function (item) {
+        if (item.customerId === customerId) {
+          vm.$set('item', item);
+          vm.$set('showModal', true);
+          return;
+        }
+      });
+    },
+    saveCustomer: function () {
+      this.item.customerId ? this.updateHandle() : this.saveHandle();
+      this.showModal = false;
+    },
+    getHandle: function (headerMap) {
+      this.$set('isCreate', false);
+      this.gridColumns[0].isKey = false;
+      var param = {
+        url: 'http://211.149.193.19:8080/api/customers',
+        options: {}
+      };
+      if (headerMap) {
+        param.options.headers = headerMap;
+      }
+      var promise = this.$restfulService.get(param);
+      promise.then((response) => {
+        console.log('get data');
+        this.$set('gridData', response.data);
+      }).catch((response) => {
+        console.log('error');
+      });
+    },
+    saveHandle: function () {
+      var vm = this;
+      vm.$restfulService.save({
+        url: 'http://211.149.193.19:8080/api/customers{/id}',
+        data: vm.item
+      }).then((response) => {
+        vm.$set('item', {});
+        vm.getHandle();
+        vm.showModal = false;
+      });
+      vm.isCreate = true;
+    },
+    queryHandle: function (e) {
+      var vm = this;
+      var _val = e.target.value;
+      vm.$restfulService.query({
+        url: 'http://211.149.193.19:8080/api/customers{/customerId}',
+        data: {
+          customerId: _val
+        }
+      }).then((response) => {
+        if (Array.isArray(response.data)) {
+          vm.$set('gridData', response.data);
+        } else {
+          vm.gridData = [];
+          vm.gridData.push(response.data);
+        }
+      });
+    },
+    setUpdate: function () {
+      this.gridColumns[0].isKey = true;
+    },
+    updateHandle: function () {
+      var vm = this;
+      vm.$restfulService.update({
+        url: 'http://211.149.193.19:8080/api/customers{/customerId}',
+        primaryKey: {customerId: vm.item.customerId},
+        data: vm.item
+      }).then((response) => {
+        vm.getHandle();
+        vm.gridColumns[0].isKey = true;
+      });
+    },
+    deleteHandle: function (customer) {
+      var vm = this;
+      vm.$restfulService.delete({
+        url: 'http://211.149.193.19:8080/api/customers/' + customer.customerId
+      }).then((response) => {
+        vm.getHandle();
+      });
+    },
+    jsonpHandle: function () {
+      var promise = this.$restfulService.jsonp({
+        url: 'http://211.149.193.19:8080/api/customers'
+      });
+      promise.then((resonse) => {
+        console.log('get data');
+        this.$set('gridData', resonse.data);
+      }).catch((resonse) => {
+        console.log('error');
+      });
+    },
+    setHeaderHandle: function () {
+      this.getHandle({
+        locale: 'cn'
+      });
+    },
+    postHandle: function () {
+      var vm = this;
+      vm.$restfulService.post({
+        url: 'http://211.149.193.19:8080/api/customers',
+        data: vm.item,
+        options: {
+          headers: {
+            customerSegment: 'b2b',
+            locale: 'jp'
+          },
+          timeout: 60 * 1000,
+          before: function (request) { // 发送请求前的拦截处理
+            console.log('post before trigger');
+          },
+          progress: function (request) {
+            console.log('post progress trigger');
+          }
+        }
+      });
+    }
+  },
+  ready: function () { // init entry
+    this.setCookie();
+    this.getHandle();
+  }
+});

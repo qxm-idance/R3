@@ -1,0 +1,38 @@
+<div class="doc-side-list">
+  <ul>
+    <li class="current"><a href="/examples/amcharts-demo/index.html">AMCharts</a></li>
+    <li><a href="/examples/box-group-demo/index.html">Box Group</a></li>
+    <li><a href="/examples/breadcrumbs-demo/index.html">Breadcrumbs</a></li>
+    <li><a href="/examples/cookie-helper-demo/index.html">Cookie Helper</a></li>
+    <li><a href="/examples/date-picker-demo/index.html">Date-Picker</a></li>
+    <li><a href="/examples/dropdown-demo/index.html">Dropdown</a></li>
+    <li><a href="/examples/form-validation-demo/index.html">Form Validation</a></li>
+    <li><a href="/examples/list-demo/index.html">List</a></li>
+    <li><a href="/examples/modal-box-demo/index.html">Modal Box</a></li>
+    <li><a href="/examples/number-stepper-demo/index.html">Number Stepper</a></li>
+    <li><a href="/examples/pager-demo/index.html">Pager</a></li>
+    <li><a href="/examples/scroll-to-demo/index.html">Scroll To</a></li>
+    <li><a href="/examples/select-demo/index.html">Select</a></li>
+    <li><a href="/examples/speech-bubble-demo/index.html">Speech Bubble</a></li>
+    <li><a href="/examples/switcher-demo/index.html">Switcher</a></li>
+    <li><a href="/examples/tabs-demo/index.html">Tabs</a></li>
+    <li><a href="/examples/tooltips-demo/index.html">Tooltips</a></li>
+  </ul>
+</div>
+<div class="section--block">
+  <iframe id="mainframe" name="mainframe" src="/examples/amcharts-demo/index.html" width="100%" scrolling="no"
+          frameborder="0" onload="this.height=mainframe.document.body.scrollHeight">
+  </iframe>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('.doc-side-list ul').on('click', 'li a', hrefAnimate);
+  });
+  function hrefAnimate (e) {
+    e.preventDefault()
+    $(this).parent("li").addClass('current').siblings("li").removeClass('current');
+    var anchor = $(this).attr('href');
+    $("#mainframe").attr({"src": anchor});
+  }
+</script>

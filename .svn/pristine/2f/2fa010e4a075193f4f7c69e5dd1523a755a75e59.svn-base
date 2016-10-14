@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Data Table Demo</title>
+  <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+  <link href="/assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="block__header leader--large trailer--large">
+      <h2 class="title--medium">Data table</h2>
+    </div>
+    <div class="form-row">
+      <button v-on:click="selectRow" class="button button--action">选择第二行</button>
+      <button v-on:click="sortSecondColumn" class="button button--action">第二列排序</button>
+      <button v-on:click="selectedRowId" class="button button--action">获得当前选中行序号</button>
+      <button v-on:click="getChecked" class="button button--action">获得勾选项数据</button>
+      <button v-on:click="getSelected" class="button button--action">获选中行数据</button>
+      <button v-on:click="removeRow" class="button button--action">删除最后一行</button>
+    </div>
+    <!-- v-on:dt-expand="boxExpand" -->
+    <t-data-table
+      v-ref:my-data-table
+      :columns="tableColumns1"
+      :data="dataTableData1"
+      muti-select="true"
+      v-on:dt-check-all="allRowChecked"
+      v-on:dt-uncheck-all="allRowUnchecked"
+      v-on:dt-check="rowChecked"
+      v-on:dt-uncheck="rowUnchecked"
+      v-on:dt-select="rowSelected"
+      v-on:dt-unselect="rowUnselected">
+    </t-data-table>
+    <div class="block__header leader--large trailer--large">
+      <h2 class="title--medium">Subscriptions table</h2>
+    </div>
+    <t-data-table
+      expandable="true"
+      drop-item-partial-id="boxPartialId"
+      :columns="tableColumns2"
+      :data="dataTableData2">
+    </t-data-table>
+  </div>
+</body>
+</html>

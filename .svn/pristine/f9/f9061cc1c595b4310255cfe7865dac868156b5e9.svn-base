@@ -1,0 +1,178 @@
+<div class="doc-side-list">
+    <ul>
+        <li class="current"><a href="#menu">menu</a></li>
+    </ul>
+</div>
+<div class="block__header leader--large trailer--large">
+    <h2 class="title--medium">Menu</h2>
+</div>
+<div class="doc-compontent-box" id="menu">
+    <div class="sg-component">
+        <div class="sg-component__header">
+            <h2 class="title--medium-small trailer--small">menu</h2>
+        </div>
+        <div class="sg-component__status">
+            <p class="mobile-one-half mobile-pull-right mobile-text-right">
+                    <span class="status-dot status-dot--green pull-right">Approved <a
+                            href="/v/0.7.0/#component-Checkboxes">(0.7.0)</a>
+                    </span>
+            </p>
+        </div>
+        <div class="sg-component__markup">
+            <div class="demo_content">
+                <nav class="menu-wrapper">
+                    <!--desktop:menu-->
+                    <div id="ad" class="section mobile-hidden tablet-padding-toleft tablet-padding-toright">
+                        <div class="container section--menu">
+                            <a href="#nogo" class="link--logo float--left" title="home">
+                                <span class="link--text">Home</span>
+                            </a>
+                            <ul class="menu--main float--left clear">
+                                <li><a href="" class="active-trail track-element-click">Shop</a></li>
+                                <li><a href="" class="track-element-click">Kundeservice</a></li>
+                                <li><a href="" class="track-element-click">Mit Telenor</a></li>
+                                <li><a href="" class="track-element-click">Find butik</a></li>
+                            </ul>
+                            <div class="section--menu__service">
+                                <div class="menu--service">
+                                    <a href="#nogo" class="active-trail">Privat</a>
+                                    <a href="#nogo">Erhverv</a>
+                                </div>
+                                <div class="menu--user">
+                                    <a href="#nogo">Log ind</a>
+                                </div>
+                            </div>
+                            <div class="menu--right float--right">
+                                <div class="menu--right__basket">
+                                    <a href="#nogo" class="basket-icon">
+                                        <span class="icon icon-basket text-size--24"></span>
+                                    </a>
+                                </div>
+                                <div class="menu--right__search">
+                                    <div class="search-block--top">
+                                         <!-- 增加 search-block--active 激活搜索 -->
+                                        <div class="search-block container search-block--last-page search-block--input-empty">
+                                            <!--form-search-->
+                                            <div class="form-search">
+                                                <button class="search-block__submit form-search__submit" tabindex="-1"
+                                                        data-component="button" data-alias="submit">
+                                                    <span class="icon-search"></span>
+                                                </button>
+                                                <div class="search-block__type-area">
+                                                    <input class="search-block__input" placeholder="Indtast søgeord"
+                                                           type="search" data-alias="searchInput" data-selector="input"
+                                                           data-component="element">
+                                                    <button type="button" tabindex="-1"
+                                                            class="search-block__clear form-search__clear no-js--hidden icon-remove"
+                                                            data-component="button" data-alias="clear"></button>
+                                                </div>
+                                            </div>
+                                            <!--/form-search-->
+                                            <!--search-block__success-->
+                                            <div class="search-block__dropdown search-block__success">
+                                                <h2 class="search-block__title text-size--30 mobile-text-size--13 text-light trailer">
+                                                    Din søgning på "
+                                                    <span class="search-query">112区人</span>
+                                                    " gav
+                                                    <span class="search-block__total"></span>
+                                                    resultater
+                                                </h2>
+                                                <div class="filter--container box--greyed search-block__message"></div>
+                                                <div class="search-block__results">
+                                                    <div></div>
+                                                    <div class="search-block__more">
+                                                        <div class="search-block__view-all clear">
+                                                            <a href="#" class="button button--action float--right">
+                                                                <span class="button__label">Vis alle resultater</span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="search-block__load-more">
+                                                            <a class="button button--default float--right">
+                                                                <span class="button__label">Vis flere resultater</span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/search-block__success-->
+                                            <!--search-block__fail-->
+                                            <div class="search-block__dropdown search-block__fail">
+                                                <div class="padding-whole--med box--greyed search-block__message text-size--13">
+                                                    <p>Din søgning på “
+                                                        <strong class="search-query">112区人</strong>”
+                                                        giver ingen resultater
+                                                    </p>
+                                                </div>
+                                                <div class="search-block__results clear">
+                                                    <p class="text-size--30 mobile-text-size--24 text-light leader--med search-block__suggestion border--bottom padding-trailer js-hidden"
+                                                      >
+                                                        Mente du
+                                                        <a id="site-search-suggestion" href="#" data-component="button"
+                                                            data-alias="searchSuggestion"></a>
+                                                        ?
+                                                    </p>
+                                                    <div>
+                                                        <div class="padding-leader--med text-size--13">
+                                                            <p><strong>Populære søgninger:</strong></p>
+                                                            <ul class="list leader--small">
+                                                                <li><a href="#" class="bullet-link"></a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/search-block__fail-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--subnav menu -->
+                    <div id="menu--subnav-sticky-wrapper" class="mobile-hidden menu-subnav-sticky-wrapper">
+
+                        <div class="section section--subnav mobile-hidden tablet-padding-toleft tablet-padding-toright">
+                            <div class="container">
+                                <div><a href="#nogo" class="link--logo float--left"></a></div>
+                                <div>
+                                    <ul class="menu--subnav menu--flexnav flexnav--inited">
+                                        <li>
+                                            <a href="#nogo" class="active-trail  track-element-click">Mobiler</a>
+                                        </li>
+                                        <li>
+                                            <a href="#nogo" class="track-element-click">Abonnementer</a>
+                                        </li>
+                                        <li>
+                                            <a href="#nogo" class="track-element-click">Tablets</a>
+                                        </li>
+                                        <li>
+                                            <a href="#nogo" class="track-element-click">Bredbånd</a>
+                                        </li>
+                                        <li>
+                                            <a href="#nogo" class="track-element-click">Tilbehør</a>
+                                        </li>
+                                        <li>
+                                            <a href="#nogo" class="track-element-click">Familierabat</a>
+                                        </li>
+                                        <li>
+                                            <a href="#nogo" class="track-element-click">Viaplay</a>
+                                        </li>
+                                        <li>
+                                            <a href="#nogo" class="track-element-click">Gør et kup!</a>
+                                        </li>
+                                        <li>
+                                            <a href="#nogo" class="track-element-click">Mobilt Bredbånd</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--Mobile menu -->
+                    <div class="nav-mobile desktop-hidden"></div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

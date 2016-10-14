@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+  <title>Range Slider</title>
+  <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+  <link href="/assets/css/main.css" rel="stylesheet">
+  <style>
+    .block {
+      padding: 1.25rem;
+    }
+    .sg-component{
+      margin-top:20px;
+    }
+  </style>
+</head>
+<body>
+<div class="block">
+  <!-- Range slider-->
+  <div class="sg-component">
+    <div class="sg-component__header">
+      <h2 class="title--medium-small trailer--small">Range slider</h2>
+    </div>
+    <div class="sg-component__status"></div>
+    <!--range slider 组件-->
+    <div id="range-slider-wrap" class="sg-component__markup">
+      <t-range-slider :range-options="rangeOptions"></t-range-slider>
+      <article style="margin-top: 20px">
+        <label>Range:</label>
+        <span>{{range.start}}-{{range.end}}</span>
+      </article>
+      <article>
+        <span>
+        <label>start</label>
+        <t-range-slider-select :options="options" default-val="0"  v-on:on-change="startChange" style="width:150px;display: inline-block"></t-range-slider-select>
+        </span>
+
+        <span style="margin-left:20px">
+        <label>end</label>
+        <t-range-slider-select :options="options" default-val="0"  v-on:on-change="endChange" style="width:150px;display: inline-block"></t-range-slider-select>
+        </span>
+      </article>
+    </div>
+    <!--range slider-->
+  </div>
+
+  <!-- single slider-->
+  <div class="sg-component">
+    <div class="sg-component__header">
+      <h2 class="title--medium-small trailer--small">Single slider</h2>
+    </div>
+    <div class="sg-component__status"></div>
+    <!--range slider 组件-->
+    <div id="single-slider-wrap" class="sg-component__markup">
+      <t-single-slider :range-options="rangeOptions"></t-single-slider>
+      <article style="margin-top: 20px">
+        <label>Range:</label>
+        <span>{{range.start}}-{{range.end}}</span>
+      </article>
+      <article>
+        <span style="margin-left:20px">
+        <label>end</label>
+        <t-range-slider-select :options="options" default-val="0"  v-on:on-change="endChange" style="width:150px;display: inline-block"></t-range-slider-select>
+        </span>
+      </article>
+    </div>
+    <!--range slider-->
+  </div>
+
+  <!-- select slider-->
+  <div class="sg-component">
+    <div class="sg-component__header">
+      <h2 class="title--medium-small trailer--small">Select slider</h2>
+    </div>
+    <div class="sg-component__status"></div>
+    <!--range slider 组件-->
+    <div id="select-slider-wrap" class="sg-component__markup">
+      <t-select-slider :range-options="rangeOptions"></t-select-slider>
+      <p style="margin-top: 20px">
+        <label>Range:</label>
+        <span>{{range.start}}-{{range.end}}</span>
+      </p>
+    </div>
+    <!--range slider-->
+  </div>
+</div>
+
+</body>
+</html>

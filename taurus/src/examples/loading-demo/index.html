@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en" class="js canvas no-touch rgba borderradius boxshadow opacity cssanimations cssgradients csstransforms csstransforms3d fontface video audio localstorage svg json">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+  <link href="/assets/css/main.css" rel="stylesheet">
+  <style>
+    #loading-wrapper button.button--action{
+      margin-top: 15px;
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+<div id="loading-wrapper" class="container">
+  <div class="block__header leader--large trailer--large">
+    <h2 class="title--medium">加载-loading</h2>
+  </div>
+  <div class="form-row">
+    <button @click="showLoading" class="button button--action">显示loading</button>
+    <button @click="hiddenLoading" class="button button--action">隐藏loading</button>
+  </div>
+  <div style="width: 360px;height: 360px;margin: 50px auto 0;position: relative">
+    <t-loading @on-loading-visible="onLoadingVisiable" @on-loading-hidden="onLoadingHidden" v-ref:my-loading></t-loading>
+  </div>
+</div>
+</body>
+</html>

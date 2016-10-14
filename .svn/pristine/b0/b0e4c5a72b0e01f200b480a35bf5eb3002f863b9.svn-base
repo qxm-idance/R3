@@ -1,0 +1,68 @@
+# Button组件
+
+
+# 组件概述
+
+> 按钮组件
+
+
+# 组件API
+
+## 1.Props \(参数\)
+
+| 名字 | 类型 | 是否必传 | 默认 | 描述 |
+| --- | --- | --- | --- | --- |
+| text | String | No | '' | 按钮上显示的文字 |
+| type | String | No | button | 按钮类型，可选值：button |
+| useLoading | Boolean | No | null | 是否显示loading |
+| disabled | Boolean | No | false | 是否禁用 |
+| class | String | No | null | 按钮样式 |
+| iconClass | String | No | null | 图标样式 |
+| size | String | No | null | 按钮尺寸，可选值：small、micro |
+
+
+## 2.Events \(事件\)
+
+| 名字 | 参数 | 描述 |
+| --- | --- | --- |
+| btn-click |  | 点击按钮触发该事件 |
+| loaded-click |  | 按钮状态为loaded时，点击按钮触发该事件 |
+| action-finished |  | 按钮上promise执行完成时触发该事件 |
+
+
+## 3.Methods \(方法\)
+
+| 名字 | 参数 | 描述 |
+| --- | --- | --- |
+| activityIndicator | Promise | 调用该方法在按钮上显示loading，传入的参数promise在状态为resoved时，触发action-finished事件 |
+
+
+# 组件Demo示例
+
+## 1.组件Demo示例链接
+
+[组件Demo示例链接](http://localhost:8080/examples/button-demo/index.html)
+
+## 2.组件Demo代码示例
+### html代码
+```
+<t-button text="Action" class="button--action" v-on:btn-click="btnClick"></t-button>
+```
+
+### js实例组件代码
+```
+import Vue from 'vue';
+import Button from 'taurus/components/button/button';
+
+var vm = new Vue({
+  el: 'body',
+  components: {
+    't-button': Button
+  },
+  methods: {
+    btnClick: function () {
+      alert(1);
+    }
+  }
+});
+```

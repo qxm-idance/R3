@@ -1,0 +1,273 @@
+'use strict'
+require('shelljs/global')
+
+const babel = require("babel-core")
+const fs = require('fs')
+const path = require('path')
+const ora = require('ora')
+env.NODE_ENV = 'production'
+const spinner = ora('building components for production...')
+
+spinner.start()
+
+const isJS = /.js$/
+const basePath = __dirname + '/../dist/components/'
+const componentsDir = __dirname + '/../src/components/'
+const SRC = __dirname + '/../src/'
+const DEST = __dirname + '/../dist/'
+const vueSort = [
+  'amcharts',
+  'autocomplete',
+  'box-group',
+  'breadcrumbs',
+  'button',
+  'data-table',
+  'date-picker',
+  'simple-table',
+  'dropdown',
+  'modal-box',
+  'number-stepper',
+  'pager',
+  'range-slider',
+  'search-filter',
+  'select',
+  'speech-bubble',
+  'status-message',
+  'switcher',
+  'tabs',
+  'loading',
+  'video'
+]
+const directiveSort = [
+  'collapse',
+  'tooltips'
+]
+const reg = /^\./;
+const copyDir = ['utils', 'plugins', 'directives']
+rm('-rf', DEST)
+mkdir('-p', DEST)
+rm('-rf', basePath)
+mkdir('-p', basePath)
+// cp('-R', SRC + 'config', DEST + 'config')
+cp('-R', SRC + 'i18n', DEST + 'i18n')
+const initFloder = (base, subDirs) => {
+  let queue = []
+  subDirs.forEach(dir => {
+    queue.push(new Promise((resolve, reject) => {
+      fs.mkdir(base + dir, (err) => {
+        if (err) {
+          reject(err)
+        } else {
+          resolve()
+        }
+      })
+    }))
+  })
+  return Promise.all(queue)
+}
+
+const readDir = (dir) => {
+  return new Promise((resolve, reject) => {
+    fs.readdir(dir, (err, files) => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(files)
+      }
+    })
+  })
+}
+
+const copyFile = (originPath, originFileName, newPath, newFileName) => {
+  return new Promise((resolve, reject) => {
+    fs.readFile(path.join(originPath, originFileName), (err, data) => {
+      if (!err) {
+        let res = babel.transform(data.toString(), {
+          comments: false,
+          presets: ["es2015", "stage-2"],
+          plugins: ["transform-runtime"]
+        })
+        fs.writeFile(path.join(newPath, newFileName), res.code, (err) => {
+          if (err) {
+            reject(err)
+          } else {
+            resolve()
+          }
+        })
+      } else {
+        console.log('test', err)
+        reject(err)
+      }
+    })
+  })
+}
+
+const copyIndex = function () {
+  return readDir(componentsDir)
+    .then(files => {
+      let queue = []
+      files.forEach((fileName) => {
+        if (isJS.test(fileName)) {
+          queue.push(copyFile(componentsDir, fileName, basePath, fileName))
+        }
+      })
+      return Promise.all(queue)
+    })
+    .then(() => {
+      return initFloder(DEST, copyDir)
+    })
+    .then(() => {
+      let queue = []
+      copyDir.forEach(dir => {
+        readDir(path.join(SRC, dir))
+          .then(files => {
+            files.forEach((fileName) => {
+              if (isJS.test(fileName)) {
+                queue.push(copyFile(path.join(SRC, dir), fileName, path.join(DEST, dir), fileName))
+              }
+            })
+          })
+      })
+      return Promise.all(queue)
+    })
+}
+var getVueWithDir = function (dirArr) {
+  var promise = new Promise(function (resolve, reject) {
+    var isVue = /.vue$/
+    var list = []
+    fs.readdir(dirArr.join('/'), function (err, files) {
+      if (!err) {
+        files.forEach(function (file) {
+          if (!reg.test(file)) {
+            list.push({
+              content: '',
+              filename: file,
+              dir: dirArr[1],
+              path: dirArr.join('/') + '/' + file
+            })
+          }
+        })
+        resolve(list)
+      } else {
+        console.log('1', err)
+        reject()
+      }
+    })
+  })
+
+  return promise
+}
+
+const getComponents = () => {
+  let componentslist = []
+  let queue = []
+  vueSort.forEach((dir) => {
+    queue.push(getVueWithDir([componentsDir, dir]))
+  })
+  return Promise.all(queue)
+    .then((results) => {
+      results.forEach((list) => {
+        componentslist = componentslist.concat(list)
+      })
+      return Promise.resolve(componentslist)
+    })
+}
+const getDirectives = () => {
+  let directivesList = []
+  let queue = []
+  directiveSort.forEach((dir) => {
+    queue.push(getVueWithDir([SRC + 'directives/', dir]))
+  })
+  return Promise.all(queue)
+    .then((results) => {
+      results.forEach((list) => {
+        directivesList = directivesList.concat(list)
+      })
+      return Promise.resolve(directivesList)
+    })
+}
+
+const removeStyle = (str) => {
+  return str.replace(/<style.*>(.|\n)*?<\/style>/, "")
+}
+
+const convertVue = (path) => {
+  return new Promise(function (resolve, reject) {
+    fs.readFile(path, function (err, data) {
+      if (!err) {
+        var content = removeStyle(data.toString())
+        resolve(content)
+      } else {
+        console.log(err)
+        reject(err)
+      }
+    })
+  })
+}
+
+const saveVue = (list) => {
+  initFloder(basePath, vueSort)
+    .then(() => {
+      list.forEach((item) => {
+        fs.writeFile(basePath + item.dir + '/' + item.filename, item.content, function (err) {
+          if (err) {
+            console.log('3', err)
+          }
+        })
+      })
+    })
+}
+const saveDirectives = (list) => {
+  let basePath = DEST + 'directives/'
+  initFloder(basePath, directiveSort)
+    .then(() => {
+      list.forEach((item) => {
+        fs.writeFile(basePath + item.dir + '/' + item.filename, item.content, function (err) {
+          if (err) {
+            console.log('4', err)
+          }
+        })
+      })
+    })
+}
+
+copyIndex()
+  .then(() => {
+    return getDirectives()
+  })
+  .then((list) => {
+    let queue = []
+    list.forEach(function (item) {
+      queue.push(new Promise(function (resolve, reject) {
+        convertVue(item.path)
+          .then(function (content) {
+            item.content = content
+            resolve(item)
+          })
+      }))
+    })
+    return Promise.all(queue)
+  })
+  .then((list) => {
+    saveDirectives(list)
+  })
+  .then(() => {
+    return getComponents()
+  })
+  .then((list) => {
+    let queue = []
+    list.forEach(function (item) {
+      queue.push(new Promise(function (resolve, reject) {
+        convertVue(item.path)
+          .then(function (content) {
+            item.content = content
+            resolve(item)
+          })
+      }))
+    })
+    return Promise.all(queue)
+  })
+  .then((list) => {
+    saveVue(list)
+    spinner.stop()
+  })

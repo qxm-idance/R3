@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Table Demo</title>
+  <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+  <link href="/assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="block__header leader--large trailer--large">
+      <h2 class="title--medium">Default table</h2>
+    </div>
+    <div class="form-row">
+      <button v-on:click="sortSecondColumn" class="button button--action">按第二列排序</button>
+    </div>
+    <h3 class="title--xsmall trailer--small trailing-border form-row">Default Table</h3>
+    <t-simple-table
+      v-ref:my-table
+      :data="defaultTableData"
+      :columns="tableColumns"
+      :filter-key="searchQuery">
+    </t-simple-table>
+    <h3 class="title--xsmall trailer--small trailing-border form-row">Default Table Small</h3>
+    <t-simple-table
+      :data="defaultTableData"
+      :columns="tableColumns"
+      size="small">
+    </t-simple-table>
+    <h3 class="title--xsmall trailer--small trailing-border form-row">Zebra Table</h3>
+    <t-simple-table
+      :data="defaultTableData"
+      :columns="tableColumns"
+      :filter-key="searchQuery"
+      zebra="true">
+    </t-simple-table>
+    <h3 class="title--xsmall trailer--small trailing-border form-row">Zebra Table Small</h3>
+    <t-simple-table
+      :data="defaultTableData"
+      :columns="tableColumns"
+      size="small"
+      zebra="true">
+    </t-simple-table>
+    <h3 class="title--xsmall trailer--small trailing-border form-row">Settings Table</h3>
+    <t-simple-table
+      :data="settingsTableData"
+      type='settings'>
+    </t-simple-table>
+    <h3 class="title--xsmall trailer--small trailing-border form-row">Settings Table</h3>
+    <div class="form-row">
+      <button v-on:click="changeText" class="button button--action">改变第二行文本</button>
+    </div>
+    <t-simple-table
+      drop-item-partial-id="boxPartial"
+      :data="settingsTableData"
+      expandable="true"
+      type="settings"
+      @state-changed="stateChanged">
+    </t-simple-table>
+  </div>
+</body>
+</html>

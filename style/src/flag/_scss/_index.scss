@@ -1,0 +1,63 @@
+/*
+name: flag
+type: ui
+*/
+
+.flag{
+  $root: &;
+  display: table;
+  width: 100%;
+  height: 100%;
+  &__image,
+  &__body
+  {
+    display: table-cell;
+    vertical-align: middle
+  }
+  &__image{
+    padding-right: 10px;
+    &>img{
+      display: block;
+      max-width: none;
+    }
+  }
+  &__body{
+    width: 100%;
+  }
+  &--top{
+    #{$root}__image,
+    #{$root}__body{
+      vertical-align: top;
+    }
+  }
+  &--bottom{
+    #{$root}__image,
+    #{$root}__body{
+      vertical-align: bottom;
+    }
+  }
+  &--reverse{
+    #{$root}__image{
+      padding-right: 0;
+      padding-left: 10px;
+    }
+  }
+}
+
+
+
+@include until($bp-medium) {
+  .flag {
+    display:block;
+    &__image,
+    &__body{
+      display: block;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+
+
+
+

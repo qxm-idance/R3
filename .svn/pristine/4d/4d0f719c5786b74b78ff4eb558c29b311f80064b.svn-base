@@ -1,0 +1,87 @@
+.stepsline-list {
+  position: relative;
+  padding-left: 60px
+}
+
+@media only screen and (min-width: 1024px) {
+  .stepsline-list {
+    margin-right:50px
+  }
+}
+
+.stepsline-list:before {
+  background: #038cd6;
+  content: "";
+  width: 4px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 17px
+}
+
+.stepsline-list.withgradient:before {
+  background-image: linear-gradient(180deg,#8cc63f,#00b9de,#038cd6)
+}
+
+.stepsline-list .stepsline-item .stepsline-title {
+  position: relative;
+  padding-right: 15px
+}
+
+.stepsline-list .stepsline-item .stepsline-title .step-icon {
+  position: absolute;
+  top: 0;
+  left: -66px;
+  width: 58px;
+  background: #fff;
+  padding: 5px
+}
+
+.stepsline-list .stepsline-item .stepsline-title .step-icon span {
+  display: block;
+  font-size: 16px;
+  color: #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  background: #038cd6;
+  text-align: center
+}
+
+.stepsline-list .stepsline-item .stepsline-content .leader--large {
+  margin-top: 12px
+}
+
+.stepsline-list .stepsline-item .guide-image {
+  margin: 20px 0 32px
+}
+
+.stepsline-list .stepsline-item .guide-image img {
+  max-width: 100%;
+  height: auto;
+  max-height: 450px
+}
+
+.stepsline-list .stepsline-item h2 {
+  font-size: 24px;
+  line-height: 24px
+}
+
+.stepsline-list .stepsline-item.laststep {
+  margin-bottom: 5px
+}
+
+.stepsline-list .stepsline-item.laststep:after {
+  background: #038cd6;
+  content: "";
+  width: 25px;
+  position: relative;
+  left: -53px;
+  bottom: 0;
+  height: 3px
+}
+
+.stepsline-list .stepsline-item.laststep .guide-image {
+  margin-bottom: 10px
+}

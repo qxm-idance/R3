@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pager Demo</title>
+  <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+  <link href="/assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="block__header leader--large trailer--large">
+      <h2 class="title--medium">翻页组件演示</h2>
+    </div>
+    <div class="form-row">
+      <button v-on:click="changePageSize" class="button button--action">每页记录数改为{{currentPageSize === 5 ? 8 : 5}}条</button>
+      <button v-on:click="gotoPage7" class="button button--action">跳转到第7页</button>
+      <button v-on:click="changeDataCount" class="button button--action">增加10条记录</button>
+      <button v-on:click="prev" class="button button--action">前一页</button>
+      <button v-on:click="next" class="button button--action">后一页</button>
+    </div>
+    <div class="form-row">
+      <t-pager :data-count.sync="90" v-on:page-changed="pageChanged" v-ref:my-pager></t-pager>
+    </div>
+    <div class="form-row">
+      <span>共{{currentDataCount}}条记录 ; 每页记录数为{{currentPageSize}}条 ; 当前是第 {{currentPageNumber}} 页</span>
+    </div>
+  </div>
+</body>
+</html>

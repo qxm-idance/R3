@@ -1,0 +1,259 @@
+<template>
+  <component :is="compType" :show.sync="show" :size="size" :title="title" :target="target" show-close="false">
+    <div class="accordion-filter">
+      <ul>
+        <li v-for="item in itemsFormat" class="{{ item.className }}"
+            @click.stop.prevent="itemOnClick($event)" data-state="{{item.hcCheck}}" role="li">
+          <!--没有子节点的li-->
+          <input v-if="item.haveChild===false" id="tau-chk-nc-{{$index}}" type="checkbox" tabindex="1"
+                 name="{{ itemName }}" :checked="item.checked" :disabled="item.disabled" :value="item.value" idx="{{item.id}}">
+          <label v-if="item.haveChild===false" for="tau-chk-nc-{{$index}}">{{item.label}}
+            <span class="count" v-if="!!item.count&&item.count>0">({{item.count}})</span>
+          </label>
+          <!--有子节点的li-->
+          <a v-if="item.haveChild===true" class="accordion-filter__parent-item-toggle" tabindex="1" href="#"
+             idx="{{item.id}}" @click.stop.prevent="itemOnClick($event)" role="link-hc">
+            <label>{{item.label}}
+              <span class="count" v-if="!!item.count&&item.count>0">({{item.count}})</span>
+            </label>
+          </a>
+          <a v-if="item.haveChild===true" href="#" tabindex="1" class="accordion-filter__parent-item-expand icon icon-arrow-down"
+             @click.stop.prevent="itemOnClick($event)" role="link-arrow"></a>
+          <ul v-if="item.haveChild===true" class="accordion-filter__parent-item-list">
+            <li v-for="itemChild in item.item" class="accordion-filter__leaf-item form-checkbox" idx="{{itemChild.id}}"
+                @click.stop.prevent="itemOnClick($event)" role="li-child">
+              <input id="tau-chk-child-{{$index}}" type="checkbox" tabindex="1"
+                     name="{{ itemName }}" :checked="itemChild.checked" :disabled="itemChild.disabled" :value="itemChild.value"
+                     idx="{{itemChild.id}}">
+              <label for="tau-chk-child-{{$index}}">{{itemChild.label}}
+                <span class="count" v-if="!!itemChild.count&&itemChild.count>0">({{itemChild.count}})</span>
+              </label>
+            </li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+    <div class="box--greyed multi-filter__submit-panel">
+      <button type="button" class="button button--action button--small" @click="buttonClick">{{buttonName}}</button>
+    </div>
+  </component>
+</template>
+<script>
+  import Vue from 'vue';
+  import SpeechBubble from '../speech-bubble/speech-bubble.vue';
+
+  const HAS_CHILD_ITEM_CLASS = 'accordion-filter__parent-item form-checkbox';
+  const HAS_CHILD_ITEM_IS_EXPANDED_CLASS = 'accordion-filter__parent-item form-checkbox is-expanded';
+  const NON_CHILD_ITEM_CLASS = 'accordion-filter__leaf-item accordion-filter__leaf-parent-item form-checkbox';
+  const IS_EXPANDED_CLASS = 'is-expanded';
+  const ALL_SELECTED = 'all-selected';
+  const NON_SELECTED = 'non-selected';
+  const SOME_SELECTED = 'some-selected';
+
+  export default {
+    name: 'taurus-speech-bubble-filter',
+    components: {
+      't-speech-bubble': SpeechBubble
+    },
+    data: function () {
+      return {
+        compType: 't-speech-bubble',
+        itemsFormat:[]
+      }
+    },
+    props: {
+      //显示隐藏参数
+      show: {
+        type: Boolean,
+        required: true,
+        twoWay: true
+      },
+      //调用speech-bubble的组件id
+      target: {
+        type: String,
+        required: true
+      },
+      //small或者large
+      size: {
+        default: 'large',
+        type: String
+      },
+      //标题名称
+      title: {
+        default: "Speech Bubble",
+        type: String
+      },
+      //多选框的name属性
+      itemName: {
+        default: "",
+        type: String
+      },
+      //按钮名称
+      buttonName: {
+        default: "Update",
+        type: String
+      },
+      /**
+       * [
+       * {
+       *   label: 'item4',  展示字段
+       *   checked: true,   是否选中
+       *   disabled: false, 是否可选
+       *   value: 'value4', 值
+       *   pid: '',         父节点ID
+       *   id: 4            节点ID
+        }
+       * ]
+       */
+      items: {
+        type: Array
+      }
+    },
+    created: function () {
+      this.formatItems();
+    },
+    computed: {
+    },
+    methods: {
+      itemOnClick: function (event) {
+        debugger;
+        var role = event.currentTarget.getAttribute("role"),
+            idx = event.currentTarget.getAttribute("idx"),
+            selectState = "";
+        if(role==="li"||role==="li-child"){//没有子节点
+          if(!event.currentTarget.firstElementChild.disabled){
+            if(!event.currentTarget.firstElementChild.checked){
+              event.currentTarget.firstElementChild.checked = true;
+            }else{
+              event.currentTarget.firstElementChild.checked = false;
+            }
+            this.setItemChecked(idx,event.currentTarget.firstElementChild.checked);
+          }
+        }else if(role==="link-hc"){//有子节点
+          var isChecked = false,
+              childNodes = event.currentTarget.parentNode.children||[],
+              childUl = null,
+              childLi = [];
+          selectState = event.currentTarget.parentNode.getAttribute("data-state");
+          if(selectState===ALL_SELECTED){
+            event.currentTarget.parentNode.setAttribute("data-state",NON_SELECTED);
+            //对父节点的checked状态做变更
+            this.setItemChecked(idx,isChecked);
+          }else if(selectState===SOME_SELECTED){
+            event.currentTarget.parentNode.setAttribute("data-state",ALL_SELECTED);
+          }else if(selectState===NON_SELECTED){
+            event.currentTarget.parentNode.setAttribute("data-state",ALL_SELECTED);
+            isChecked = true;
+            //对父节点的checked状态做变更
+            this.setItemChecked(idx,isChecked);
+          }
+
+          //查找子节点元素并更改chechbox选中状态
+          if(childNodes.length>0){
+            childUl = childNodes[childNodes.length-1];
+            if(childUl.tagName==="UL"){
+              childLi = childUl.children;
+              for(var i =0; i< childLi.length; i++){
+                var liNode = childLi[i];
+                if(!liNode.firstElementChild.disabled){
+                  liNode.firstElementChild.checked = isChecked;
+                }
+              }
+            }
+          }
+
+          //全选的话查找子节点并选中并对子节点的checked状态做变更
+          this.setChildItemChecked(idx,isChecked);
+        }else if(role==="link-arrow"){//箭头按钮
+          var className = event.target.parentNode.getAttribute("class");
+          if(className.indexOf(IS_EXPANDED_CLASS) <= -1){
+            event.target.parentNode.setAttribute("class",HAS_CHILD_ITEM_IS_EXPANDED_CLASS);
+          }else{
+            event.target.parentNode.setAttribute("class",HAS_CHILD_ITEM_CLASS);
+          }
+        }
+      },
+      buttonClick: function (e) {
+        this.$dispatch('speech-bubble-button-click');
+      },
+      setChildItemChecked: function (pid,isChecked){
+        for(var o in this.items) {
+          if(!!this.items[o].pid&&this.items[o].pid == pid){
+            this.items[o].checked = isChecked;
+            return;
+          }
+        }
+      },
+      setItemChecked: function (idx,isChecked){
+        for(var o in this.items) {
+          if(!!this.items[o].id&&this.items[o].id == idx){
+            this.items[o].checked = isChecked;
+            return;
+          }
+        }
+      },
+      getCheckItem: function (){
+        var itemArr = [];
+        for(var o in this.items) {
+          if(!!this.items[o].checked){
+            itemArr.push(this.items[o]);
+          }
+        }
+        return itemArr;
+      },
+      formatItems: function () {
+        this.itemsFormat = [];
+        var pItemsObj = {};
+        //循环出父节点
+        for (var i=0; i<this.items.length; i++) {
+          var obj = this.items[i],
+              childCheckCount = 0;
+          //默认值 引入工具后可以用extend合并
+          if(!obj.disabled){
+            obj.disabled = false;
+          }
+          if(!obj.checked){
+            obj.checked = false;
+          }
+          if(!!obj.id && obj.id !== ''){
+            if(!obj.pid) {//没有父节点
+              obj.item = [];//装子节点的数组
+
+              //把子节点放入父节点的object中
+              for (var j=0; j<this.items.length; j++) {
+                var obj1 = this.items[j];
+                if(!!obj1.pid && obj1.pid === obj.id) {//有父节点
+                  obj.item.push(obj1);
+                  if(!!obj1.checked){
+                    childCheckCount++;
+                  }
+                }
+              }
+              //根据子节点选中状态对父节点的选中状态赋值
+              if(obj.item.length === childCheckCount && obj.item.length>0){
+                obj.hcCheck = ALL_SELECTED;
+              }else if(obj.item.length > childCheckCount && obj.item.length>0 && childCheckCount>0){
+                obj.hcCheck = SOME_SELECTED;
+              }else{
+                obj.hcCheck = NON_SELECTED;
+              }
+
+              //分别定义有子节点的li的class和没有子节点的li的class复制
+              if(obj.item.length === 0){
+                obj.className = NON_CHILD_ITEM_CLASS;
+                obj.haveChild = false;
+              }else {
+                obj.className = HAS_CHILD_ITEM_CLASS;
+                obj.haveChild = true;
+              }
+              this.itemsFormat.push(obj);
+            }
+          }else{
+            console.log("id is required:"+this.items[i].label);
+          }
+        }
+      }
+    }
+  };
+</script>

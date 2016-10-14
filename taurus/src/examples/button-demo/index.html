@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Button Demo</title>
+    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+    <link href="/assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+
+	<div class="container sg-component__markup">
+
+        <div class="sg-component__label" style="margin-top: 20px;">Default</div>
+        <div class="form-select" data-module="form.select">
+            <t-button text="Action" class="button--action"></t-button>
+            <t-button text="Default" class="button--default"></t-button>
+            <t-button text="Default" class="button button--default button--white"></t-button>
+            <t-button text="Default" class="button button--naked"></t-button>
+        </div>
+
+        <div class="sg-component__label" style="margin-top: 20px;">Small</div>
+        <div class="form-select" data-module="form.select">
+            <t-button text="Action" class="button--action" size="small"></t-button>
+            <t-button text="Default" class="button--default" size="small"></t-button>
+            <t-button text="Default" class="button button--default button--white" size="small"></t-button>
+            <t-button text="Default" class="button button--naked" size="small"></t-button>
+        </div>
+
+        <div class="sg-component__label" style="margin-top: 20px;">Disabled</div>
+        <div class="form-select" data-module="form.select">
+            <t-button text="Action" class="button--action" :disabled="true"></t-button>
+            <t-button text="Default" class="button--default" :disabled="true"></t-button>
+            <t-button text="Default" class="button button--default button--white" :disabled="true"></t-button>
+            <t-button text="Default" class="button button--naked" :disabled="true"></t-button>
+        </div>
+
+        <div class="sg-component__label" style="margin-top: 20px;">Micro steppers grey and blue</div>
+        <div class="form-select" data-module="form.select">
+            <t-button class="button button--default icon icon-arrow-prev" size="micro"></t-button>
+            <t-button class="button button--default icon icon-arrow-next" size="micro"></t-button>
+            <t-button class="button button--action icon icon-arrow-prev" size="micro"></t-button>
+            <t-button class="button button--action icon icon-arrow-next" size="micro"></t-button>
+        </div>
+
+
+        <div class="sg-component__label" style="margin-top: 20px;">Click事件</div>
+        <div class="form-select" data-module="form.select">
+            <t-button text="Action" class="button--action" v-on:btn-click="btnClick"></t-button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+  <title>search filter</title>
+  <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+  <link href="/assets/css/main.css" rel="stylesheet">
+  <style>
+    #autocomplete-wrap {
+      width: 500px;
+    }
+
+    .ml20 {
+      margin-left: 20px;
+    }
+
+    .mt20 {
+      margin-top: 20px;
+    }
+
+    .mb20 {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+<!--search-->
+<div class="sg-component ml20 mt20">
+  <div class="sg-component__header">
+    <h2 class="title--medium-small trailer--small">Search</h2>
+  </div>
+  <div id="search-wrap" class="sg-component__markup">
+    <t-search-filter v-on:search="normalSearch"></t-search-filter>
+    <p v-show="normalSearchResult">
+      search result: {{normalSearchResult}}
+    </p>
+  </div>
+</div>
+
+<!--search small-->
+<div class="sg-component ml20 mt20">
+  <div class="sg-component__header">
+    <h2 class="title--medium-small trailer--small">Search Small</h2>
+  </div>
+  <div id="search-small-wrap" class="sg-component__markup">
+    <t-search-filter :is-small="true" v-on:search="smallSearch"></t-search-filter>
+    <p v-show="smallSearchResult">
+      search result: {{smallSearchResult}}
+    </p>
+  </div>
+</div>
+
+<!--Search inline-->
+<div class="sg-component ml20 mt20">
+  <div class="sg-component__header">
+    <h2 class="title--medium-small trailer--small">Search Inline</h2>
+  </div>
+  <div id="search-inline-wrap" class="sg-component__markup">
+    <t-search-filter :is-inline="true" v-on:search="inlineSearch"></t-search-filter>
+    <p v-show="inlineSearchResult">
+      search result: {{inlineSearchResult}}
+    </p>
+  </div>
+</div>
+
+<!--Search samll inline-->
+<div class="sg-component ml20 mt20">
+  <div class="sg-component__header">
+    <h2 class="title--medium-small trailer--small">Search Small Inline</h2>
+  </div>
+  <div id="search-small-inline-wrap" class="sg-component__markup">
+    <t-search-filter :is-small="true" :is-inline="true" v-on:search="smaillInlineSearch"></t-search-filter>
+    <p v-show="smaillInlineSearchResult">
+      search result: {{smaillInlineSearchResult}}
+    </p>
+  </div>
+</div>
+</body>
+</html>

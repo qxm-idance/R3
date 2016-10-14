@@ -1,0 +1,181 @@
+# Line Chart组件
+
+
+# 组件概述
+
+> 图表组件，折线图
+
+
+# 组件API
+
+## 1.Props \(参数\)
+
+| 名字 | 类型 | 是否必传 | 默认 | 描述 |
+| --- | --- | --- | --- | --- |
+| lineColor | String| no | '#0278B8' | 折线颜色 |
+| lineThickness | Number | No  | 2 | 折线的粗细 |
+| bulletSize | Number | No | 6 | 节点大小 |
+
+
+## 2.Events \(事件\)
+
+| 名字 | 参数 | 描述 |
+| --- | --- | --- |
+无
+
+## 3.Methods \(方法\)
+
+| 名字 | 参数 | 描述 |
+| --- | --- | --- |
+无
+
+
+# 组件Demo示例
+
+## 1.组件Demo示例链接
+
+[组件Demo示例链接](http://localhost:8080/sample/amcharts-demo/index.html )
+
+## 2.组件Demo代码示例
+### html代码
+```
+<t-line v-if="lineDataProvider"
+              :data-provider="lineDataProvider"
+              category-field="date"
+              value-field="value">
+      </t-line>
+```
+
+### js实例组件代码
+```
+import Vue from 'vue';
+import TLine from 'taurus/components/amcharts/line';
+
+const CHART_TYPE = {
+  bars: 'Bars',
+  barsWithLegend: 'Bars with Legend',
+  line: 'Line'
+};
+
+new Vue({
+  el: '#serial',
+
+  components: {
+    TLine
+  },
+
+  data () {
+    return {
+      currentChart: '',
+      barsDataProvider: null,
+      lineDataProvider: null,
+      loadingData: false,
+      enableCategoryLegend: false
+    };
+  },
+
+  methods: {
+    fillBarsData: function () {
+      this.barsDataProvider = [{
+        'country': 'USA',
+        'visits': 3025,
+        'color': '#FF0F00'
+      }, {
+        'country': 'China',
+        'visits': 1882,
+        'color': '#FF6600'
+      }, {
+        'country': 'Japan',
+        'visits': 2009,
+        'color': '#FCDF02'
+      }, {
+        'country': 'Germany',
+        'visits': 1322,
+        'color': '#FCD202'
+      }, {
+        'country': 'France',
+        'visits': 1114,
+        'color': '#B0DE09'
+      }, {
+        'country': 'Russia',
+        'visits': 580,
+        'color': '#2A0CD0'
+      }];
+    },
+
+    clearBarsData: function () {
+      this.barsDataProvider = null;
+    },
+
+    fillLineData: function () {
+      this.lineDataProvider = [{
+        'date': '2012-01',
+        'value': 130
+      }, {
+        'date': '2012-02',
+        'value': 110
+      }, {
+        'date': '2012-03',
+        'value': 150
+      }, {
+        'date': '2012-04',
+        'value': 160
+      }, {
+        'date': '2012-05',
+        'value': 180
+      }, {
+        'date': '2012-06',
+        'value': 130
+      }, {
+        'date': '2012-07',
+        'value': 220
+      }, {
+        'date': '2012-08',
+        'value': 230
+      }, {
+        'date': '2012-09',
+        'value': 200
+      }, {
+        'date': '2012-10',
+        'value': 170
+      }, {
+        'date': '2012-11',
+        'value': 160
+      }, {
+        'date': '2012-12',
+        'value': 180
+      }];
+    },
+
+    clearLineData: function () {
+      this.lineDataProvider = null;
+    }
+  },
+
+  watch: {
+    currentChart: function (val, oldVal) {
+      // clear data provider for recreating charts components
+      this.clearBarsData();
+      this.clearLineData();
+
+      if (val === '请选择 Amchart 类型') {
+        return;
+      }
+
+      this.enableCategoryLegend = val === 'Bars with Legend';
+
+      this.loadingData = true;
+
+      let self = this;
+      setTimeout(function () {
+        if (val === CHART_TYPE.line) {
+          self.fillLineData();
+        } else {
+          self.fillBarsData();
+        }
+        self.loadingData = false;
+      }, 2000);
+    }
+  }
+});
+```

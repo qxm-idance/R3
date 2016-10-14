@@ -1,0 +1,119 @@
+.multi-filter{
+  $root: &;
+  position: relative;
+  height: 32px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  & .form-item__clear-button{
+    display: none
+  }
+  &.is-filtered .form-item__clear-button{
+    display: block;
+  }
+  &-block-wrapper {
+    #{$root}.form-item--inline{
+      display: block;
+    }
+  }
+  &__input{
+    display: block;
+    background-color: $color-white;
+    position: relative;
+    border:$border;
+    border-radius: 2px;
+    height: 32px;
+    line-height: 32px;
+    width: 255px;
+    padding-left: 42px;
+    button{
+      font-size: 1rem;
+      line-height: 1;
+    }
+    &:hover{
+      display: block;
+      border: 1px solid $border-form-input-hover;
+      box-shadow:$box-shadow-downright;
+    }
+    :before{
+      background: $color-paper-white;
+      border-right: $border-light;
+      content: "";
+      width: 32px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+    }
+    :after{
+      font-family: "framework-icons";
+      display: inline-block;
+      font-weight: normal;
+      font-style: normal;
+      line-height: 1;
+      speak: none;
+      text-decoration: inherit;
+      text-transform: none;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      @include icon-pipeline;
+      width: 32px;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 1px;
+      text-align: center;
+      line-height: 30px;
+    }
+    &:focus:hover,
+    &:focus{
+      display: block;
+      border: $border-form-input-focus;
+    }
+  }
+  &__input-label{
+    margin-right: 30px;
+    line-height: 40px
+  }
+  &__submit-panel{
+    padding: 10px;
+    button{
+      width: 100%
+    }
+  }
+  & .accordion-filter label .count {
+    color: #adadad
+  }
+}
+
+@include until($bp-medium){
+  .multi-filter {
+    display:block;
+    height: auto;
+
+    &__input{
+      display: block;
+      font-size: 1rem;
+      line-height: 1;
+      width: 100%;
+      height: 40px;
+      line-height: 40px;
+      padding-left:50px;
+      &:before{
+        width: 40px;
+      }
+      &:after{
+        top:4px;
+        width: 40px
+      }
+    }
+  }
+}
+
+@include at-least($bp-medium){
+  .multi-filter__input-label {
+    font-size:0.813rem;
+    line-height: .9375rem;
+    line-height: 32px
+  }
+}

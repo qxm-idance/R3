@@ -1,0 +1,305 @@
+/**
+* Created by zengjie on 16/9/19.
+*/
+<template>
+  <!-- isopen 控制dropdown开关 -->
+  <div class='autocomplete-plugin form-item form-item--required dropdown' :class="{'is-open' : isOpenMenu}">
+    <input type='text' v-el:search-input data-component='autocomplete' v-model="searchKey" @blur='handleBlur'
+           @keyup='search'
+           @keydown='handleKeydown'/>
+    <div class='dropdown__content' role='menu' id='autocompleteDropdown'>
+      <div class='dropdown__scroll'>
+        <ul class='dropdown__list' v-el:search-result-menu @click.stop="handleSelect" @mouseover="handleMove">
+          <li v-for='_data in datas'>
+            <a class='text-truncate' :class="{'current-autocomplete-option' : $index==activeElemIndex}">
+              {{_data.label || _data}}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+  /**
+   * 构建autocomplete组件
+   * options:{
+   * source : [String, Array, Function] 定义要使用的数据，必须指定
+   * delay: Number 按键和执行搜索之间的延迟，以毫秒计。默认远程调用300，本地10
+   * autoFocus: Boolean 当菜单显示时，第一个条目是否将自动获得焦点
+   * disabled: Boolean 是否禁用
+   * }
+   * events:{
+   *  change: 如果输入域的值改变则触发该事件。
+   *  close: 当菜单隐藏时触发。不是每一个 close 事件都伴随着 change 事件。
+   *  open: 当打开建议菜单或者更新建议菜单时触发
+   *  select: 当从菜单中选择条目时触发
+   * }
+   * methods:{
+   * set-disabled() 禁用|启用 autocomplete。
+   *
+   * }
+   */
+  const KEY_CODE = {
+    UP: 38,
+    DOWN: 40,
+    ENTER: 13,
+    ESC: 27
+  };
+  /**
+   *
+   */
+  module.exports = {
+    data: function () {
+      return {
+        isOpenMenu: false,
+        cancelSearch: false,
+        cancelBlur: false,
+        searchTimeout: null,
+        previousKey: null,
+        _source: null,
+        searchKey: '',
+        activeElemIndex: -1,
+        datas: []
+      };
+    },
+    props: { // 从外部传入的配置属性
+      source: { // 定义要使用的数据，必须指定
+        type: [String, Array, Function],
+        required: true
+      },
+      delay: { // 按键和执行搜索之间的延迟，以毫秒计。默认远程调用300，本地0
+        type: Number,
+        default: function () {
+          if (typeof this.source === 'string') {
+            return 300;
+          } else {
+            return 0;
+          }
+        }
+      }, // 延迟触发
+      resultLimit: { // 显示结果的条数限制
+        type: Number,
+        default: 10
+      },
+      autoFocus: { // 如果设置为 true，当菜单显示时，第一个条目将自动获得焦点
+        type: Boolean,
+        default: false
+      },
+      disabled: { // 如果设置为 true，则禁用该 autocomplete。
+        type: Boolean,
+        default: false
+      }
+    },
+    events: {
+      'set-disabled': function (disabled) {
+        this.disabled = disabled;
+        this.cancelSearch = disabled;
+      }
+    },
+    methods: {
+      /**
+       * 搜索值发生了改变
+       */
+      change: function (oldValue, newValue) {
+        this.$dispatch('change', {
+          oldValue: oldValue,
+          newValue: newValue
+        });
+        this.previousKey = newValue;
+        this.$dispatch('change');
+      },
+      /**
+       * 关闭搜索结果列表菜单
+       */
+      close: function () {
+        if (this.isOpenMenu === true) {
+          this.$dispatch('close');
+        }
+        this.isOpenMenu = false;
+      },
+      /**
+       * 打开搜索结果列表菜单
+       */
+      open: function () {
+        if (this.isOpenMenu === false) {
+          this.$dispatch('open');
+        }
+        this.isOpenMenu = true;
+      },
+      /**
+       * 选择搜索结果
+       */
+      select: function (value) {
+        this.searchKey = value || '';
+        this.$dispatch('select', value);
+      },
+      handleKeydown: function (e) {
+        console.log('handleKeydown');
+        this.cancelSearch = false;
+        console.log(e.keyCode);
+        switch (e.keyCode) {
+          case KEY_CODE.UP:
+            this.cancelSearch = true;
+            this.move('previous', e);
+            break;
+          case KEY_CODE.DOWN:
+            console.log('DOWN');
+            this.cancelSearch = true;
+            this.move('next', e);
+            break;
+          case KEY_CODE.ENTER:
+            this.cancelSearch = true;
+            var _el = this.$els.searchResultMenu.children[this.activeElemIndex].children[0];
+            this.select(_el.outerText);
+            this.close(e);
+            break;
+        }
+      },
+      handleMove: function (e) {
+        this.activeElemIndex = -1;
+      },
+      move: function (direction, e) {
+        console.log(this.activeElemIndex);
+        if (direction === 'previous') {
+          if (this.activeElemIndex > 0) {
+            this.activeElemIndex--;
+          } else if (this.activeElemIndex === 0) {
+            this.activeElemIndex = -1;
+          } else {
+            this.activeElemIndex = this.datas.length - 1;
+          }
+        }
+        if (direction === 'next') {
+          if (this.activeElemIndex < this.datas.length - 1) {
+            this.activeElemIndex++;
+          } else {
+            this.activeElemIndex = -1;
+          }
+        }
+        if (this.activeElemIndex === -1) {
+          return;
+        }
+        this.select(e.target.outerText);
+        return false;
+      },
+      handleBlur: function (e) {
+        if (this.cancelBlur === true) {
+          this.cancelBlur = false;
+          return;
+        }
+        if (this.searchTimeout !== null) {
+          clearTimeout(this.searchTimeout);
+        }
+      },
+      handleSelect: function (e) {
+        var _value = e.target.outerText;
+        this.select(_value);
+        this.close(e);
+      },
+      search: function (e) {
+        var vm = this;
+        if (vm.cancelSearch === true) {
+          return;
+        }
+        console.log('search...');
+        var _key = e.target.value;
+        if (vm.previousKey !== null && vm.previousKey !== _key) {
+          vm.change(vm.previousKey, _key);
+        }
+        if (vm.searchTimeout) {
+          clearTimeout(vm.searchTimeout);
+        }
+        console.time('search');
+        vm.searchTimeout = setTimeout(function () {
+          console.timeEnd('search');
+          vm._source({term: _key}, vm.response);
+        }, vm._delay);
+      },
+      escapeRegex: function (value) {
+        return value.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&');
+      },
+      filter: function (array, term) {
+        var matcher = new RegExp(this.escapeRegex(term), 'i');
+        return array.filter(function (value) {
+          return matcher.test(value.label || value.value || value);
+        });
+      },
+      response: function (content) {
+        if (content) {
+          content = this.normalize(content);
+          if (content.length > this.resultLimit) {
+            content.length = this.resultLimit;
+          }
+          this.datas = content;
+          this.activeElemIndex = this.autoFocus === true ? 0 : -1;
+        }
+        if (!this._disabled && content && content.length && !this.cancelSearch) {
+          this.open();
+        } else {
+          this.close();
+        }
+      },
+      normalize: function (items) {
+        // assume all items have the right format when the first item is complete
+        if (items.length && items[0].label && items[0].value) {
+          return items;
+        }
+        return items.map(function (item) {
+          if (typeof item === 'string') {
+            return {
+              label: item,
+              value: item
+            };
+          }
+          return {
+            label: item.label || item.value,
+            value: item.value || item.label
+          };
+        });
+      },
+      initSource: function () {
+        var vm = this;
+        if (vm.disabled === true) {
+          vm.cancelSearch = true;
+          return;
+        }
+        if (vm.autoFocus === true) {
+          this.activeElemIndex = 0;
+        }
+        if (Array.isArray(vm.source)) { // 数组
+          vm._source = function (request, response) {
+            response(vm.filter(vm.source, request.term));
+          };
+        } else if (typeof vm.source === 'string') { // url
+          vm._source = function (request, response) { // ajax调用
+            this.$http.post(vm.source, function (data) {
+              this.$set('json', data);
+              response(data);
+            }).error(function (data, status, request) {
+              response([]);
+            });
+          };
+        } else { // 回调函数
+          vm._source = vm.source;
+        }
+        // 定义document事件
+        document.addEventListener('click', function (e) {
+          var complete = e.target.getAttribute('data-component');
+          if (complete === 'autocomplete') {
+            // if (vm.datas.length && vm.isOpenMenu === false) {
+            // vm.open();
+            // }
+            return;
+          } else {
+            vm.close();
+          }
+        });
+      }
+    },
+    created: function () {
+      this.initSource();
+    }
+  };
+</script>

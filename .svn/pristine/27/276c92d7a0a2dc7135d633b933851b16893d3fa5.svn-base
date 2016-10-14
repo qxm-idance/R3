@@ -1,0 +1,78 @@
+# DatePicker组件
+
+
+# 组件概述
+
+> 日期选择组件，支持选择单个日期或日期范围
+
+
+# 组件API
+
+## 1.Props \(参数\)
+
+| 名字 | 类型 | 是否必传 | 默认 | 描述 |
+| --- | --- | --- | --- | --- |
+| dateVal | String | No | '' | 日期值，需要与dateFormat的格式一致 |
+| rangeSelect | Boolean | No | false | 是否选择日期范围 |
+| rangeSeparator | String | No | ' - ' | 开始时间，结束时间的分隔符 |
+| dateFormat | String | No | 'yyyy-mm-dd' | 日期格式 |
+| disabled | Boolean | No | false | 是否禁用 |
+| minDate | Strig | No | '' | 日期最小值 |
+| maxDate | Strig | No | '' | 日期最大值 |
+| monthsToShow | Number/Array | No | 1 | 日历视图中同时显示月份的个数，出入的值为number时则在一行中显示number个月；传入值为数组[a，b]时，则显示为a行b列，共a*b个月 |
+| monthHeaderFormat | String | No | 'MM yyyy' | 月头部的显示格式 |
+
+
+## 2.Events \(事件\)
+
+| 名字 | 参数 | 描述 |
+| --- | --- | --- |
+| v-on:date-change |  | 日期值变化时触发改时间 |
+
+
+
+## 3.Methods \(方法\)
+
+| 名字 | 参数 | 描述 |
+| --- | --- | --- |
+| getDates |  | 获取当前选中的日期 |
+| clearDates |  | 清除/重置选中日期 |
+| show |  | 显示日期弹窗 |
+| hide |  | 隐藏日期弹窗 |
+
+
+# 组件Demo示例
+
+## 1.组件Demo示例链接
+
+[组件Demo示例链接](/examples/date-picker-demo/index.html)
+
+## 2.组件Demo代码示例
+### html代码
+```
+<t-date-picker :months-to-show="2" min-date="2016.07.11" max-date="2016.11.11" date-format="yyyy.mm.dd" :range-select="true"></t-date-picker>
+```
+
+### js实例组件代码
+```
+import Vue from 'vue';
+import DatePicker from 'taurus/components/date-picker/date-picker';
+
+var vm = new Vue({
+  el: 'body',
+  data: {
+    dateVal: '2016.08.20 - 2016.09.21'
+  },
+  components: {
+    't-date-picker': DatePicker
+  },
+  methods: {
+    onChange: function () {
+      self = this;
+      setTimeout(function () {
+        alert(self.dateVal);
+      }, 100);
+    }
+  }
+});
+```

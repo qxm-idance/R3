@@ -1,0 +1,145 @@
+.block,.box--default,.box--default-dark-border {
+    padding: 1.25rem
+}
+
+.block--filter {
+    padding: 1.25rem 0.625rem;
+    padding-top: 0
+}
+
+@media only screen and (max-width: 37.438em) {
+    .block--filter {
+        padding:1.25rem
+    }
+}
+
+.block--small {
+    padding: 0.625rem
+}
+
+.block--content,.block--content--dark {
+    padding: 1.25rem 0.625rem
+}
+
+@media only screen and (min-width: 37.5em) {
+    .block--content,.block--content--dark {
+        padding: 1.875rem 1.25rem
+    }
+}
+
+.block--content--low {
+    padding: 0.625rem 1.25rem
+}
+
+@media only screen and (min-width: 37.5em) {
+    .block--content--tablet-toright-none {
+        padding-right:0
+    }
+}
+
+.block--content>*:first-child,.block--content--dark>*:first-child {
+    margin-top: 0
+}
+
+.block--col {
+    padding: 1.875rem 0
+}
+
+.block--col>*:first-child {
+    margin-top: 0
+}
+
+.block--col--dark,.block--content--dark {
+    margin: -0.063rem 0 0.625rem;
+    margin-top: -1px
+}
+
+@media only screen and (min-width: 37.5em) {
+    .block--col--dark,.block--content--dark {
+        margin: -0.063rem 0 1.25rem
+    }
+}
+
+.block__header {
+    padding-bottom: 0.938rem;
+    border-bottom: 1px solid #b8b8b8;
+    position: relative
+}
+
+.block__header--no-border-bottom {
+    border-bottom: 0;
+}
+
+.block__header [class*="title--"] {
+    margin-bottom: 0
+}
+
+.block__header__link a:hover,.block__header__link a {
+    color: #666
+}
+
+@media only screen and (min-width: 37.5em) {
+    .block__header__link {
+        position:absolute;
+        right: 0;
+        bottom: 1rem;
+        text-align: right
+    }
+
+    /*.block__header__link>div {
+        margin-bottom: 0.938rem;
+        overflow: hidden;
+        clear: both
+    }*/
+}
+
+.block__header-rider {
+    margin-bottom: 2.5px;
+    color: #666
+}
+
+.block__header-rider.block__header-rider--small {
+    font-size: 0.813rem
+}
+
+.block__content {
+    padding: 1.563rem 0 3.125rem
+}
+
+.block--list {
+    padding-left: 0;
+    padding-right: 0
+}
+
+.block--list--thumbs .block__header {
+    border-bottom: 0
+}
+
+.block--list--thumbs .product-list {
+    background: #f0f0f0;
+    border: 1px solid #b8b8b8;
+    border-bottom: 0;
+    position: relative
+}
+
+.block--list--thumbs .product-list:before {
+    content: "";
+    height: 1px;
+    left: 0;
+    right: 0;
+    position: absolute;
+    background-color: #b8b8b8;
+    bottom: 0;
+    z-index: 5
+}
+
+.block .align--middle label,.box--default .align--middle label,.box--default-dark-border .align--middle label {
+    display: inline-block;
+    vertical-align: middle
+}
+
+.block .align--middle span,.box--default .align--middle span,.box--default-dark-border .align--middle span {
+    display: inline-block;
+    vertical-align: middle;
+    height: 30px
+}

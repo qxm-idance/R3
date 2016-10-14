@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select Demo</title>
+    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+    <link href="/assets/css/main.css" rel="stylesheet">
+    <style type="text/css">
+    	.sg-component__label{
+		    color: #d1d1d1;
+		    margin-bottom: .5em;
+		    margin-top: 1.5em;
+		    clear: both;
+		}
+    </style>
+</head>
+<body>
+	<div class="container">
+		<div class="sg-component__label">Select</div>
+		<div class="form-select" data-module="form.select">
+			<t-select :options="options" v-on:on-change="dataChange" style="width:150px;"></t-select>
+		</div>
+
+		<div class="sg-component__label">Select with grouping</div>
+		<div class="form-select" data-module="form.select">
+			<t-select :options="optgroup" default-val="22" :disabled="disabled" v-on:on-change="dataChange" style="width:150px;"></t-select>
+		</div>
+
+		<div class="sg-component__label">Select disabled</div>
+		<div class="form-select" data-module="form.select">
+			<t-select :options="options" default-val="22" :disabled="true" v-on:on-change="dataChange" style="width:150px;"></t-select>
+		</div>
+
+		<div class="sg-component__label">Select small</div>
+		<div class="form-select" data-module="form.select">
+			<t-select :options="options" default-val="22" v-on:on-change="dataChange" size="small" style="width:150px;"></t-select>
+		</div>
+	</div>
+
+
+</body>
+</html>

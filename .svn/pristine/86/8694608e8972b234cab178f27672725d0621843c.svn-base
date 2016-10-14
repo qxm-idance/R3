@@ -1,0 +1,83 @@
+<div class="block__header leader--large trailer--large">
+    <h2 id="taurus-" class="title--large">Taurus开发规范（初稿）</h2>
+</div>
+<div class="block__header leader--large trailer--large">
+    <h3 id="-" class="title--medium">代码书写风格</h3>
+</div>
+<p>所有javascript脚本书写风格按照ESLint静态检查规则实现（不同的编辑器需要安装不同的ESLint插件，参见附录）。</p>
+<p>禁止禁用ESLint进行代码静态检查！</p>
+<div class="block__header leader--large trailer--large">
+    <h3 id="-" class="title--medium">文件和目录</h3>
+</div>
+<p>所有文件名使用全小写命名，单词之间使用<code style="font-family: mononoki;">-</code>号分割，如：</p>
+<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>box-group.vue</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>service.js</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>main.css</span></span></span></div></pre>
+<p>开发一个新页面时，你需要在<code style="font-family: mononoki;">biz/src</code>目录对应业务模块的目录里创建一个子目录，然后把该页面的源码放到此子目录中。例如：新写一个eshop业务模块的页面family时，你需要将这个页面的源码放到<code style="font-family: mononoki;">biz/src/eshop/family</code>目录内。</p>
+<div class="block__header leader--large trailer--large">
+    <h3 id="vue-" class="title--medium">Vue组件</h3>
+</div>
+<p>所有Vue组件注册的自定义标记都需要带上t-前缀。如：</p>
+<pre class="editor-colors lang-js"><div class="line"><span class="source js"><span class="meta import js"><span class="keyword control js"><span>import</span></span><span>&nbsp;</span><span class="variable other module js"><span>BoxGroup</span></span><span>&nbsp;</span><span class="keyword control js"><span>from</span></span><span>&nbsp;</span><span class="string quoted single js"><span class="punctuation definition string begin js"><span>&#39;</span></span><span>taurus/components/box-group/box-group</span><span class="punctuation definition string end js"><span>&#39;</span></span></span></span><span class="punctuation terminator statement js"><span>;</span></span></span></div><div class="line"><span class="source js"><span class="variable other object js"><span>Vue</span></span><span class="meta method-call js"><span class="meta delimiter method period js"><span>.</span></span><span class="entity name function js"><span>component</span></span><span class="meta arguments js"><span class="punctuation definition arguments begin bracket round js"><span>(</span></span><span class="string quoted single js"><span class="punctuation definition string begin js"><span>&#39;</span></span><span>t-box-group</span><span class="punctuation definition string end js"><span>&#39;</span></span></span><span class="meta delimiter object comma js"><span>,</span></span><span>&nbsp;BoxGroup</span><span class="punctuation definition arguments end bracket round js"><span>)</span></span></span></span><span class="punctuation terminator statement js"><span>;</span></span></span></div></pre>
+<pre class="editor-colors lang-js"><div class="line"><span class="source js"><span class="meta import js"><span class="keyword control js"><span>import</span></span><span>&nbsp;</span><span class="variable other module js"><span>TBoxGroup</span></span><span>&nbsp;</span><span class="keyword control js"><span>from</span></span><span>&nbsp;</span><span class="string quoted single js"><span class="punctuation definition string begin js"><span>&#39;</span></span><span>taurus/components/box-group/box-group</span><span class="punctuation definition string end js"><span>&#39;</span></span></span></span><span class="punctuation terminator statement js"><span>;</span></span></span></div><div class="line"><span class="source js"><span class="meta class instance constructor"><span class="keyword operator new js"><span>new</span></span><span>&nbsp;</span><span class="entity name type instance js"><span>Vue</span></span></span><span class="meta brace round js"><span>(</span></span><span class="meta brace curly js"><span>{</span></span></span></div><div class="line"><span class="source js"><span>&nbsp;&nbsp;el</span><span class="keyword operator js"><span>:</span></span><span>&nbsp;</span><span class="string quoted single js"><span class="punctuation definition string begin js"><span>&#39;</span></span><span>body</span><span class="punctuation definition string end js"><span>&#39;</span></span></span><span class="meta delimiter object comma js"><span>,</span></span></span></div><div class="line"><span class="source js"><span>&nbsp;&nbsp;components</span><span class="keyword operator js"><span>:</span></span><span>&nbsp;</span><span class="meta brace curly js"><span>{</span></span></span></div><div class="line"><span class="source js"><span>&nbsp;&nbsp;&nbsp;&nbsp;TBoxGroup</span></span></div><div class="line"><span class="source js"><span>&nbsp;&nbsp;</span><span class="meta brace curly js"><span>}</span></span></span></div><div class="line"><span class="source js"><span class="meta brace curly js"><span>}</span></span><span class="meta brace round js"><span>)</span></span><span class="punctuation terminator statement js"><span>;</span></span></span></div></pre>
+<pre class="editor-colors lang-js"><div class="line"><span class="source js"><span class="meta import js"><span class="keyword control js"><span>import</span></span><span>&nbsp;</span><span class="variable other module js"><span>BoxGroup</span></span><span>&nbsp;</span><span class="keyword control js"><span>from</span></span><span>&nbsp;</span><span class="string quoted single js"><span class="punctuation definition string begin js"><span>&#39;</span></span><span>taurus/components/box-group/box-group</span><span class="punctuation definition string end js"><span>&#39;</span></span></span></span><span class="punctuation terminator statement js"><span>;</span></span></span></div><div class="line"><span class="source js"><span class="meta class instance constructor"><span class="keyword operator new js"><span>new</span></span><span>&nbsp;</span><span class="entity name type instance js"><span>Vue</span></span></span><span class="meta brace round js"><span>(</span></span><span class="meta brace curly js"><span>{</span></span></span></div><div class="line"><span class="source js"><span>&nbsp;&nbsp;el</span><span class="keyword operator js"><span>:</span></span><span>&nbsp;</span><span class="string quoted single js"><span class="punctuation definition string begin js"><span>&#39;</span></span><span>body</span><span class="punctuation definition string end js"><span>&#39;</span></span></span><span class="meta delimiter object comma js"><span>,</span></span></span></div><div class="line"><span class="source js"><span>&nbsp;&nbsp;components</span><span class="keyword operator js"><span>:</span></span><span>&nbsp;</span><span class="meta brace curly js"><span>{</span></span></span></div><div class="line"><span class="source js"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="string quoted single js"><span class="punctuation definition string begin js"><span>&#39;</span></span><span>t-box-group</span><span class="punctuation definition string end js"><span>&#39;</span></span></span><span class="keyword operator js"><span>:</span></span><span>&nbsp;BoxGroup</span></span></div><div class="line"><span class="source js"><span>&nbsp;&nbsp;</span><span class="meta brace curly js"><span>}</span></span></span></div><div class="line"><span class="source js"><span class="meta brace curly js"><span>}</span></span><span class="meta brace round js"><span>)</span></span><span class="punctuation terminator statement js"><span>;</span></span></span></div></pre>
+<p>所有<code style="font-family: mononoki;">taurus/src</code>目录里的Vue组件、插件、指令等对象都需要写一个对应的Demo页面，此页面能够对组件插件、指令等对象的所有功能进行演示，方便开发人员快速了解公共组件特性。Demo页面源码暂时放在<code style="font-family: mononoki;">biz/src/sample</code>目录内。</p>
+<div class="block__header leader--large trailer--large">
+    <h3 id="ecmascript-6" class="title--medium">ECMAScript 6</h3>
+</div>
+<p>在Taurus框架中可以使用ES6相关特性来写代码，它依赖<a href="http://babeljs.cn/">Bebal</a>来提供对ES6特性的支持，但Bebal现在还没有完全支持ES6特性，所以，在Taurus里使用ES6特性请参考<a href="http://kangax.github.io/compat-table/es6/">ES6兼容列表</a>，此列表中所有为<code style="font-family: mononoki;">yes</code>的项对应的ES6特性都可以在Taurus内使用。</p>
+<div class="block__header leader--large trailer--large">
+    <h2 id="-" class="title--large">附录</h2>
+</div>
+<h3 id="-">推荐编辑器及其插件</h3>
+<ol>
+    <li>
+        <p>WebStorm</p>
+        <p>安装以下插件：</p>
+        <ul>
+            <li>
+                <p>ESLint</p>
+            </li>
+            <li>
+                <p>Vue.js</p>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <p>Atom</p>
+        <p>安装以下插件：</p>
+        <ul>
+            <li>
+                <p>linter-eslint</p>
+            </li>
+            <li>
+                <p>language-vue</p>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <p>VSCode</p>
+        <p>安装以下插件：</p>
+        <ul>
+            <li>
+                <p>ESLint (vue文件貌似失效)</p>
+            </li>
+            <li>
+                <p>Babel ES6/ES7</p>
+            </li>
+            <li>
+                <p>vue</p>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <p>Sublime Text</p>
+        <p>安装以下插件：</p>
+        <ul>
+            <li>
+                <p>ESLint</p>
+            </li>
+            <li>
+                <p>Vue Syntax Highlight</p>
+            </li>
+        </ul>
+    </li>
+</ol>

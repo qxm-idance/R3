@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en"
+      class="js canvas no-touch rgba borderradius boxshadow opacity cssanimations cssgradients csstransforms csstransforms3d fontface video audio localstorage svg json">
+<head>
+  <meta charset="UTF-8">
+  <title>Tabs Demo</title>
+  <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+  <link href="/assets/css/all.css" rel="stylesheet">
+  <style>
+    .sg-component__label {
+      margin-top: 20px;
+    }
+
+    button {
+      color: white;
+      background-color: seagreen;
+    }
+
+    button:disabled {
+      background-color: gray;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="block__header leader--large trailer--large">
+    <h2 class="title--medium">
+      <a target="_blank" href="http://vuejs.github.io/vue-validator/zh-cn/">Form Validation</a>
+    </h2>
+  </div>
+
+  <!-- :classes 自定义验证结果 classes -->
+  <validator name="demo" :classes="{ invalid: 'form-item--error' }">
+    <form novalidate>
+
+      <!-- 表单元素 Input -->
+      <div class="sg-component__label">username:</div>
+      <!-- v-validate-class 在非目标元素上使用验证结果 classes-->
+      <div class="form-item form-item--required" v-validate-class>
+        <input type="text" placeholder="[required, minlength, maxlength] validation"
+               initial="off" detect-blur="off" v-validate:username="{required: true, minlength: 2, maxlength: 20}">
+
+        <div v-show="$demo.username.required || $demo.username.minlength || $demo.username.maxlength"
+             class="icon-error tooltip__trigger"
+             v-tooltip:error="{title: usernameErrorMessage}">
+        </div>
+      </div>
+
+      <div class="sg-component__label">email:</div>
+      <div class="form-item form-item--required" v-validate-class>
+        <input type="text" placeholder="pattern/email validation" initial="off" detect-blur="off"
+               v-validate:address="{
+                 'email': {rule: true, message: 'your mail address format is invalid'}
+                 }">
+        <div v-show="$demo.address.email" class="icon-error tooltip__trigger"
+             v-tooltip:error="{title: $demo.address.email}">
+        </div>
+      </div>
+
+      <div class="sg-component__label">age:</div>
+      <div class="form-item form-item--required" v-validate-class>
+        <input type="text" placeholder="[min, max] validation" initial="off" detect-blur="off"
+               v-validate:age="{min: 10, max: 99}">
+        <div v-show="$demo.age.min || $demo.age.max" class="icon-error tooltip__trigger"
+             v-tooltip:error="{title: ageErrorMessage}">
+        </div>
+      </div>
+
+      <!-- 表单元素 Select -->
+      <div class="sg-component__label">sex:</div>
+      <div class="form-select" v-validate-class>
+        <select initial="off" detect-blur="off" v-validate:lang="{ required: true }" v-model="sex">
+          <option value="">--</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <div class="form-select__field">{{sex ? sex : '--'}}</div>
+      </div>
+
+      <!-- 表单元素 Submit Button -->
+      <div style="margin-top: 20px; text-align: center;">
+        <button @click="submit">Submit</button>
+      </div>
+    </form>
+  </validator>
+</div>
+</body>
+</html>

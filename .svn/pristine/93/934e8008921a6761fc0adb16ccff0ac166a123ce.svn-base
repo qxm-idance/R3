@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en"
+      class="js canvas no-touch rgba borderradius boxshadow opacity cssanimations cssgradients csstransforms csstransforms3d fontface video audio localstorage svg json checked">
+<head>
+  <meta charset="UTF-8">
+  <title>AmCharts</title>
+  <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+  <link href="/assets/css/main.css" rel="stylesheet">
+  <script src="/assets/amcharts/3.20.13/amcharts.js"></script>
+  <script src="/assets/amcharts/3.20.13/serial.js"></script>
+  <script src="/assets/amcharts/3.20.13/pie.js"></script>
+  <script src="/assets/amcharts/3.20.13/gauge.js"></script>
+  <script src="/assets/amcharts/3.20.13/themes/light.js"></script>
+  <script src="/assets/amcharts/3.20.13/themes/dark.js"></script>
+  <script src="/assets/amcharts/3.20.13/plugins/export/export.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <div class="block__header leader--large trailer--large">
+    <h2 class="title--medium">Doughnut amchart</h2>
+  </div>
+  <div id="doughnutDiv">
+    <t-doughnut :data="doughnutData" title-field="country" value-field="visits" labels-enabled="false" legend="false" :label-render="labelFunction"
+                :content="content"></t-doughnut>
+  </div>
+  <div class="block__header leader--large trailer--large">
+    <h2 class="title--medium">Gauge amchart</h2>
+  </div>
+  <div id="gaugeDiv">
+    <t-gauge :data="multiValueData" :max-value="90" :step="10" :value="50" title="title for multiValue gauge"></t-gauge>
+    <t-gauge :data="lowValueData" :max-value="5" :step="1" :value="testValue" :title="lowValueTitle"
+             v-ref:low-gauge></t-gauge>
+    <div class="form-row">
+      <button v-on:click="resetValue(0)" class="button button--action">设置值为(0)</button>
+      <button v-on:click="resetValue(3)" class="button button--action">设置值为(3)</button>
+      <button v-on:click="resetValue(3.5)" class="button button--action">设置值为(3.5)</button>
+      <button v-on:click="resetValue(5)" class="button button--action">设置值为(5)</button>
+      <button v-on:click="randomValue()" class="button button--action">设置随机值</button>
+    </div>
+    <t-gauge :data="highValueData" :max-value="1200" :step="240" :value="500" :title="highValueTitle"
+             color="green"></t-gauge>
+  </div>
+  <div id="serial">
+    <div class="form-select" style="width: 20%; margin: 0 0 40px 10px;">
+      <select v-model="currentChart">
+        <option value="请选择 Amchart 类型" selected>请选择 Amchart 类型</option>
+        <option value="Bars">Bars</option>
+        <option value="Bars with Legend">Bars with Legend</option>
+        <option value="Line">Line</option>
+      </select>
+      <div class="form-select__field">{{currentChart}}</div>
+      <span style="color: blue;" v-if="loadingData">加载中...</span>
+    </div>
+
+    <div :class="{'hidden': currentChart.indexOf('Bars') < 0}">
+      <t-bars v-if="barsDataProvider"
+              :data-provider="barsDataProvider"
+              category-field="country"
+              value-field="visits"
+              :enable-category-legend="enableCategoryLegend"
+              value-unit="km">
+      </t-bars>
+    </div>
+
+    <div :class="{'hidden': 'Line' != currentChart}">
+      <t-line v-if="lineDataProvider"
+              :data-provider="lineDataProvider"
+              category-field="date"
+              value-field="value">
+      </t-line>
+    </div>
+  </div>
+</div>
+</body>
+</html>

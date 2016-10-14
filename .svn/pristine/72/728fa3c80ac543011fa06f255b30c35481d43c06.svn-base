@@ -1,0 +1,20 @@
+<div id="font-sizes" class="doc-compontent-box">
+    <div class="sg-component">
+        <div class="sg-component__header">
+            <h2 class="title--medium-small trailer--small">Font sizes</h2>
+        </div>
+        <div class="sg-component__status">
+            <p class="mobile-one-half mobile-pull-right mobile-text-right">
+            <span class="status-dot status-dot--green pull-right">Approved <a href="">(0.1.0)</a>
+            </span>
+            </p>
+        </div>
+        <div class="sg-component__markup">
+            <div class="block">
+                <div class="sg-component__label">Default tabpanel - select on small screens</div>
+                <div class="demo_content">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

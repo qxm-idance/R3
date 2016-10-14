@@ -1,0 +1,90 @@
+/**
+* Created by zengjie on 16/9/23.
+*/
+<style>
+
+</style>
+
+<template>
+  <div v-if="isInline" class="form-search form-search--inline"
+       :class="{'is-empty' : isEmpty ,'form-item--small' : isSmall}" data-module="form.search">
+    <input id="search-inline" type="search" placeholder="Search" v-model="searchKey" @keyup="handleKeyup">
+    <button type="button" tabindex="-1" class="form-search__clear no-js--hidden icon-clear" data-list-clear=""
+            @click="clear"><span class="aria--visible">Clear filter</span></button>
+  </div>
+
+  <div v-else class="form-search " :class="{'is-empty' : isEmpty ,'form-item--small' : isSmall}"
+       data-module="form.search">
+    <label class="aria--visible" for="search">Search</label>
+    <input id="search" type="search" placeholder="Search" v-model="searchKey" @keyup="handleKeyup">
+    <button type="button" tabindex="-1" class="form-search__clear no-js--hidden icon-clear" @click="clear">
+      <span class="aria--visible">Clear filter</span>
+    </button>
+    <button id="search-button" class="form-search__submit" tabindex="-1" @click="search">
+      <span class="icon-search"></span>
+      <span class="aria--visible">Search</span>
+    </button>
+  </div>
+
+</template>
+
+<script>
+  /**
+   * 构建search组件
+   * 触发搜索有3种方式：1 keyup默认延迟10毫秒；2.回车；3.点击按钮
+   * options:{
+   *  delay : 延迟触发，默认300毫秒
+   *  isSmall：是否采用 small 的 size
+   *  isInline： 是否采用 inline 的样式
+   * }
+   * 回调：search() 回传搜索的key去调用远程服务或者本地搜索
+   */
+  const ENTER_CODE = 13;
+  module.exports = {
+    data: function () {
+      return {
+        isEmpty: true,
+        searchKey: ''
+      };
+    },
+    props: {
+      delay: { // search 延迟
+        type: Number,
+        default: 300
+      },
+      isSmall: {
+        type: Boolean,
+        default: false
+      },
+      isInline: {
+        type: Boolean,
+        default: false
+      }
+    },
+    methods: {
+      clear: function () {
+        this.searchKey = '';
+        this.isEmpty = true;
+      },
+      handleKeyup: function (e) {
+        var vm = this;
+        vm.isEmpty = this.searchKey;
+        if (e.keyCode === ENTER_CODE) { // 回车
+          this.search();
+        } else {
+          if (vm.delayTimeout) {
+            clearTimeout(vm.delayTimeout);
+          }
+          vm.delayTimeout = setTimeout(function () {
+            vm.search();
+          }, vm.delay);
+        }
+      },
+      search: function () {
+        var value = this.searchKey || '';
+        value = value.replace(/(^\s*)|(\s*$)/g, '');
+        this.$emit('search', value);
+      }
+    }
+  };
+</script>

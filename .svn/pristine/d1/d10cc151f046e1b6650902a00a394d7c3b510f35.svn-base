@@ -1,0 +1,114 @@
+@charset "UTF-8";
+.upc-hero{
+    overflow: hidden;
+    background: #80c4e8;
+    background: rgba(128, 196, 232, 0.6);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(128, 196, 232, 0.6)), color-stop(60%, rgba(223, 223, 223, 0.2)));
+    background: -webkit-linear-gradient(top, rgba(128, 196, 232, 0.6) 0%, rgba(223, 223, 223, 0.2) 60%);
+    background: linear-gradient(to bottom, rgba(128, 196, 232, 0.6) 0%, rgba(223, 223, 223, 0.2) 60%);
+}
+
+
+/*
+* product-item--hero
+*/
+.product-item--hero{
+    border:none;
+    margin-left:0;
+}
+.product-item--hero .product-item__info{
+    display: block;
+}
+/*reset product-item__image-holder,product-item__info-holder padding*/
+.product-item--hero .product-item__image-holder{
+    padding:0;
+}
+.product-item--hero .product-item__image-wrapper img{
+    max-height: inherit;
+}
+/*reset item__splash position*/
+.product-item--hero .item__splash{
+    left:0;
+}
+.product-item--hero .item__splash--top-left{
+    top:35px;
+}
+
+
+/*
+*block--list--icons
+*/
+.block--list--icons{
+    padding-top: 20px;
+    margin-bottom: 25px;
+    margin-top: 25px;
+}
+.category-list .icon:before {
+    font-size: 1.22em;
+    z-index: 2;
+}
+.category-list .icon:after {
+    z-index: 1;
+    transition: background 250ms ease-in;
+    border-color: #038cd6;
+    background: #fff;
+}
+.category-list a:hover .icon:before{
+    color:#fff;
+}
+.category-list a:hover .icon:after{
+    background: #038cd6;
+}
+
+
+
+/*
+* upc-tile
+*/
+.upc-tile{
+    position: relative;
+    overflow: hidden;
+}
+.upc-tile__image{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    background-size: cover;
+    background-position: 50% 50%;
+    z-index: 0;
+    -webkit-transition: all cubic-bezier(0.175, 0.885, 0.07, 1.115) 1500ms;
+    transition: all cubic-bezier(0.175, 0.885, 0.07, 1.115) 1500ms;
+}
+.upc-tile--bgexpand:hover .upc-tile__image{
+    transform: scale(1.05);
+}
+.upc-tile__icon,
+.upc-tile__details{
+    position: relative;
+    z-index: 1;
+}
+.upc-tile__icon{
+    background: #fff;
+    color: #666;
+    width: 2em;
+    height: 2em;
+    line-height: 2.3em;
+    font-size: 3.125rem;
+    border-radius: 100%;
+}
+.upc-tile__details h2{
+    font-weight: normal;
+    font-size: .8125rem;
+}
+.upc-tile__details h3{
+    font-size: 3.375rem;
+    line-height: 1.1667;
+}
+.upc-tile__legal{
+    font-size: .625rem;
+    line-height: 1.2;
+    color: rgba(255, 255, 255, 0.75);
+}

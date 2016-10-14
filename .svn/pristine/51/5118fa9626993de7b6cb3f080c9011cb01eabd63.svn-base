@@ -1,0 +1,1043 @@
+<div class="doc-side-list">
+    <ul>
+        <li><a href="#tabs">Tabs</a></li>
+        <li><a href="#flat-tabs">Flat tabs</a></li>
+        <li><a href="#subscription-dropdown">Subscription dropdown</a></li>
+        <li><a href="#pager">Pager</a></li>
+        <li><a href="#speech-bubble">Speech bubble</a></li>
+        <li><a href="#range-slider">Range slider</a></li>
+        <li><a href="#single-slider">Single slider</a></li>
+        <li><a href="#select-slider">Select slider</a></li>
+        <li><a href="#table-filters">Table filters</a></li>
+    </ul>
+</div>
+<div class="block__header leader--large trailer--large">
+    <h2 class="title--medium">Tabs</h2>
+</div>
+<div id="tabs" class="doc-compontent-box">
+        <div class="sg-component">
+            <div class="sg-component__header">
+                <h2 class="title--medium-small trailer--small">Tabs</h2>
+            </div>
+            <div class="sg-component__status">
+                <p class="mobile-one-half mobile-pull-right mobile-text-right">
+                    <span class="status-dot status-dot--green pull-right">Approved <a href="">(0.1.0)</a>
+                    </span>
+                </p>
+            </div>
+            <div class="sg-component__markup">
+                <div class="block">
+                    <div class="sg-component__label">Default tabpanel - select on small screens</div>
+<div class="demo_content">
+<!---------------Default tabpanel--------------->
+<div class="display--inline-block mobile-display--block">
+  <ul class="tabgroup clear">
+      <li class="tabgroup__tab">
+          <a class="tabgroup__link"  href="#panel1">Panel 1</a>
+      </li>
+      <li class="tabgroup__tab">
+          <a class="tabgroup__link"  href="#panel2">Panel 1</a>
+      </li>
+      <li class="tabgroup__tab is-active">
+          <a class="tabgroup__link"  href="#panel3">Panel 1</a>
+      </li>
+  </ul>
+  <div class="tabpanel__content-wrapper">
+      <section id="panel1" class="tabpanel__panel">
+          <div class="sg-component__label">Tab content 1
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </section>
+      <section id="panel2" class="tabpanel__panel">
+          <div class="sg-component__label">Tab content 2
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </section>
+      <section id="panel3" class="tabpanel__panel is-active">
+          <div class="sg-component__label">Tab content 3
+          </div>
+          <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+              mus. Cras viverra tortor ornare faucibus faucibus.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam iaculis semper
+              massa nec faucibus. Suspendisse potenti. Donec vulputate in nisl sed pellentesque.
+              Praesent viverra ex in consectetur sagittis. Class aptent taciti sociosqu ad
+              litora torquent per conubia nostra, per inceptos himenaeos.
+              Etiam ut ante turpis. Nulla bibendum imperdiet odio, ut consequat est tempor quis.
+              Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
+              turpis egestas. Quisque neque nulla, gravida elementum arcu eget, viverra
+              porttitor neque. Nulla venenatis porttitor sem at sollicitudin. Curabitur sit amet
+              massa nisi. In hac habitasse platea dictumst. Nam ante metus, viverra sit amet
+              commodo at, aliquet eget augue.</p>
+      </section>
+  </div>
+</div>
+<!----------------------Default tabpanel-end-------------------->
+</div>
+                    <div class="sg-component__label">Small tabpanel - stretch on small screens</div>
+<div class="demo_content">
+<!------------------ small tabs---------------->
+<div class="display--inline-block mobile-display--block">
+    <ul class="tabgroup tabgroup--small clear">
+        <li class="tabgroup__tab">
+            <a class="tabgroup__link" href="#panel-s-1">Panel 1</a>
+        </li>
+        <li class="tabgroup__tab">
+            <a class="tabgroup__link" href="#panel-s-2">Panel 1</a>
+        </li>
+        <li class="tabgroup__tab is-active">
+            <a class="tabgroup__link" href="#panel-s-3">Panel 1</a>
+        </li>
+    </ul>
+    <div class="tabpanel__content-wrapper">
+        <section id="panel-s-1" class="tabpanel__panel">
+            <div class="sg-component__label">Tab content 1
+            </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </section>
+        <section id="panel-s-2" class="tabpanel__panel">
+            <div class="sg-component__label">Tab content 2
+            </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </section>
+        <section id="panel-s-3" class="tabpanel__panel is-active">
+            <div class="sg-component__label">Tab content 3
+            </div>
+            <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+                mus. Cras viverra tortor ornare faucibus faucibus.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam iaculis semper
+                massa nec faucibus. Suspendisse potenti. Donec vulputate in nisl sed pellentesque.
+                Praesent viverra ex in consectetur sagittis. Class aptent taciti sociosqu ad
+                litora torquent per conubia nostra, per inceptos himenaeos.
+                Etiam ut ante turpis. Nulla bibendum imperdiet odio, ut consequat est tempor quis.
+                Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
+                turpis egestas. Quisque neque nulla, gravida elementum arcu eget, viverra
+                porttitor neque. Nulla venenatis porttitor sem at sollicitudin. Curabitur sit amet
+                massa nisi. In hac habitasse platea dictumst. Nam ante metus, viverra sit amet
+                commodo at, aliquet eget augue.</p>
+        </section>
+    </div>
+</div>
+<!------------------- small tabs-end----------------->
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div id="flat-tabs" class="doc-compontent-box">
+    <div class="sg-component">
+        <div class="sg-component__header">
+            <h2 class="title--medium-small trailer--small">Flat tabs</h2>
+        </div>
+        <div class="sg-component__status">
+            <p class="mobile-one-half mobile-pull-right mobile-text-right">
+                    <span class="status-dot status-dot--green pull-right">Approved <a href="">(0.1.0)</a>
+                    </span>
+            </p>
+        </div>
+        <div class="sg-component__markup">
+            <div class="block">
+                <div class="sg-component__label">Many items - Select in mobile breakpoint</div>
+                <div class="demo_content">
+                    <!----------- flat many-tabs---->
+                    <div id="tabpanel" class="tabpanel">
+                        <nav class="trailer">
+                            <ul class="tabpanel__list trailer">
+                                <li class="tabpanel__tab is-active">
+                                    <a href="#nogo" class="tabpanel__link">Om Samsung Galaxy S6Edge+</a>
+                                </li>
+                                <li class="tabpanel__tab">
+                                    <a href="#nogo" class="tabpanel__link">Tekniske specifikationer</a>
+                                </li>
+                                <li class="tabpanel__tab">
+                                    <a href="#nogo" class="tabpanel__link">Fortrydelse</a>
+                                </li>
+                                <li class="tabpanel__tab">
+                                    <a href="#nogo" class="tabpanel__link">Levering</a>
+                                </li>
+                                <li class="tabpanel__tab flexnav--invisible">
+                                    <a href="#nogo" class="tabpanel__link">Levering123</a>
+                                </li>
+                                <li class="tabpanel__tab flexnav" style="width: 92px">
+                                    <a href="#nogo" class="tabpanel__link flexnav__toggler">More</a>
+                                    <ul class="flexnav__subnav">
+                                        <li class="tabpanel__tab flexnav--invisible flexnav--active-tab">
+                                            <a href="#nogo" class="tabpanel__link">Om Samsung Galaxy S6Edge+</a>
+                                        </li>
+                                        <li class="tabpanel__tab flexnav--invisible flexnav--active-tab">
+                                            <a href="#nogo" class="tabpanel__link">Tekniske specifikationer</a>
+                                        </li>
+                                        <li class="tabpanel__tab flexnav--invisible flexnav--active-tab">
+                                            <a href="#nogo" class="tabpanel__link">Fortrydelse</a>
+                                        </li>
+                                        <li class="tabpanel__tab flexnav--active-tab">
+                                            <a href="#nogo" class="tabpanel__link">Levering123</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- flat tabs-end-->
+                </div>
+                <div class="sg-component__label">Few items</div>
+                <div class="demo_content">
+                    <!----------------- Few items------------->
+                    <div class="tabpanel">
+                        <nav class="trailer">
+                            <ul class="tabpanel__list trailer">
+                                <li class="tabpanel__tab is-active">
+                                    <a href="#nogo" class="tabpanel__link">Om Samsung Galaxy S6Edge+</a>
+                                </li>
+                                <li class="tabpanel__tab">
+                                    <a href="#nogo" class="tabpanel__link">Tekniske specifikationer</a>
+                                </li>
+                                <li class="tabpanel__tab">
+                                    <a href="#nogo" class="tabpanel__link">Fortrydelse</a>
+                                </li>
+                                <li class="tabpanel__tab">
+                                    <a href="#nogo" class="tabpanel__link">Levering</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!---------------- Few items-end------------->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="subscription-dropdown" class="doc-compontent-box">
+    <!-- checkbox-component-start-->
+    <div class="sg-component">
+        <div class="sg-component__header">
+            <h2 class="title--medium-small trailer--small">Subscription dropdown</h2>
+        </div>
+        <div class="sg-component__status">
+            <p class="mobile-one-half mobile-pull-right mobile-text-right">
+                    <span class="status-dot status-dot--green pull-right">Approved <a href="">(0.7.0)</a>
+                    </span>
+            </p>
+        </div>
+        <div class="sg-component__markup">
+            <div class="block">
+                <div class="sg-component__label">Subscription dropdown</div>
+                <div class="col-md-4">
+                    <div class="demo_content">
+                        <!-------------- Subscription dropdown----------->
+                        <div class="dropdown dropdown--subscriptions">
+                            <div class="dropdown__label ">
+                                <div class="text-truncate">All items (3)</div>
+                                <span class="icon-arrow-down"></span>
+                            </div>
+                            <div class="dropdown__content">
+                                <div class="dropdown__filter">
+                                    <form action="">
+                                        <input name="" type="hidden" value="">
+                                        <div class="is-empty">
+                                            <input class="dropdown__search" id="" name="" placeholder="Search" type="text" value="">
+                                            <button class="icon-clear"></button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="dropdown__scroll">
+                                    <!--loading-->
+                                    <div class="js-hidden padding-leader--small padding-trailer--small">
+            <span class="load-tester">
+                <span class="spinner"></span>
+            </span>
+                                    </div>
+                                    <!--loading-end-->
+                                    <!-- message error-->
+                                    <div class="message message--error is-hidden">
+                                        <div class="message__inner">
+                                            <span class="message__icon icon icon-reject"></span>
+                                            <div class="text-size--13 message__text">
+                                                <p>An error happened. Please try again later.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- message error-end-->
+                                    <ul class="dropdown__list">
+                                        <li>
+                                            <a class="media media--small" href="#nogo">
+                                                <div class="media__image leader--xsmall">
+                                                    <span class="icon-person"></span>
+                                                </div>
+                                                <div class="media__body">
+                                                    <div class="text-truncate">Jannik Mørch Søndergaard</div>
+                                                    <div class="text-truncate color-gray">Jannik Mørch Søndergaard (32108000158128)</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="media media--small" href="#nogo">
+                                                <div class="media__image leader--xsmall">
+                                                    <span class="icon-person"></span>
+                                                </div>
+                                                <div class="media__body">
+                                                    <div class="text-truncate">Jannik Mørch Søndergaard</div>
+                                                    <div class="text-truncate color-gray"> (32109100774201)</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="media media--small" href="#nogo">
+                                                <div class="media__image leader--xsmall">
+                                                    <span class="icon-person"></span>
+                                                </div>
+                                                <div class="media__body">
+                                                    <div class="text-truncate">Jannik Mørch Søndergaard</div>
+                                                    <div class="text-truncate color-gray"> (32109100774201)</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="media media--small" href="#nogo">
+                                                <div class="media__image leader--xsmall">
+                                                    <span class="icon-person"></span>
+                                                </div>
+                                                <div class="media__body">
+                                                    <div class="text-truncate">Jannik Mørch Søndergaard</div>
+                                                    <div class="text-truncate color-gray"> (32109100774201)</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="media media--small" href="#nogo">
+                                                <div class="media__image leader--xsmall">
+                                                    <span class="icon-person"></span>
+                                                </div>
+                                                <div class="media__body">
+                                                    <div class="text-truncate">Jannik Mørch Søndergaard</div>
+                                                    <div class="text-truncate color-gray"> (32109100774201)</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="media media--small" href="#nogo">
+                                                <div class="media__image leader--xsmall">
+                                                    <span class="icon-person"></span>
+                                                </div>
+                                                <div class="media__body">
+                                                    <div class="text-truncate">Jannik Mørch Søndergaard</div>
+                                                    <div class="text-truncate color-gray"> (32109100774201)</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="dropdown__more">
+                                    <form  data-complete-label="Saved">
+                                        <button class="button button--default button--small button--stretch">
+                                            <span class="button__label">Show more results</span>
+                <span class="button__spinner"><span class="spinner-holder"><span
+                        class="spinner-container"><em><span></span></em></span></span></span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-------------Subscription dropdown-end---------------->
+                    </div>
+                </div>
+                <div class="sg-component__label">select dropdown</div>
+                <div class="col-md-4">
+                    <div class="demo_content">
+                        <!---------------- select dropdown--------------->
+                        <div class="dropdown select--dropdown stretch-mobile">
+                            <div class="dropdown__label ">
+                                <div class="text-truncate">Anbefalet abonnement</div>
+                                <span class="icon-arrow-down"></span>
+                            </div>
+                            <div class="dropdown__content">
+                                <div class="dropdown__scroll">
+                                    <!--loading-->
+                                    <div class="js-hidden padding-leader--small padding-trailer--small">
+            <span class="load-tester">
+                <span class="spinner"></span>
+            </span>
+                                    </div>
+                                    <!--loading-end-->
+                                    <!-- message error-->
+                                    <div class="message message--error is-hidden">
+                                        <div class="message__inner">
+                                            <span class="message__icon icon icon-reject"></span>
+                                            <div class="text-size--13 message__text">
+                                                <p>An error happened. Please try again later.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- message error-end-->
+                                    <ul class="dropdown__list">
+                                        <li>
+                                            <a class="media media--small" href="#nogo">
+                                                <div class="media__body">
+                                                    <div class="text-truncate">Anbefalet abonnement</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="media media--small" href="#nogo">
+                                                <div class="media__body">
+                                                    <div class="text-truncate">FRI+ 40 GB (249,-)</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="media media--small" href="#nogo">
+                                                <div class="media__body">
+                                                    <div class="text-truncate">Fri+ 10 GB (149,-)</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="media media--small" href="#nogo">
+                                                <div class="media__body">
+                                                    <div class="text-truncate">Fri+ 20 GB (199,-)</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-------------select dropdown-end--------------s-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="pager" class="doc-compontent-box">
+    <!-- checkbox-component-start-->
+    <div class="sg-component">
+        <div class="sg-component__header">
+            <h2 class="title--medium-small trailer--small">Pager</h2>
+        </div>
+        <div class="sg-component__status">
+            <p class="mobile-one-half mobile-pull-right mobile-text-right">
+                    <span class="status-dot status-dot--green pull-right">Approved <a href="">(0.7.0)</a>
+                    </span>
+            </p>
+        </div>
+        <div class="sg-component__markup">
+            <div class="block">
+                <div class="sg-component__label">Default pager</div>
+                <div class="demo_content">
+                    <!----------------- default pager--------------->
+                    <div class="pager pager--default" data-component="pager" data-alias="pagination"
+                         style="display: inline-block;"><a class="pager__button previous" data-selector="page-previous">previous</a>
+    <span data-selector="pages"><a class="pager__button" data-selector="page-button" data-page-number="1">1</a>
+    <a class="pager__button" data-selector="page-button" data-page-number="2">2</a>
+    <a class="pager__button" data-selector="page-button" data-page-number="3">3</a>
+    <a class="pager__button current" data-selector="page-button" data-page-number="4">4</a>
+    <a class="pager__button" data-selector="page-button" data-page-number="5">5</a>
+    <span class="pager__elipsis">…</span>
+    <a class="pager__button" data-selector="page-button" data-page-number="24">24</a>
+    </span>
+                        <a class="pager__button next" data-selector="page-next">next</a>
+                    </div>
+                    <!----------------------pager-end--------------------->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="speech-bubble" class="doc-compontent-box">
+    <div class="sg-component mix is-approved  ready" style="display: block;">
+        <div class="sg-component__header">
+            <h2 class="title--medium-small trailer--small">Speech bubble</h2>
+        </div>
+        <div class="sg-component__status">
+            <p class="mobile-one-half">
+                <a href="sgc_speech-bubble.html" target="_blank">
+                    <span class="padding-toright--xsmall icon icon-64-tablet-mobile"></span>Open in new page</a>
+            </p>
+            <p class="mobile-one-half mobile-pull-right mobile-text-right">
+                    <span class="status-dot status-dot status-dot--green">Approved <a href="/v/0.7.0/#component-Speech-bubble">(0.7.0)</a>
+                    </span>
+            </p>
+        </div>
+
+        <!-- Markup -->
+        <div class="sg-component__markup  ">
+            <div class="container grid-row">
+                <div class="col-md-6">
+                    <div class="sg-component__label">Default</div>
+                    <!-- : Speech Bubble -->
+                    <div class="demo_content">
+                        <button id="speech-bubble-toggle-example" class="button button--default button--small">Open Speech Bubble</button>
+                        <div class="speech-bubble is-loaded" data-module="speech.bubble" data-toggle-target="speech-bubble-toggle-example" style="left: 21px; right: auto; top: 211px;">
+                            <div class="speech-bubble__top-bar ">
+                                Top bar label
+                                <button type="button" class="no-js--hidden icon-reject speech-bubble__close">
+                                    <span class="aria--visible">Close</span>
+                                </button>
+                            </div>
+                            <div class="speech-bubble__content">
+                                <div class="block">
+                                    <h2>Some html content</h2>
+                                    <p>Some paregraph bla bla..</p>
+                                    <p>Some paregraph bla bla..</p>
+                                    <p>Some paregraph bla bla..</p>
+                                    <p>Some paregraph bla bla..</p>
+                                    <p>Some paregraph bla bla..</p>
+                                    <p>Some paregraph bla bla..</p>
+                                    <p>Some paregraph bla bla..</p>
+                                    <p>Some paregraph bla bla..</p>
+                                    <p>Some paregraph bla bla..</p>
+                                    <p>Some paregraph bla bla..</p>
+                                    <p>Some paregraph bla bla..</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="sg-component__label">Small</div>
+                    <!-- : Speech Bubble -->
+                    <div class="demo-content">
+                        <button id="speech-bubble-toggle-example-small" class="button button--default button--small">Open Speech Bubble</button>
+                        <div class="speech-bubble is-loaded" data-module="speech.bubble" data-toggle-target="speech-bubble-toggle-example-small" style="left: 520.391px; right: auto; top: 203px;">
+                            <div class="speech-bubble__top-bar speech-bubble__top-bar--small text--small">
+                                Top bar label
+                            </div>
+                            <div class="speech-bubble__content">
+                                <div class="block text--small">
+                                    <h2>Some html content</h2>
+                                    <p>Some paregraph bla bla..</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</div>
+</div>
+<div id="range-slider" class="doc-compontent-box">
+    <!-- Range slider-->
+    <div class="sg-component">
+        <div class="sg-component__header">
+            <h2 class="title--medium-small trailer--small">Range slider</h2>
+        </div>
+        <div class="sg-component__status">
+            <p class="mobile-one-half mobile-pull-right mobile-text-right">
+                    <span class="status-dot status-dot--green pull-right">Approved <a href="#nogo">(0.1.0)</a>
+                    </span>
+            </p>
+        </div>
+        <div class="sg-component__markup">
+            <div class="block">
+                <div class="demo_content">
+                    <div class="range-slider leader" data-component="range-slider" data-to="1" data-single="False">
+                        <div class="range-slider__line">
+                            <div class="range-slider__container mobile-hidden">
+                                <div class="range-slider__points" style="width: 8.33333%; left: 0%;">
+                                    <div class="range-slider__point range-slider__point--from tooltip__trigger" data-component="range-slider/point" data-alias="from">
+                                        <div class="tooltip tooltip--blue" data-component="tooltip" role="tooltip">
+                                            <p>2</p>
+                                        </div>
+                                    </div>
+                                    <div class="range-slider__point range-slider__point--to tooltip__trigger" data-component="range-slider/point" data-alias="to">
+                                        <!-- 鼠标移上显示状态添加样式“is-active”-->
+                                        <div class="tooltip tooltip--blue is-active" data-component="tooltip" role="tooltip" style="left:60px;top:-46px">
+                                            <p>3</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <ul class="range-slider__values mobile-hidden">
+                                <li>
+                                    <span class="range-slider__value-label">Months</span>
+                                    <span class="range-slider__value">0</span>
+                                </li>
+                                <li><span class="range-slider__value range-slider__value--empty">1</span></li>
+                                <li><span class="range-slider__value range-slider__value--empty">2</span></li>
+                                <li><span class="range-slider__value range-slider__value--empty">3</span></li>
+                                <li><span class="range-slider__value range-slider__value--empty">4</span></li>
+                                <li><span class="range-slider__value range-slider__value--empty">5</span></li>
+                                <li><span class="range-slider__value range-slider__value--empty">6</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="desktop-hidden">
+                            <div data-component="range-slider/select" data-extensions="select" data-alias="fromSelect" class="form-select range-slider__select--from trailer">
+                                <select>
+                                    <option value="0" data-tooltip="0 kr.">0 Month(es) - 0 kr.</option>
+                                    <option value="1" data-tooltip="477 kr.">1 Month(es) - 477 kr.</option>
+                                    <option value="2" data-tooltip="947 kr.">2 Month(es) - 947 kr.</option>
+                                    <option value="3" data-tooltip="1.417 kr.">3 Month(es) - 1.417 kr.</option>
+                                    <option value="4" data-tooltip="1.887 kr.">4 Month(es) - 1.887 kr.</option>
+                                    <option value="5" data-tooltip="2.357 kr.">5 Month(es) - 2.357 kr.</option>
+                                    <option value="6" data-tooltip="2.827 kr.">6 Month(es) - 2.827 kr.</option>
+                                </select>
+                                <div class="form-select__field">
+                                    0 Month(es) - 0 kr.
+                                </div>
+                            </div>
+
+                            <div data-component="range-slider/select" data-extensions="select" data-alias="toSelect" class="form-select trailer">
+                                <select>
+                                    <option value="0" data-tooltip="0 kr.">0 Month(es) - 0 kr.</option>
+                                    <option value="1" data-tooltip="477 kr.">1 Month(es) - 477 kr.</option>
+                                    <option value="2" data-tooltip="947 kr.">2 Month(es) - 947 kr.</option>
+                                    <option value="3" data-tooltip="1.417 kr.">3 Month(es) - 1.417 kr.</option>
+                                    <option value="4" data-tooltip="1.887 kr.">4 Month(es) - 1.887 kr.</option>
+                                    <option value="5" data-tooltip="2.357 kr.">5 Month(es) - 2.357 kr.</option>
+                                    <option value="6" data-tooltip="2.827 kr.">6 Month(es) - 2.827 kr.</option>
+                                </select>
+                                <div class="form-select__field">
+                                    0 Month(es) - 0 kr.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="single-slider" class="doc-compontent-box">
+    <!-- Single slider-->
+    <div class="sg-component">
+        <div class="sg-component__header">
+            <h2 class="title--medium-small trailer--small">Single slider</h2>
+        </div>
+        <div class="sg-component__status">
+            <p class="mobile-one-half mobile-pull-right mobile-text-right">
+                    <span class="status-dot status-dot--green pull-right">Approved <a href="#nogo">(0.1.0)</a>
+                    </span>
+            </p>
+        </div>
+        <div class="sg-component__markup">
+            <div class="block">
+                <div class="demo_content">
+                    <div class="range-slider range-slider--single leader trailer--large" data-component="range-slider" data-to="1" data-single="False">
+                        <div class="range-slider__line">
+                            <div class="range-slider__container mobile-hidden">
+                                <div class="range-slider__points" style="width: 8.33333%; left: 0%;">
+                                    <div class="range-slider__point range-slider__point--from tooltip__trigger" data-component="range-slider/point" data-alias="from">
+                                        <div class="tooltip tooltip--blue" data-component="tooltip" role="tooltip">
+                                            <p></p>
+                                        </div>
+                                    </div>
+                                    <div class="range-slider__point range-slider__point--to tooltip__trigger" data-component="range-slider/point" data-alias="to">
+                                        <div class="tooltip tooltip--blue" data-component="tooltip" role="tooltip">
+                                            <p></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <ul class="range-slider__values mobile-hidden">
+                                <li>
+                                    <span class="range-slider__value-label">Months</span>
+                                    <span class="range-slider__value">0</span>
+                                </li>
+                                <li><span class="range-slider__value range-slider__value--empty">1</span></li>
+                                <li><span class="range-slider__value range-slider__value--empty">2</span></li>
+                                <li><span class="range-slider__value range-slider__value--empty">3</span></li>
+                                <li><span class="range-slider__value range-slider__value--empty">4</span></li>
+                                <li><span class="range-slider__value range-slider__value--empty">5</span></li>
+                                <li><span class="range-slider__value range-slider__value--empty">6</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="desktop-hidden">
+                            <div data-component="range-slider/select" data-extensions="select" data-alias="fromSelect" class="form-select range-slider__select--from trailer">
+                                <select>
+                                    <option value="0" data-tooltip="0 kr.">0 Month(es) - 0 kr.</option>
+                                    <option value="1" data-tooltip="477 kr.">1 Month(es) - 477 kr.</option>
+                                    <option value="2" data-tooltip="947 kr.">2 Month(es) - 947 kr.</option>
+                                    <option value="3" data-tooltip="1.417 kr.">3 Month(es) - 1.417 kr.</option>
+                                    <option value="4" data-tooltip="1.887 kr.">4 Month(es) - 1.887 kr.</option>
+                                    <option value="5" data-tooltip="2.357 kr.">5 Month(es) - 2.357 kr.</option>
+                                    <option value="6" data-tooltip="2.827 kr.">6 Month(es) - 2.827 kr.</option>
+                                </select>
+                                <div class="form-select__field">
+                                    0 Month(es) - 0 kr.
+                                </div>
+                            </div>
+
+                            <div data-component="range-slider/select" data-extensions="select" data-alias="toSelect" class="form-select trailer">
+                                <select>
+                                    <option value="0" data-tooltip="0 kr.">0 Month(es) - 0 kr.</option>
+                                    <option value="1" data-tooltip="477 kr.">1 Month(es) - 477 kr.</option>
+                                    <option value="2" data-tooltip="947 kr.">2 Month(es) - 947 kr.</option>
+                                    <option value="3" data-tooltip="1.417 kr.">3 Month(es) - 1.417 kr.</option>
+                                    <option value="4" data-tooltip="1.887 kr.">4 Month(es) - 1.887 kr.</option>
+                                    <option value="5" data-tooltip="2.357 kr.">5 Month(es) - 2.357 kr.</option>
+                                    <option value="6" data-tooltip="2.827 kr.">6 Month(es) - 2.827 kr.</option>
+                                </select>
+                                <div class="form-select__field">
+                                    0 Month(es) - 0 kr.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="select-slider" class="doc-compontent-box">
+    <!-- Select slider-->
+    <div class="sg-component">
+        <div class="sg-component__header">
+            <h2 class="title--medium-small trailer--small">Select slider</h2>
+        </div>
+        <div class="sg-component__status">
+            <p class="mobile-one-half mobile-pull-right mobile-text-right">
+                    <span class="status-dot status-dot--green pull-right">Approved <a href="#nogo">(0.1.0)</a>
+                    </span>
+            </p>
+        </div>
+        <div class="sg-component__markup">
+            <div class="block">
+                <div class="demo_content">
+                    <div class="layout-slider-block" id="" data-module="input.selectslider"
+                         data-target="#example-table" data-target-column="3" data-allownull="true" data-step="100">
+                        <div class="layout-slider">
+                            <input id="" type="slider" name="area" class="js--hidden" value="200;700" style="display: none;">
+     <span class="jslider jslider_round_plastic jslider-limitless">
+     <table>
+         <tbody>
+         <tr>
+             <td>
+                 <div class="jslider-bg">
+                     <i class="l"></i>
+                     <i class="f"></i>
+                     <i class="r"></i>
+                     <i class="v" style="left: 20.9%; width: 45%;"></i>
+                 </div>
+                 <div class="jslider-pointer" tabindex="0" style="left: 20.9%;z-index: 2;"></div>
+                 <div class="jslider-pointer jslider-pointer-to" tabindex="0"
+                      style="left: 65.9%; z-index: 1;"></div>
+                 <div class="jslider-label"><span>0</span></div>
+                 <div class="jslider-label jslider-label-to"><span>1,000</span></div>
+                 <div class="jslider-value" style="left: 20.9%; margin-left: -38px; right: auto; visibility: visible;">
+                     <span>200&nbsp;–&nbsp;700</span>
+                 </div>
+                 <div class="jslider-value jslider-value-to" style="visibility: hidden; left: 65.9%; margin-left: -15.5px; right: auto;">
+                     <span>700</span>
+                 </div>
+                 <div class="jslider-scale"></div>
+             </td>
+         </tr>
+         </tbody>
+     </table></span></div>
+                        <div class="layout-slider-label no-js--hidden">
+     <span class="slider-label-from text--small text--muted"
+           id="sliderLabelFrom-Slider4">200 MB</span>
+                            <span class="slider-label-to text--small text--muted" id="sliderLabelTo-Slider5">700 MB</span>
+                        </div>
+                        <div class="form-item--select form-item--inline form-item--small js--hidden">
+                            <div class="select-wrapper">
+                                <select id="sliderFrom-Slider3" class="js--hidden" tabindex="-1">
+                                    <option value="0">0 MB</option>
+                                    <option value="100">100 MB</option>
+                                    <option value="200">200 MB</option>
+                                    <option value="300">300 MB</option>
+                                    <option value="400">400 MB</option>
+                                    <option value="500">500 MB</option>
+                                    <option value="600">600 MB</option>
+                                    <option value="700">700 MB</option>
+                                    <option value="800">800 MB</option>
+                                    <option value="900">900 MB</option>
+                                    <option value="1000">1000 MB</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-item--select form-item--inline form-item--small js--hidden">
+                            <div class="select-wrapper">
+                                <select id="sliderTo-Slider3" tabindex="-1">
+                                    <option value="0">0 MB</option>
+                                    <option value="100">100 MB</option>
+                                    <option value="200">200 MB</option>
+                                    <option value="300">300 MB</option>
+                                    <option value="400">400 MB</option>
+                                    <option value="500">500 MB</option>
+                                    <option value="600">600 MB</option>
+                                    <option value="700">700 MB</option>
+                                    <option value="800">800 MB</option>
+                                    <option value="900">900 MB</option>
+                                    <option value="1000">1000 MB</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="table-filters" class="doc-compontent-box">
+    <div class="sg-component mix is-approved  col-md-12 omega" style="display: inline-block;">
+        <div class="sg-component__header">
+            <h2 class="title--medium-small trailer--small">Table filters</h2>
+        </div>
+        <div class="sg-component__status col-md-12 omega">
+            <p class="col-md-6">
+                <a href="sgc_table-filters.html" target="_blank">
+                    <span class="padding-toright--xsmall icon icon-64-tablet-mobile"></span>Open in new page</a>
+            </p>
+            <p class="col-md-6 mobile-pull-right mobile-text-right">
+                    <span class="status-dot status-dot status-dot--green">Approved <a href="/v/0.7.0/#component-Table-filters">(0.7.0)</a>
+                    </span>
+            </p>
+        </div>
+
+        <!-- Markup -->
+        <div class="sg-component__markup mobile-one-whole omega  sg-component__markup--overflow">
+            <div class="grid-row">
+                <div class="col-md-6">
+                    <div class="sg-component__label">Search filter</div>
+                    <div class="block--filter box--greyed">
+                        <div class="demo_content">
+                        <!-- component:field-search:start (field--search.hbs) -->
+                            <div class="form-search form-item--inline form-item--small form-search--inline" data-module="form.search" data-target="#example-table">
+                                <label class="aria--visible" for="search-field-one"></label>
+                                <input id="search-field-one" type="search" placeholder="Search product">
+                                <button type="button" tabindex="-1" class="form-search__clear no-js--hidden icon-clear" data-list-clear="">
+                                    <span class="aria--visible"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- component:field-search:start -->
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="sg-component__label">Select filter</div>
+                    <div class="block--filter box--greyed">
+                        <div class="demo_content">
+                            <div data-module="form.select" class="form-select form-item--inline form-select--small" id="example-columnfilter" data-target="#example-table" data-target-column="6">
+                                <select id="select" style="left: 10px;">
+                                    <option value="">All usage</option>
+                                    <option value="included">Included usage</option>
+                                    <option value="excluded">Excluded usage</option>
+                                </select>
+                                <div class="form-select__field">All usage</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-row">
+                <div class="col-md-6">
+                    <div class="sg-component__label">Date range</div>
+                    <div class="block--filter box--greyed">
+                        <div class="demo_content">
+
+                            <!-- component:daterange:start (form--daterange.hbs) -->
+
+                            <!-- options:class [form-item--inline] -->
+                            <div class="form--daterange form-item--inline form-item--small" data-module="input.daterange" id="example-daterange" data-target="#example-table" data-target-column="0">
+
+                            <!-- options:end -->
+                            <input class="form--daterange__start" type="date" value="2014-01-01" min="2000-01-01" max="2014-03-01" placeholder="From date">
+                            <input class="form--daterange__end" type="date" value="2014-01-18" min="2000-01-01" max="2014-03-01" placeholder="To date">
+                            <button class="no-js--hidden icon-clear" data-list-clear="" style="display: inline-block;">
+                                <span class="aria--visible">Clear filter</span>
+                            </button>
+
+                            <input class="form--daterange__range is-datepick" type="text" placeholder="Select dates range"></div>
+
+                            <!-- component:daterange:end -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="sg-component__label">Accordion multi filter</div>
+                    <div class="block--filter box--greyed">
+                        <div class="demo_content">
+                            <div class="multi-filter form-item--inline form-item--small" id="example-table-multi-filter-2" data-module="table.multifilter" data-target="#example-table" data-source="#example-table-accordion-filter" data-target-column="6">
+                            <a href="#" class="multi-filter__input" tabindex="1">
+                                <div class="multi-filter__input-label text-truncate">
+                                    <strong>Show only:</strong>
+                                    <span class="multi-filter__selected-label">null</span>
+                                </div>
+                            </a>
+                            <button type="button" class="no-js--hidden form-item__clear-button" data-list-clear="">
+                                <span class="aria--visible">Clear filter</span>
+                            </button>
+                            <div class="speach-bubble is-loaded" id="type-filter-accordion-2">
+                                <div class="speach-bubble__top-bar ">
+                                    Select types
+                                </div>
+                                <div class="speach-bubble__content">
+                                    <div class="accordion-filter " data-module="accordion.filter" id="example-table-accordion-filter-2" data-label-all-selected="Show all" data-label-postselected-plural=" types" data-label-preselected-plural="">
+                                        <ul>
+                                            <li class="accordion-filter__parent-item form-checkbox" role="checkbox" aria-checked="false" data-state="non-selected">
+                                                <a class="accordion-filter__parent-item-toggle" tabindex="1" href="#">
+                                                    <label>Messages
+                                                        <span class="count">(5)</span>
+                                                    </label>
+                                                </a>
+                                                <a href="#" tabindex="1" class="accordion-filter__parent-item-expand icon icon-arrow-down"></a>
+                                                <ul class="accordion-filter__parent-item-list">
+                                                    <li class="accordion-filter__leaf-item form-checkbox">
+                                                        <input id="1-sg-tf" type="checkbox" tabindex="1" role="checkbox" aria-checked="">
+                                                        <label for="1-sg-tf">SMS
+                                                            <span class="count">(1)</span>
+                                                        </label>
+                                                    </li>
+                                                    <li class="accordion-filter__leaf-item form-checkbox">
+                                                        <input id="6-sg-tf" type="checkbox" tabindex="1" role="checkbox" aria-checked="">
+                                                        <label for="6-sg-tf">Roaming MMS
+                                                            <span class="count">(4)</span>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="accordion-filter__leaf-item accordion-filter__leaf-parent-item form-checkbox">
+                                                <input id="12-sg-tf" type="checkbox" tabindex="1" role="checkbox" aria-checked="">
+                                                <label for="12-sg-tf">Roaming 3G
+                                                    <span class="count">(3)</span>
+                                                </label>
+                                            </li>
+                                            <li class="accordion-filter__leaf-item accordion-filter__leaf-parent-item form-checkbox">
+                                                <input id="9-sg-tf" type="checkbox" tabindex="1" role="checkbox" aria-checked="">
+                                                <label for="9-sg-tf">Roaming call
+                                                    <span class="count">(3)</span>
+                                                </label>
+                                            </li>
+                                            <li class="accordion-filter__parent-item form-checkbox is-expanded" role="checkbox" aria-checked="false" data-state="non-selected" style="height: 120px;">
+                                                <a class="accordion-filter__parent-item-toggle" tabindex="1" href="#">
+                                                    <label>Messages
+                                                        <span class="count">(5)</span>
+                                                    </label>
+                                                </a>
+                                                <a href="#" tabindex="1" class="accordion-filter__parent-item-expand icon icon-arrow-down"></a>
+                                                <ul class="accordion-filter__parent-item-list">
+                                                    <li class="accordion-filter__leaf-item form-checkbox">
+                                                        <input id="1234-sg-tf" type="checkbox" tabindex="1" role="checkbox" aria-checked="">
+                                                        <label for="1234-sg-tf">SMS
+                                                            <span class="count">(1)</span>
+                                                        </label>
+                                                    </li>
+                                                    <li class="accordion-filter__leaf-item form-checkbox">
+                                                        <input id="62342-sg-tf" type="checkbox" tabindex="1" role="checkbox" aria-checked="">
+                                                        <label for="62342-sg-tf">Roaming MMS
+                                                            <span class="count">(4)</span>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="accordion-filter__parent-item form-checkbox is-expanded" role="checkbox" aria-checked="false" data-state="non-selected" style="height: 120px;">
+                                                <a class="accordion-filter__parent-item-toggle" tabindex="1" href="#">
+                                                    <label>Messages
+                                                        <span class="count">(5)</span>
+                                                    </label>
+                                                </a>
+                                                <a href="#" tabindex="1" class="accordion-filter__parent-item-expand icon icon-arrow-down"></a>
+                                                <ul class="accordion-filter__parent-item-list">
+                                                    <li class="accordion-filter__leaf-item form-checkbox">
+                                                        <input id="1234234-sg-tf" type="checkbox" tabindex="1" role="checkbox" aria-checked="">
+                                                        <label for="1234234-sg-tf">SMS
+                                                            <span class="count">(1)</span>
+                                                        </label>
+                                                    </li>
+                                                    <li class="accordion-filter__leaf-item form-checkbox">
+                                                        <input id="62342234-sg-tf" type="checkbox" tabindex="1" role="checkbox" aria-checked="">
+                                                        <label for="62342234-sg-tf">Roaming MMS
+                                                            <span class="count">(4)</span>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="accordion-filter__leaf-item accordion-filter__leaf-parent-item form-checkbox">
+                                                <input id="8-sg-tf" type="checkbox" tabindex="1" role="checkbox" aria-checked="">
+                                                <label for="8-sg-tf">Local call
+                                                    <span class="count">(3)</span>
+                                                </label>
+                                            </li>
+                                            <li class="accordion-filter__leaf-item accordion-filter__leaf-parent-item form-checkbox">
+                                                <input id="7-sg-tf" type="checkbox" tabindex="1" role="checkbox" aria-checked="">
+                                                <label for="7-sg-tf">Voice call
+                                                    <span class="count">(3)</span>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="box--greyed multi-filter__submit-panel">
+                                    <button type="button" class="button button--action button--small" tabindex="1">Update filter</button>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-row">
+                <div class="col-md-6">
+                    <div class="sg-component__label">Column filter</div>
+                    <div class="block--filter box--greyed">
+                        <div class="demo_content">
+                             <div class="form-item--inline">
+                            <button id="column-filter-sb" class="button button--default button--small button--column-filter">
+                                <span class="icon icon--only icon-list"></span>
+                                <span class="icon icon--only icon-arrow-down"></span>
+                            </button>
+                            <div class="speach-bubble is-loaded" data-module="speach.bubble" data-toggle-target="column-filter-sb" style="top: 481px; left: 31px;">
+                                <div class="speach-bubble__top-bar ">
+                                    Select columns
+                                    <button type="button" class="no-js--hidden icon-reject speach-bubble__close">
+                                        <span class="aria--visible">Close</span>
+                                    </button>
+                                </div>
+                                <div class="speach-bubble__content">
+                                    <div class="accordion-filter " data-module="accordion.filter" id="column-filter-1">
+                                        <ul>
+                                            <li class="accordion-filter__leaf-item accordion-filter__leaf-parent-item form-checkbox">
+                                                <input id="price" type="checkbox" tabindex="1" role="checkbox" aria-checked="true" checked="checked">
+                                                <label for="price">Price</label>
+                                            </li>
+                                            <li class="accordion-filter__leaf-item accordion-filter__leaf-parent-item form-checkbox">
+                                                <input id="amount" type="checkbox" tabindex="1" role="checkbox" aria-checked="true" checked="checked">
+                                                <label for="amount">Amount</label>
+                                            </li>
+                                            <li class="accordion-filter__leaf-item accordion-filter__leaf-parent-item form-checkbox">
+                                                <input id="phone-number" type="checkbox" tabindex="1" role="checkbox" aria-checked="">
+                                                <label for="phone-number">Phone number</label>
+                                            </li>
+                                            <li class="accordion-filter__leaf-item accordion-filter__leaf-parent-item form-checkbox">
+                                                <input id="mb-usage" type="checkbox" tabindex="1" role="checkbox" aria-checked="true" checked="checked">
+                                                <label for="mb-usage">MB Usage</label>
+                                            </li>
+                                            <li class="accordion-filter__leaf-item accordion-filter__leaf-parent-item form-checkbox">
+                                                <input id="price" type="checkbox" tabindex="1" role="checkbox" aria-checked="true" checked="checked">
+                                                <label for="price">Price</label>
+                                            </li>
+                                            <li class="accordion-filter__leaf-item accordion-filter__leaf-parent-item form-checkbox">
+                                                <input id="amount" type="checkbox" tabindex="1" role="checkbox" aria-checked="true" checked="checked">
+                                                <label for="amount">Amount</label>
+                                            </li>
+                                            <li class="accordion-filter__leaf-item accordion-filter__leaf-parent-item form-checkbox">
+                                                <input id="phone-number" type="checkbox" tabindex="1" role="checkbox" aria-checked="">
+                                                <label for="phone-number">Phone number</label>
+                                            </li>
+                                            <li class="accordion-filter__leaf-item accordion-filter__leaf-parent-item form-checkbox">
+                                                <input id="mb-usage" type="checkbox" tabindex="1" role="checkbox" aria-checked="true" checked="checked">
+                                                <label for="mb-usage">MB Usage</label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="box--greyed multi-filter__submit-panel">
+                                    <button type="button" class="button button--action button--small" tabindex="1">Update table</button>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>

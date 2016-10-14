@@ -1,0 +1,67 @@
+/**
+ * Created by zengjie on 16/9/23.
+ */
+
+import Vue from 'vue';
+import SearchFilter from 'taurus/components/search-filter/search-filter.vue';
+
+new Vue({
+  el: '#search-wrap',
+  components: {
+    't-search-filter': SearchFilter
+  },
+  data: {
+    delay: 0
+  },
+  events: {
+    'search': function (value) {
+      console.log('search field trigger search :' + value);
+    }
+  }
+});
+
+new Vue({
+  el: '#search-small-wrap',
+  components: {
+    't-search-filter': SearchFilter
+  },
+  data: {
+    isSmall: true
+  },
+  events: {
+    'search': function (value) {
+      console.log('search small field trigger search :' + value);
+    }
+  }
+});
+
+new Vue({
+  el: '#search-inline-wrap',
+  components: {
+    't-search-filter': SearchFilter
+  },
+  data: {
+    isInline: true
+  },
+  events: {
+    'search': function (value) {
+      console.log('search inline field trigger search :' + value);
+    }
+  }
+});
+
+new Vue({
+  el: '#search-small-inline-wrap',
+  components: {
+    't-search-filter': SearchFilter
+  },
+  data: {
+    isSmall: true,
+    isInline: true
+  },
+  events: {
+    'search': function (value) {
+      console.log('search small inline field trigger search :' + value);
+    }
+  }
+});

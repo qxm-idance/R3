@@ -1,0 +1,148 @@
+# TabPanel组件
+
+
+# 组件概述
+
+> 页签组件，用于数据展示，可有多个面板。有tabs.vue和flat-tabs.vue两种，在样式上有区别。
+
+
+# 组件API
+
+## 1.Props \(参数\)
+
+| 名字 | 类型 | 是否必传 | 默认 | 描述 |
+| --- | --- | --- | --- | --- |
+| small | Boolean| no | false | 用于控制组件的大小，值为true为小号\(默认为大号\),只有tabs组件有此属性 |
+| manyItems | Boolean| no | false | 是否支持大量页签\(默认为不支持\)，只有flat-tabs有此属性|
+| tabs | Array | yes  | 无 | 设置页签|
+| content | Array | yes | 无 | 将页签与面板对应 |
+| tabActive | String | No | 0 | 组件初始化时默认展示的页签\(默认展示第一个\) |
+
+
+
+## 2.Events \(事件\)
+
+| 名字 | 参数 | 描述 |
+| --- | --- | --- |
+无
+
+## 3.Methods \(方法\)
+
+| 名字 | 参数 | 描述 |
+| --- | --- | --- |
+| changeTab | \(tab\) | 切换页签 |
+| closeMore | \(\) | 关闭大量页签\(只适用flat-tabs\) |
+| toggleMore | \(\) | 切换是否为大量页签\(flat-tabs\) |
+
+# 组件Demo示例
+
+## 1.组件Demo示例链接
+
+[组件Demo示例链接](http://localhost:8080/sample/tabs-demo/index.html )
+
+## 2.组件Demo代码示例
+### html代码
+```
+<t-tabs :tabs="smallTabs" :content="smallContent" :small="true">
+    <section id="s_panel_one" class="tabpanel__panel">
+      <div class="sg-component__label">Small Tab content 1</div>
+    </section>
+    <section id="s_panel_two" class="tabpanel__panel">
+      <div class="sg-component__label">Small Tab content 2</div>
+    </section>
+    <section id="s_panel_three" class="tabpanel__panel is-active">
+      <div class="sg-component__label">Small Tab content 3</div>
+    </section>
+  </t-tabs>
+```
+
+### js实例组件代码
+```
+import Vue from 'vue';
+
+import TTabs from 'taurus/components/tabs/tabs';
+import TFlatTabs from 'taurus/components/tabs/flat-tabs';
+
+new Vue({
+  name: 'TabsDemo',
+
+  el: 'body',
+
+  components: {
+    TTabs,
+    TFlatTabs
+  },
+
+  data () {
+    return {
+      tabs: ['Panel 1', 'Panel 2', 'Panel 3'],
+      content: [
+        {
+          type: 'Panel 1',
+          id: 'panel_one'
+        },
+        {
+          type: 'Panel 2',
+          id: 'panel_two'
+        },
+        {
+          type: 'Panel 3',
+          id: 'panel_three'
+        }
+      ],
+      smallTabs: ['Panel 1', 'Panel 2', 'Panel 3'],
+      smallContent: [
+        {
+          type: 'Panel 1',
+          id: 's_panel_one'
+        },
+        {
+          type: 'Panel 2',
+          id: 's_panel_two'
+        },
+        {
+          type: 'Panel 3',
+          id: 's_panel_three'
+        }
+      ],
+      flatTabs: ['LongPanel 1', 'LongPanel 2', 'LongPanel 3', 'LongPanel 4', 'LongPanel 5'],
+      flatContent: [
+        {
+          type: 'LongPanel 1',
+          id: 'flat_panel_one'
+        },
+        {
+          type: 'LongPanel 2',
+          id: 'flat_panel_two'
+        },
+        {
+          type: 'LongPanel 3',
+          id: 'flat_panel_three'
+        },
+        {
+          type: 'LongPanel 4',
+          id: 'flat_panel_four'
+        },
+        {
+          type: 'LongPanel 5',
+          id: 'flat_panel_five'
+        }
+      ],
+      fewFlatTabs: ['Panel 1', 'Panel 2', 'PanelWithLongName'],
+      fewFlatContent: [
+        {
+          type: 'Panel 1',
+          id: 'f_flat_panel_one'
+        },
+        {
+          type: 'Panel 2',
+          id: 'f_flat_panel_two'
+        },
+        {
+          type: 'PanelWithLongName',
+          id: 'f_flat_panel_three'
+        }
+      ]
+    };
+  }
+});

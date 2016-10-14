@@ -1,0 +1,28 @@
+{
+  "name": "styleguide",
+  "version": "3.2.0",
+  "description": "Veris UED Guideline",
+  "main": "gulpfile.js",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-data": "^1.2.1",
+    "gulp-livereload": "^3.8.1",
+    "gulp-markdown": "^1.2.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
+    "lodash": "^4.16.2",
+    "gulp-iconfont-css": "^2.1.0",
+    "gulp-iconfont": "^8.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Taurus Team",
+  "license": "ISC"
+}

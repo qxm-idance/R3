@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+  <title>auto complete</title>
+  <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+  <link href="/assets/css/main.css" rel="stylesheet">
+  <style>
+    #autocomplete-wrap {
+      width: 500px;
+    }
+
+    .ml20 {
+      margin-left: 20px;
+    }
+
+    .mt20 {
+      margin-top: 20px;
+    }
+    .mb20 {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+<div class="sg-component ml20 mt20">
+  <div class="sg-component__header">
+    <h2 class="title--medium-small trailer--small">Autocomplete</h2>
+  </div>
+  <div id="autocomplete-wrap" class="sg-component__markup">
+    <div class="mb20">
+      <button class="button button--action" @click="setDisabled" data-action="disable">disable</button>
+      <button class="button button--action ml20" @click="setDisabled" data-action="enable">enable</button>
+    </div>
+    <t-autocomplete :source="source" :disabled.sync="disabled" :auto-focus="autoFocus"></t-autocomplete>
+    <label class="mt20">disabled-status:{{disabled}}</label>
+  </div>
+</div>
+
+
+</body>
+</html>

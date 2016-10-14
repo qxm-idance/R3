@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+  <title>restfull-service-demo</title>
+  <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+  <link href="/assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+<div id="app" class="container">
+  <div class="leader">
+    <button class="button button--bar button--small button--no-label" @click="getHandle">get</button>
+    <button class="button button--bar button--small button--no-label" @click="isCreate=true">save</button>
+    <button class="button button--bar button--small button--no-label" @click="isQuery=true">query</button>
+    <button class="button button--bar button--small button--no-label" @click="setUpdate">update</button>
+    <button class="button button--bar button--small button--no-label" @click="isDelete=true">delete</button>
+    <button class="button button--bar button--small button--no-label" @click="jsonpHandle">jsonp</button>
+    <button class="button button--bar button--small button--no-label" @click="setHeaderHandle">setHeader</button>
+    <button class="button button--bar button--small button--no-label" @click="isCreate=true">post</button>
+  </div>
+  <p>
+    <input  type="text" class="leader" placeholder="press enter to search customerId" v-show="isQuery" v-model="searchId" @keyup.enter="queryHandle">
+  </p>
+  <div>
+    <simple-grid :data-list="gridData" :columns="gridColumns" :is-delete="isDelete" 	v-on:load-entry="loadCustomer"
+                 v-on:delete-entry="deleteHandle">
+    </simple-grid>
+  </div>
+  <div>
+    <button class="button button--action" v-show="isCreate" @click="showModal=true">Create</button>
+  </div>
+
+  <t-modal-box :show.sync="showModal" :size="sizeModal" :backdrop="true">
+    <h2>{{ item.customerId ? 'Edit Customer - ' + item.contactName : 'Create New Customer' }}</h2>
+    <div class="block">
+      <div class="form-item ">
+        <label>Company Name</label>
+        <input  type="text"  v-model="item.companyName">
+      </div>
+      <div class="form-item ">
+        <label>Contact Name</label>
+        <input type="text"  v-model="item.contactName">
+      </div>
+      <div class="form-item ">
+        <label>Phone</label>
+        <input type="text" v-model="item.phone">
+      </div>
+      <div class="form-item ">
+        <button class="button button--action leader--small"  @click="saveCustomer">Save</button>
+        <button class="button button--action leader--small" v-show="!item.customerId" @click="postHandle">Post</button>
+      </div>
+    </div>
+  </t-modal-box>
+</div>
+
+<template id="grid-template">
+  <table>
+    <thead>
+    <tr>
+      <th v-for="col in columns">
+        {{ col.name | capitalize}}
+      </th>
+      <th v-show="isDelete">Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr v-for="(index,entry) in dataList">
+      <td v-for="col in columns">
+        <span v-if="col.isKey"><a href="javascript:void(0)" @click="loadEntry(entry[col.name])">{{ entry[col.name] }}</a></span>
+        <span v-else>{{ entry[col.name] }}</span>
+      </td>
+      <td v-show="isDelete">
+        <button class="btn-danger" @click="deleteEntry(entry)">delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</template>
+
+</body>
+</html>

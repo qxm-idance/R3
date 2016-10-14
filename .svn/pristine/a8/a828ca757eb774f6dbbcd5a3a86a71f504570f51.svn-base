@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>status-message</title>
+  <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+  <link href="/assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <div class="form-row">
+    <!--Message info with icon and close button-->
+    <button v-on:click="info" class="button button--action">Info</button>
+    <!--Message success-->
+    <button v-on:click="success" class="button button--action">Success</button>
+    <!--Message alert-->
+    <button v-on:click="alert" class="button button--action">Alert</button>
+    <!--Message error-->
+    <button v-on:click="error" class="button button--action">Error</button>
+  </div>
+</div>
+
+</body>
+</html>

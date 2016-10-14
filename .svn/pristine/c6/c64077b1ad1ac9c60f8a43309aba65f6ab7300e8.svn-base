@@ -1,0 +1,84 @@
+/**
+ * Created by zengjie on 16/9/7.
+ */
+import Vue from 'vue';
+import rangeSlider from '../../components/range-slider/range-slider';
+import select from '../../components/select/select';
+import Tooltip from '../../directives/tooltips/tooltip';
+Vue.use(Tooltip);
+new Vue({
+  el: 'body',
+  components: {
+    't-range-slider': rangeSlider,
+    't-range-slider-select': select
+  },
+  data: {
+    rangeOptions: {
+      isDrag: false,
+      rangeLabel: 'Months',
+      min: 0,
+      max: 6,
+      step: 1,
+      start: 0,
+      end: 3
+    },
+    singleSlideOptions: {
+      rangeLabel: 'Months',
+      type: 'single',
+      min: 0,
+      max: 6,
+      step: 1,
+      start: 0,
+      end: 3
+    },
+    selectSlideOptions: {
+      isDrag: true,
+      type: 'select',
+      rangeLabel: 'MB',
+      min: 100,
+      max: 600,
+      step: 10,
+      start: 100,
+      end: 300
+    },
+    options: [],
+    defaultVal: ''
+
+  },
+  methods: {
+    startChange: function (type, args) {
+      var vm = this;
+      if (type === 'single') {
+        vm.singleSlideOptions.start = args[0].value;
+      } else if (type === 'select') {
+        vm.selectSlideOptions.start = args[0].value;
+      } else {
+        vm.rangeOptions.start = args[0].value;
+      }
+    },
+    endChange: function (type, args) {
+      var vm = this;
+      if (type === 'single') {
+        vm.singleSlideOptions.end = args[0].value;
+      } else if (type === 'select') {
+        vm.selectSlideOptions.end = args[0].value;
+      } else {
+        vm.rangeOptions.end = args[0].value;
+      }
+    }
+  },
+  ready: function () { // 放一些初始化的动作
+    var _min = this.rangeOptions.min;
+    var _max = this.rangeOptions.max;
+    var _step = this.rangeOptions.step;
+    for (var i = _min; i <= _max; i += _step) {
+      var obj = {
+        value: i,
+        label: i + ' Month'
+      };
+      this.options.push(obj);
+    }
+    this.defaultVal = _min;
+  }
+});
+

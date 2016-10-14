@@ -1,0 +1,152 @@
+/**
+ * @module status-message
+ * Taurus静态通知模块
+ */
+import Vue from 'vue';
+import StatusMessage from '../components/status-message/status-message';
+
+var defaults = {
+  type: 'info', // String, Enumeration[info,success,alert,error], Default 'info'
+  icon: true,   // Boolean, Default true
+  close: true, // Boolean, Default true
+  content: '' // String, Default null
+};
+
+var StatusMessageConstructor = Vue.extend(StatusMessage);
+
+var currentMsg, instance;
+var msgQueue = [];
+
+var merge = function (target) {
+  for (var i = 1, j = arguments.length; i < j; i++) {
+    var source = arguments[i];
+    for (var prop in source) {
+      if (source.hasOwnProperty(prop)) {
+        var value = source[prop];
+        if (value !== undefined) {
+          target[prop] = value;
+        }
+      }
+    }
+  }
+
+  return target;
+};
+
+var initInstance = function () {
+  instance = new StatusMessageConstructor({
+    el: document.createElement('div')
+  });
+
+  instance.callback = function (action) {
+    if (currentMsg) {
+      var callback = currentMsg.callback;
+      if (typeof callback === 'function') {
+        callback(action);
+      }
+      if (currentMsg.resolve) {
+        currentMsg.resolve(action);
+      }
+    }
+  };
+};
+
+var showNextMsg = function () {
+  if (!instance) {
+    initInstance();
+  }
+
+  if (!instance.visible || instance.closeTimer) {
+    if (msgQueue.length > 0) {
+      currentMsg = msgQueue.shift();
+
+      var options = currentMsg.options;
+      for (var prop in options) {
+        if (options.hasOwnProperty(prop)) {
+          instance[prop] = options[prop];
+        }
+      }
+      instance.$appendTo(document.body);
+
+      Vue.nextTick(() => {
+        instance.visible = true;
+      });
+    }
+  }
+};
+
+var StatusMessagePlugin;
+StatusMessagePlugin = {
+  _installed: false,
+  install: function (Vue) {
+    if (StatusMessagePlugin._installed) {
+      return;
+    }
+    /**
+     * @param options
+     * @type Object
+     * @example
+     *  {
+     *    el: 'massageId', //String, 容器id, message信息将append进容器末尾, Default 页面占位标签所在位置,没有占位标签则在页面顶部提示
+     *    type: 'info', //String, Enumeration[info,success,alert,error], Default 'info'
+     *    icon: true,   //Boolean, Default true
+     *    close: true, //Boolean, Default true
+     *    content: 'some info...' //String, Default null
+     *  }
+     *
+     *  @param callback
+     *  @type Function
+     */
+    Vue.prototype.$message = function (options, callback) {
+      /**
+       * 当options为string时,则构建基础message
+       * @example
+       * this.$message('some infos...');
+       */
+      if (typeof options === 'string') {
+        options = {
+          content: options
+        };
+        // if (arguments[1]) {
+        //  options.close = arguments[1];
+        //  }
+        //  if (arguments[2]) {
+        //  options.type = arguments[2];
+        //  }
+      } else if (options.callback && !callback) {
+        callback = options.callback;
+      }
+
+      if (typeof Promise !== 'undefined') {
+        return new Promise(function (resolve, reject) {
+          msgQueue.push({
+            options: merge({}, defaults, StatusMessagePlugin.defaults || {}, options),
+            callback: callback,
+            resolve: resolve,
+            reject: reject
+          });
+
+          showNextMsg();
+        });
+      } else {
+        msgQueue.push({
+          options: merge({}, defaults, StatusMessagePlugin.defaults || {}, options),
+          callback: callback
+        });
+
+        showNextMsg();
+      }
+      setDefault = function (defaults) {
+        StatusMessagePlugin.defaults = defaults;
+      };
+      setDefault();
+    };
+    Vue.message = Vue.prototype.$message;
+    StatusMessagePlugin._installed = true;
+  }
+};
+
+if (typeof window !== 'undefined' && window.Vue) {
+  window.Vue.use(StatusMessagePlugin);
+}
+module.exports = StatusMessagePlugin;

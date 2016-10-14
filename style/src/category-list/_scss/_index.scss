@@ -1,0 +1,34 @@
+/*molecule-shop  List item category*/
+.category-list{
+  a {
+    &:hover{
+      .icon{
+        &:before{
+          z-index: 2;
+          transition: color 250ms ease-in;
+          color: #fff;
+        }
+
+      }
+
+    }
+
+  }
+}
+.category-list{
+  a {
+    &:hover{
+      .icon{
+        &:after{
+          z-index:1;
+          transition:background 250ms ease-in;
+          border-color: #038cd6;
+          background-color:#038cd6;
+        }
+
+      }
+
+    }
+
+  }
+}

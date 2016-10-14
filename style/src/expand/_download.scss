@@ -1,0 +1,136 @@
+.download-drop {
+  position: relative;
+  padding: 0;
+  vertical-align: top
+}
+
+.download-drop .drop {
+  position: absolute;
+  left: auto;
+  right: 0;
+  top: 100%;
+  min-width: 145px;
+  margin-top: 8px;
+  text-align: left;
+  background-color: #fff;
+  color: #474747;
+  border: 1px solid #d1d1d1;
+  box-shadow: 0 1px 3px rgba(0,0,0,.15)
+}
+
+.download-drop .drop:after,.download-drop .drop:before {
+  width: 0;
+  height: 0;
+  content: "";
+  position: absolute
+}
+
+.download-drop .drop:before {
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #d1d1d1;
+  top: -8px
+}
+
+.download-drop .drop:after {
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #fff;
+  top: -7px
+}
+
+.no-cssgradients .download-drop .drop:after {
+  border-bottom-color: #e8e8e8
+}
+
+.download-drop .drop:after,.download-drop .drop:before {
+  left: auto;
+  right: 10px;
+  margin: 0
+}
+
+.download-drop .drop:before {
+  margin-right: -2px;
+  border-width: 0 9px 8px
+}
+
+.download-drop .drop a,.download-drop .drop button[type=submit] {
+  display: block;
+  padding: 10px;
+  position: relative;
+  background: 0 0;
+  width: 100%;
+  text-align: left;
+  border: 0
+}
+
+.download-drop .drop a:after,.download-drop .drop button[type=submit]:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background-color: #038cd6;
+  transition: width .15s ease-in-out
+}
+
+.download-drop .drop a:hover,.download-drop .drop button[type=submit]:hover {
+  background-color: #f5f5f5
+}
+
+.download-drop .drop a:hover:after,.download-drop .drop button[type=submit]:hover:after {
+  width: 3px
+}
+
+.download-drop .drop a.icon-acrobat:before,.download-drop .drop a.icon-excel:before,.download-drop .drop button[type=submit].icon-acrobat:before,.download-drop .drop button[type=submit].icon-excel:before {
+  font-size: 17px;
+  margin: 0 4px 0 0;
+  color: #007534
+}
+
+.download-drop .drop a.icon-acrobat:before,.download-drop .drop button[type=submit].icon-acrobat:before {
+  color: #ff4b36
+}
+
+.download-drop ul li {
+  border-top: 1px solid #d1d1d1;
+  overflow: hidden;
+  white-space: nowrap
+}
+
+.download-drop ul li:first-child {
+  border: 0
+}
+
+@media only screen and (max-width: 768px) {
+  .download-drop .button,.download-drop .form-checkbox--filter label,.download-drop .paging_simple_numbers a.loadmore,.form-checkbox--filter .download-drop label,.paging_simple_numbers .download-drop a.loadmore {
+    padding-left:10px;
+    padding-right: 10px
+  }
+}
+
+.download-drop.is-open{
+  display: inline-block;
+}
+
+.attachment-add label {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  border: 1px solid #e8e8e8;
+  background-color: #f5f5f5;
+  position: relative;
+  cursor: pointer
+}
+
+.attachment-add label:before {
+  @extend %icon-base-styles;
+  @include icon-add;
+  color: #666;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%)
+}

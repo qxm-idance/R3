@@ -1,0 +1,380 @@
+/*shop.css by tangll*/
+.top-banner {
+    display: block;
+    background: #7bbce0 url(../img/fp-topbanner-minions.jpg) no-repeat 50% 50%/cover;
+}
+.rel {
+    position: relative;
+}
+.top-banner .list--check-with-border li {
+    padding-left: 35px;
+    margin-bottom: 15px;
+}
+.top-banner .list--check-with-border li:before {
+    color: #fff;
+    width: 30px;
+    top: 0;
+    font-size: 14px;
+}
+.top-banner .list--check-with-border li:after {
+    border-color: #fff;
+    top: -6px;
+    width: 25px;
+    height: 25px;
+}
+.button .icon-arrow-next:after{
+    /*content: "\E00B";*/
+    font-size: 10px;
+    font-weight: 700;
+}
+.button .icon--right:after {
+    margin-left: 8px;
+}
+.top-banner .image-block {
+    background: url(../img/Galaxy-S6-Edge-black-back.png) no-repeat 0 25px;
+    background-size: 337px auto;
+}
+@media only screen and (max-width: 768px){
+    .top-banner .image-block {
+        height: 225px;
+        background-size: auto 100%;
+        background-position: 50% 0;
+        -webkit-order: -1;
+        -ms-flex-order: -1;
+        order: -1;
+    }
+}
+.top-banner .sticker {
+    left: -105px;
+    top: 0;
+}
+@media only screen and (max-width: 768px){
+    .top-banner .sticker {
+        left: -10px;
+        top: -5px;
+    }
+}
+.fix-width {
+    width: 230px;
+}
+@media only screen and (max-width: 768px){
+    .fix-width {
+        width: 120px;
+    }
+}
+.currency {
+    letter-spacing: -.2em;
+}
+.top-banner .sticker .sticker {
+    left: auto;
+    right: 0;
+    top: 210px;
+}
+@media only screen and (max-width: 768px){
+    .top-banner .sticker .sticker {
+        left: auto;
+        right: 0;
+        top: 90%;
+    }
+}
+
+.top-banner .sticker img {
+    height: 21px;
+}
+@media only screen and (max-width: 768px){
+    .top-banner .sticker img {
+        height: 16px;
+    }
+}
+
+.block--list--icons {
+    max-width: none;
+    background: #fff;
+    padding-top: 20px;
+    margin-bottom: 25px;
+}
+@media only screen and (max-width: 768px){
+    .block--list--icons {
+        background: none;
+    }
+}
+
+.category-list {
+    max-width: 1020px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.category-list .text-size--36 {
+    font-size: 33px;
+}
+@media only screen and (max-width: 768px){
+    .category-list .text-size--36 {
+        font-size: 30px;
+    }
+}
+
+.category-list .icon {
+    transition: color 250ms ease-in;
+}
+
+.category-list .icon:before {
+    font-size: 1.22em;
+    z-index: 2;
+}
+.category-list .icon:after {
+    z-index: 1;
+    transition: background 250ms ease-in;
+    border-color: #038cd6;
+    background: #fff;
+}
+.category-list .icon:after {
+    background: none;
+}
+.category-list a:hover .icon {
+    color: #fff;
+}
+.category-list a:hover .icon:after {
+    background: #038cd6;
+}
+
+/*mokuai*/
+.grid-row--gutter-small {
+    margin-left: -5px;
+    margin-right: -5px;
+}
+.frontpage-grid-gap {
+    background: #fff;
+    background-clip: content-box;
+}
+[class*="grid-row"] {
+    display: -webkit-flex;
+    -webkit-flex-wrap: wrap;
+}
+.b-img {
+    height: 212px;
+    width: 273px;
+}
+.b-img img {
+    position: absolute;
+    bottom: 0px;
+    left: 40px;
+}
+.ra-list .list li {
+    margin: 0 0 5px;
+}
+.ra-list ul li span {
+    line-height: 0px;
+}
+.text-legal-banner {
+    position: absolute;
+    bottom: 21px;
+    min-height: 30px;
+    left: 10px;
+    right: 10px;
+}
+@media only screen and (min-width: 768px){
+    .desktop-hidden {
+        display: none!important;
+    }
+}
+.sticker {
+    position: absolute;
+    top: 40px;
+    left: 10px;
+}
+@media only screen and (max-width: 768px){
+    .sticker {
+        left: 20px;
+    }
+}
+.sticker-static {
+    position: static;
+    display: inline-block;
+}
+.sticker:before {
+    content: '';
+    padding-top: 100%;
+    display: table-cell;
+}
+
+.sticker .sticker-content {
+    display: table-cell;
+    vertical-align: middle;
+    border-radius: 100%;
+    padding: 10px;
+    text-align: center;
+    background: rgb(63,194,135);
+    background: -moz-linear-gradient(-45deg, rgba(63,194,135,1) 0%, rgba(26,161,184,1) 100%);
+    background: -webkit-linear-gradient(-45deg, rgba(63,194,135,1) 0%,rgba(26,161,184,1) 100%);
+    background: linear-gradient(135deg, rgba(63,194,135,1) 0%,rgba(26,161,184,1) 100%);
+    color: #fff;
+}
+.sticker--white .sticker-content {
+    background: #fff;
+    color: #231f20;
+    box-shadow: 0 0 10px rgba(0,0,0,.3);
+}
+.image-area {
+    height: 363px;
+    -webkit-align-self: center;
+    align-self: center;
+    position: relative;
+    top: 3px;
+}
+@media only screen and (max-width: 768px){
+    .image-area {
+        height: 225px;
+    }
+}
+
+.image-holder {
+    overflow: hidden;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 20px;
+    right: 20px;
+    font-size: 0;
+}
+.image-holder:before {
+    content: "";
+    height: 100%;
+    display: inline-block;
+    width: 1px;
+    margin-right: -4px;
+    vertical-align: middle;
+}
+.image-holder img {
+    max-height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+.description {
+    min-height: 257px;
+}
+@media only screen and (max-width: 768px){
+    .description {
+        min-height: 0;
+    }
+}
+
+.list--check-with-border {
+    line-height: 19px;
+}
+.list--check-with-border li {
+    position: relative;
+    padding-left: 30px;
+}
+.list li:before {
+    position: absolute;
+    left: 0;
+    top: 8px;
+}
+.list--check-with-border li:before {
+    vertical-align: middle;
+    color: #038CD6;
+    text-align: center;
+    width: 25px;
+    top: 3px;
+    margin-right: 5px;
+    font-size: 11px;
+}
+.list--check-with-border li:after {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: 2px;
+    width: 19px;
+    height: 19px;
+    border-radius: 50%;
+    border: 1px solid #cecece;
+}
+.price-box {
+    position: relative;
+    padding-top: 18px;
+}
+.price-before{
+    position: absolute;
+    top: 0;
+}
+.currency-mark {
+    letter-spacing: -.2em;
+    margin-right: 10px;
+}
+@media only screen and (max-width: 768px){
+    .mobile-order-2 {
+        -webkit-order: 2;
+        order: 2;
+    }
+}
+
+.text-legal {
+    max-height: 30px;
+    color: #b8b8b8;
+    overflow: hidden;
+}
+.section--help {
+    background: url(../img/main_bg.png) center top #038cd6;
+    height: 264px;
+}
+@media only screen and (max-width: 768px){
+    .section--help {
+        height: 237px;
+    }
+}
+
+.section--help__title {
+    font-family: telenorlight,sans-serif;
+    font-weight: 400;
+    padding-top: 40px;
+    font-size: 54px;
+    line-height: 60px;
+}
+.section--help__subtitle {
+    font-size: 19px;
+    margin: 15px 0 33px;
+}
+@media only screen and (max-width: 768px){
+    .section--help__subtitle {
+        font-size: 30px;
+        line-height: 38px;
+        font-family: telenorlight,sans-serif;
+        font-weight: 400;
+        padding: 20px 60px 0;
+        margin-top: 0;
+        margin-bottom: 25px;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    .section--help__buttons {
+        margin-bottom: 13px;
+    }
+}
+
+@media only screen and (min-width: 480px){
+    .section--help__buttons li {
+        display: inline-block;
+        vertical-align: top;
+    }
+}
+@media only screen and (max-width: 768px){
+    .section--help__buttons li {
+        margin-bottom: 10px;
+    }
+}
+
+.section--help__buttons a {
+    width: 50%;
+}
+@media only screen and (min-width: 480px){
+    .section--help__buttons a {
+        min-width: 175px;
+        width: auto;
+    }
+}
+
+
+
+

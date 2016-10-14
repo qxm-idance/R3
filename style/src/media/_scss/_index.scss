@@ -1,0 +1,46 @@
+.media {
+  $root: &;
+  display: block;
+  &__body{
+    overflow: hidden;
+  }
+  &__image{
+    float: left;
+    margin-right: 20px;
+    &>img{
+      display: block;
+    }
+  }
+  &--small{
+    #{$root}__image{
+      margin-right: 10px;
+    }
+  }
+  &--large{
+    #{$root}__image{
+      margin-right: 30px;
+    }
+  }
+  &--reverse{
+    #{$root}__image{
+      float: right;
+      margin-right: 0;
+      margin-left: 20px;
+    }
+  }
+  &--restricted-small{
+    #{$root}__image{
+      max-width: 80px;
+    }
+  }
+}
+
+
+@include until($bp-medium){
+  .media .media__image {
+    float: none;
+    margin-left: 0;
+    margin-right: 0
+  }
+}
+

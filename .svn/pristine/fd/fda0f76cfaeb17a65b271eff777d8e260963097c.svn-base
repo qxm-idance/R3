@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" class="js canvas no-touch rgba borderradius boxshadow opacity cssanimations cssgradients csstransforms csstransforms3d fontface video audio localstorage svg json checked">
+<head>
+  <meta charset="UTF-8">
+  <title>Tooltips</title>
+  <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+  <link href="/assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <div class="block__header leader--large trailer--large">
+    <h2 class="title--medium">tooltips</h2>
+  </div>
+  <div class="tablet-one-quarter">
+    <div class="sg-component__label">Normal tip</div>
+    <p class="icon-error tooltip__trigger" v-tooltip:blue.literal="value by straight string" v-if="isDestroy"></p>
+    <div class="sg-component__label">Normal tip with title</div>
+    <p class="icon-error tooltip__trigger" v-tooltip="{title: tipTitle, text: tipText}"></p>
+    <div class="sg-component__label">Normal tip only title</div>
+    <p class="icon-error tooltip__trigger" v-tooltip="{title: tipTitle}"></p>
+    <div class="sg-component__label">Normal tip only text</div>
+    <p class="icon-error tooltip__trigger" v-tooltip="{text: tipText}"></p>
+    <div class="sg-component__label">Error tip with title</div>
+    <div class="icon-error tooltip__trigger" v-tooltip:error="{title: errorTitle, text: errorText}">
+    </div>
+    <div class="sg-component__label">Normal long tip</div>
+    <div class="icon-error tooltip__trigger" v-tooltip="longTipMessage">
+    </div>
+    <div class="sg-component__label">blue tip</div>
+    <div class="icon-error tooltip__trigger" v-tooltip:blue="tipText">
+    </div>
+    <div class="sg-component__label">Form tip</div>
+    <div class="form-item form-item--required form-item--error">
+      <input id="form-field-simple-label-required" type="text" aria-describedby="floor-tooltip">
+      <div class="icon-error tooltip__trigger" v-tooltip:error="{title: formTipTitle, text: formTipText}">
+      </div>
+    </div>
+    <div class="form-row">
+      <button v-on:click="resetTitle" class="button button--action">resetTitle</button>
+      <button v-on:click="toggle" class="button button--action">toggle</button>
+    </div>
+  </div>
+
+
+</div>
+</body>
+</html>

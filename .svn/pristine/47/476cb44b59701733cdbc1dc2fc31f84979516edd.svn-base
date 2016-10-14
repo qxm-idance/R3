@@ -1,0 +1,36 @@
+<div class="doc-side-list">
+    <ul>
+        <li class="current"><a href="javascript:;" target="/examples/box-group-demo/index.html">Box Group</a></li>
+        <li><a href="javascript:;" target="/examples/breadcrumbs-demo/index.html">Breadcrumbs</a></li>
+        <li><a href="javascript:;" target="/examples/dropdown-demo/index.html">Dropdown</a></li>
+        <li><a href="javascript:;" target="/examples/form-validation-demo/index.html">Form Validation</a></li>
+        <li><a href="javascript:;" target="/examples/list-demo/index.html">list</a></li>
+        <li><a href="javascript:;" target="/examples/modal-box-demo/index.html">Modal Box</a></li>
+        <li><a href="javascript:;" target="/examples/number-stepper-demo/index.html">Number Stepper</a></li>
+        <li><a href="javascript:;" target="/examples/pager-demo/index.html">Pager</a></li>
+        <li><a href="javascript:;" target="/examples/scroll-to-demo/index.html">Scroll To</a></li>
+        <li><a href="javascript:;" target="/examples/select-demo/index.html">Select</a></li>
+        <li><a href="javascript:;" target="/examples/cookie-helper-demo/index.html">Cookie Helper</a></li>
+        <li><a href="javascript:;" target="/examples/speech-bubble-demo/index.html">Speech Bubble</a></li>
+        <li><a href="javascript:;" target="/examples/switcher-demo/index.html">Switcher</a></li>
+        <li><a href="javascript:;" target="/examples/amcharts-demo/index.html">AMCharts</a></li>
+        <li><a href="javascript:;" target="/examples/tabs-demo/index.html">Tabs</a></li>
+        <li><a href="javascript:;" target="/examples/tooltips-demo/index.html">Tooltips</a></li>
+    </ul>
+</div>
+<div class="section--block">
+  <iframe id="mainframe" name="mainframe" src="/examples/box-group-demo/index.html" width="100%"  scrolling="no" frameborder="0" onload="this.height=mainframe.document.body.scrollHeight">
+  </iframe>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+           $('.doc-side-list ul').on('click', 'li a', hrefAnimate);
+    });
+    function hrefAnimate(){
+            $(this).parent("li").addClass('current').siblings("li").removeClass('current');
+            var anchor = $(this).attr('target');
+            $("#mainframe").attr({"src":anchor});
+
+        }
+</script>

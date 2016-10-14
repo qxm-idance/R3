@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" class=" js canvas no-touch rgba borderradius boxshadow opacity cssanimations cssgradients csstransforms csstransforms3d fontface video audio localstorage svg json">
+<head>
+    <meta charset="UTF-8">
+    <link href="../assets/css/main.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/doc.css" rel="stylesheet" type="text/css">
+    <!-- highlight-->
+    <link href="../assets/doc/highlight/styles/github.css" rel="stylesheet" type="text/css">
+    <link href="../assets/doc/highlight/code.css" rel="stylesheet" type="text/css">
+    <script src="../assets/doc/highlight/highlight.pack.js" type="text/javascript"></script>
+    <script src="../assets/doc/js/jquery.js" type="text/javascript"></script>
+    <script></script>
+    <title>auto complete</title>
+</head>
+<body>
+<!--groups-->
+<button class="button button--default" data-component="collapse" data-alias="collapseGroup1" data-group="collapseGroup">
+	<span class="button__text">
+		Collapse
+	</span>
+</button>
+<div class="collapse__target collapse--closed" data-element="collapseGroup1:collapseTarget">
+    <div data-element="collapseGroup1:collapseContent">
+        Collapsible block content
+    </div>
+</div>
+<button class="button button--default" data-component="collapse" data-alias="collapseGroup2" data-group="collapseGroup">
+	<span class="button__text">
+		Collapse
+	</span>
+</button>
+<div class="collapse__target collapse--closed" data-element="collapseGroup2:collapseTarget">
+    <div data-element="collapseGroup2:collapseContent">
+        Collapsible block content
+    </div>
+</div>
+<!--simple-->
+<button class="button button--default" data-component="collapse" data-alias="collapseSimple">
+	<span class="button__text">
+		Collapse
+	</span>
+</button>
+<div class="collapse__target collapse--closed" data-element="collapseSimple:collapseTarget">
+    <div data-element="collapseSimple:collapseContent">
+        Collapsible block content
+    </div>
+</div>
+<!--simple width closer-->
+<button class="button button--default" data-component="collapse" data-alias="collapseSimpleClose">
+	<span class="button__text">
+		Collapse
+	</span>
+</button>
+<div class="collapse__target collapse--closed" data-element="collapseSimpleClose:collapseTarget">
+    <div data-element="collapseSimpleClose:collapseContent">
+        Collapsible block content
+        <button class="button button--default" data-element="collapseSimpleClose:toggleTrigger">
+			<span class="button__text">
+				Close
+			</span>
+        </button>
+    </div>
+</div>
+<!--width labels-->
+<div class="collapse__target collapse--closed" data-element="collapseMore:collapseTarget">
+    <div data-element="collapseMore:collapseContent">
+        Collapsible block content
+    </div>
+</div>
+<button class="button button--default" data-component="collapse" data-alias="collapseMore" data-readmore="More" data-readless="Less">
+	<span class="button__text" data-element="toggleText">
+		More
+	</span>
+</button>
+<!--width radio triggers-->
+<form>
+    <ul>
+        <li class="form-radio">
+            <input id="collapseRadio1" type="radio" name="collapseRadio" checked="checked" data-component="collapse" data-alias="collapseRadio" data-active="true"  />
+            <label for="collapseRadio1">Open</label>
+        </li>
+        <li class="form-radio">
+            <input id="collapseRadio2" type="radio" name="collapseRadio" data-element="collapseRadio:toggleTrigger" />
+            <label for="collapseRadio2">Close</label>
+        </li>
+    </ul>
+</form>
+<div class="collapse__target" data-element="collapseRadio:collapseTarget">
+    <div data-element="collapseRadio:collapseContent">
+        Collapsible block content
+    </div>
+</div>
+</body>
+</html>

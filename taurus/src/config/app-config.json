@@ -1,0 +1,12 @@
+{
+  "web": {
+    "root": ""
+  },
+  "i18n": {
+    "lang": "cn",
+    "locales": {
+      "en":"/i18n/en.json",
+      "cn":"/i18n/cn.json"
+    }
+  }
+}

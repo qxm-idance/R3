@@ -1,0 +1,477 @@
+<template>
+<table class="table table--adv"
+  :class="{'table--zebra': (zebra === true), 'table--without-hover': (expandable === true)}"
+  style="display:table">
+  <thead>
+    <tr>
+      <th v-if="expandable === true"
+        class="text--center table__expand-cell"
+        style="width:22px">
+      </th>
+      <th v-if="mutiSelect === true" class="form-checkbox invoices__table__column--checkbox all col--compact-5 form-checkbox--single sorting_disabled">
+        <a class="form-checkbox--result" href="javascript:void(0);" :data-state="allCheckState" v-on:click.stop.prevent="toggleAllChecked">
+          <label></label>
+        </a>
+      </th>
+      <th v-for="col in columns"
+        class="invoices__table__column"
+        :class="expandable !== true ? (sortOrders[col.field] === 1 ? 'sorting_asc' : (sortOrders[col.field] === -1 ? 'sorting_desc' : 'sorting')) : ''"
+        @click="toggleSortBy($index)">
+        {{col.name}}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <template v-if="data.length > 0">
+      <template v-for="entry in data
+        | filterBy filterKey"
+        track-by="$index">
+        <tr :class="{ 'row-selected': entry.selected, 'even': ($index % 2 === 0), 'odd': ($index % 2 !== 0), 'row--disable': entry.disabled, 'row--error': entry.error, 'expanded': (entry.expanded === true)}"
+          v-on:click="selectRow($index, true)">
+          <td v-if="expandable === true" class="text--center table__expand-cell">
+            <div class="th_bill_trigger table__expander">
+              <a class="icon-expand" href="javascript:void(0);" v-on:click="toggleStorageBox($index)"></a>
+            </div>
+          </td>
+          <td v-if="mutiSelect === true" class="col--compact-5 form-checkbox form-checkbox--single invoices__table__column--checkbox">
+            <input type="checkbox" :checked="entry.checked" v-on:click.stop.prevent="toggleCheckedBy($index)"></input>
+            <label v-on:click.stop.prevent="toggleCheckedBy($index)"></label>
+          </td>
+          <td v-for="col in columns">
+            <template v-if="!!col.partialId">
+              <partial :name="col.partialId"></partial>
+            </template>
+            <template v-else>
+              {{entry[col.field]}}
+            </template>
+          </td>
+        </tr>
+        <tr v-if="expandable === true"
+          class="drop-row"
+          :class="entry.expanded === true ? '' : 'js-hidden'">
+          <td class="text--center drop-item" colspan="{{colspan}}">
+            <div class="drop-item-holder">
+              <partial :name="dropItemPartialId"></partial>
+            </div>
+          </td>
+        </tr>
+      </template>
+    </template>
+    <tr v-if="data.length === 0">
+      <td class="dataTables_empty" colspan="{{colspan}}">{{$t('no_matching')}}</td>
+    </tr>
+  </tbody>
+</table>
+</template>
+<script>
+import Vue from 'vue';
+const STATE_ALL_SELECTED = 'all-selected';
+const STATE_SOME_SELECTED = 'some-selected';
+const STATE_UNSELECTED = '';
+var DataTable = Vue.extend({
+  name: 'taurus-data-table',
+  created: function () {
+    var i;
+    var data = this.data;
+    this._prevSelectedRowData = null;
+    this._prevSortField = null;
+    this._checkedCount = 0;
+    // 此标志表示当allCheckState的值改变的时候是由什么操作引发的
+    // 取值为：-1--由代码引发；0--由人机交互(通过数据绑定机制)触发
+    this._changeSource = -1;
+    for (i = data.length - 1; i >= 0; i--) {
+      data[i].selected = data[i].selected || false;
+      data[i].error = data[i].error || false;
+      data[i].disabled = data[i].disabled || false;
+      data[i].expanded = data[i].expanded || false;
+      data[i].checked = data[i].checked || false;
+      if (data[i].checked) {
+        this._checkedCount++;
+      }
+    }
+    this._updateAllCheckState();
+  },
+  ready: function () {
+    this.$watch('data', function (newVal, oldVal) {
+      // var rowId;
+      if (newVal.length === 0) {
+        this._checkedCount = 0;
+        this._prevSelectedRowData = null;
+      }
+      // if (newVal.expanded !== oldVal.expanded) {
+      //   rowId = this.data.indexOf(newVal);
+      //   this.$emit('dt-expand', rowId, newVal.expanded);
+      // }
+    });
+    this.$watch('allCheckState', function (newVal) {
+      if (this._changeSource === 0) {
+        this._changeSource = -1;
+        if (newVal === STATE_UNSELECTED) {
+          this.uncheckAll(true);
+        } else {
+          this.checkAll(true);
+        }
+      }
+    });
+  },
+  props: {
+    dropItemPartialId: String,
+    data: {
+      type: Array,
+      default: function () {
+        return [];
+      }
+    },
+    columns: {
+      type: Array,
+      default: function () {
+        return [];
+      }
+    },
+    zebra: {
+      type: Boolean,
+      default: false,
+      coerce: function (value) {
+        return (value === 'true' || value === '1');
+      }
+    },
+    filterKey: String,
+    expandable: {
+      type: Boolean,
+      default: false,
+      coerce: function (value) {
+        return (value === 'true' || value === '1');
+      }
+    },
+    mutiSelect: {
+      type: Boolean,
+      default: true,
+      coerce: function (value) {
+        return (value === 'true' || value === '1');
+      }
+    }
+  },
+  data: function () {
+    var sortOrders = {};
+    this.columns.forEach(function (col) {
+      sortOrders[col.field] = 0;
+    });
+    return {
+      allCheckState: '', // 默认所有复选框都不勾选
+      sortKey: '',
+      sortOrders: sortOrders,
+      onText: 'Yes',
+      offText: 'No'
+    };
+  },
+  computed: {
+    colspan: function () {
+      var count = this.columns.length;
+      if (this.mutiSelect) {
+        count++;
+      }
+      if (this.expandable) {
+        count++;
+      }
+      return count;
+    }
+  },
+  methods: {
+    _updateAllCheckState: function () {
+      if (this._checkedCount === 0) {
+        this.allCheckState = STATE_UNSELECTED;
+      } else if (this._checkedCount === this.data.length) {
+        this.allCheckState = STATE_ALL_SELECTED;
+      } else {
+        this.allCheckState = STATE_SOME_SELECTED;
+      }
+    },
+    _dataExist: function (rowId) {
+      return (rowId >= 0 && rowId <= this.data.length - 1);
+    },
+    /**
+     * 切换储物箱的展开或收起状态
+     * @param  {Number} rowId 行Id
+     * @return {[type]}       [description]
+     */
+    toggleStorageBox: function (rowId) {
+      var expanded;
+      if (this._dataExist(rowId)) {
+        expanded = !this.data[rowId].expanded;
+        this._changeDataBy(rowId, 'expanded', expanded);
+      }
+    },
+    /**
+     * 按指定列排序，该方法将会在升序和降序之间来回切换
+     * @param {Number} columnIndex 列序号
+     */
+    toggleSortBy: function (columnIndex) {
+      var col, sortOrder;
+      if (this.expandable) {
+        return;
+      }
+      col = this.columns[columnIndex];
+      sortOrder = this.sortOrders[col.field];
+      if (sortOrder !== 0) {
+        sortOrder = sortOrder * -1;
+      } else {
+        sortOrder = 1;
+      }
+      if (this._prevSortField !== null && this._prevSortField !== col.field) {
+        this.sortOrders[this._prevSortField] = 0; // 去掉列头排序图标
+      }
+      this.sortOrders[col.field] = sortOrder;
+      this._prevSortField = col.field;
+      this.sortKey = col.field;
+      this.sortBy(col.field, sortOrder);
+    },
+    /**
+     * 按指定列排序，该方法将会在升序和降序之间来回切换
+     * @param {String} sortKey 列code
+     * @param {Number} sortOrder 排序顺序，1为升序；-1为降序
+     */
+    sortBy: function (sortKey, sortOrder) {
+      var asc, desc, sorter;
+      asc = function (a, b) {
+        if (a[sortKey] < b[sortKey]) {
+          return -1;
+        } else if (a[sortKey] > b[sortKey]) {
+          return 1;
+        } else {
+          return 0;
+        }
+      };
+      desc = function (a, b) {
+        if (a[sortKey] < b[sortKey]) {
+          return 1;
+        } else if (a[sortKey] > b[sortKey]) {
+          return -1;
+        } else {
+          return 0;
+        }
+      };
+      sorter = (sortOrder === 1 ? asc : desc);
+      this.data.sort(sorter);
+    },
+    /**
+     * 切换勾选所有复选框勾选状态
+     */
+    toggleAllChecked: function () {
+      if (this.mutiSelect) {
+        if (this.allCheckState === STATE_UNSELECTED) {
+          this.allCheckState = STATE_ALL_SELECTED;
+        } else {
+          this.allCheckState = STATE_UNSELECTED;
+        }
+        this._changeSource = 0;
+        if (this.allCheckState === STATE_UNSELECTED) {
+          this.uncheckAll(true);
+        } else {
+          this.checkAll(true);
+        }
+      }
+    },
+    toggleCheckedBy: function (rowId) {
+      if (this.mutiSelect && this._dataExist(rowId)) {
+        if (this.data[rowId].checked) {
+          this.uncheckRow(rowId, true);
+        } else {
+          this.checkRow(rowId, true);
+        }
+      }
+    },
+    /**
+     * 设置所有显示行勾选状态
+     * @param {Boolean} checked 是否勾选，true为勾选；false为不勾选
+     */
+    _setCheckAll: function (checked) {
+      var i;
+      if (this.mutiSelect) {
+        for (i = this.data.length - 1; i >= 0; i--) {
+          if (this.data[i].disabled) {
+            continue;
+          }
+          this._changeDataBy(i, 'checked', checked);
+        }
+      }
+    },
+    /**
+     * 勾选所有显示行
+     * @param {Boolean|undefined} [fireEvent] 是否触发事件，为true表示触发事件，否则不触发
+     */
+    checkAll: function (fireEvent) {
+      if (this._checkedCount === this.data.length) {
+        return;
+      }
+      this._setCheckAll(true);
+      this._checkedCount = this.data.length;
+      this._updateAllCheckState();
+      if (fireEvent) {
+        this.$emit('dt-check-all');
+      }
+    },
+    /**
+     * 取消勾选所有显示行
+     * @param {Boolean|undefined} [fireEvent] 是否触发事件，为true表示触发事件，否则不触发
+     */
+    uncheckAll: function (fireEvent) {
+      if (this._checkedCount === 0) {
+        return;
+      }
+      this._setCheckAll(false);
+      this._checkedCount = 0;
+      this._updateAllCheckState();
+      if (fireEvent) {
+        this.$emit('dt-uncheck-all');
+      }
+    },
+    /**
+     * 勾选行
+     * @param {Number} rowId 行Id
+     * @param {Boolean|undefined} [fireEvent] 是否触发事件，为true表示触发事件，否则不触发
+     */
+    checkRow: function (rowId, fireEvent) {
+      if (this.mutiSelect && this._dataExist(rowId)) {
+        if (this.data[rowId].disabled) {
+          return;
+        }
+        this._changeDataBy(rowId, 'checked', true);
+        this._checkedCount++;
+        this._updateAllCheckState();
+        if (fireEvent) {
+          this.$emit('dt-check', rowId);
+        }
+      }
+    },
+    /**
+     * 取消勾选行
+     * @param {Number} rowId 行Id
+     * @param {Boolean|undefined} [fireEvent] 是否触发事件，为true表示触发事件，否则不触发
+     */
+    uncheckRow: function (rowId, fireEvent) {
+      if (this.mutiSelect && this._dataExist(rowId)) {
+        if (this.data[rowId].disabled) {
+          return;
+        }
+        this._changeDataBy(rowId, 'checked', false);
+        this._checkedCount--;
+        this._updateAllCheckState();
+        if (fireEvent) {
+          this.$emit('dt-uncheck', rowId);
+        }
+      }
+    },
+    _changeDataBy: function (rowId, prop, value) {
+      var item = Object.assign({}, this.data[rowId]);
+      if (this.data[rowId][prop] !== value) {
+        item[prop] = value;
+        this.data.$set(rowId, item);
+
+        if (prop === 'checked') {
+          if (value === true) {
+            this._checkedCount++;
+          } else {
+            this._checkedCount--;
+          }
+        }
+      }
+    },
+    _getActualRowId: function (rowId) {
+      var el = this.$el.querySelectorAll('[data-org-index="' + rowId + '"]');
+      return (el.length > 0) ? (el[0].rowIndex - 1) : null;
+    },
+    /**
+     * 选择行
+     * @param {Number} rowId 行Id
+     * @param {Boolean|undefined} [fireEvent] 是否触发事件，为true表示触发事件，否则不触发
+     */
+    selectRow: function (rowId, fireEvent) {
+      var prevRowId;
+      if (this.expandable === false && this._dataExist(rowId)) {
+        if (this.data[rowId].disabled) {
+          return;
+        }
+        if (this._prevSelectedRowData !== null) {
+          prevRowId = this.data.indexOf(this._prevSelectedRowData);
+          if (prevRowId !== rowId) {
+            this.unselectRow(prevRowId, fireEvent);
+          } else {
+            return;
+          }
+        }
+        this._changeDataBy(rowId, 'selected', true);
+        this._prevSelectedRowData = this.data[rowId];
+        if (fireEvent) {
+          this.$emit('dt-select', rowId);
+        }
+      }
+    },
+    /**
+     * 取消选择行
+     * @param {Number} rowId 行Id
+     * @param {Boolean|undefined} [fireEvent] 是否触发事件，为true表示触发事件，否则不触发
+     */
+    unselectRow: function (rowId, fireEvent) {
+      if (this.expandable === false && this._dataExist(rowId)) {
+        if (this.data[rowId].disabled) {
+          return;
+        }
+        this._changeDataBy(rowId, 'selected', false);
+        this._prevSelectedRowData = null;
+        if (fireEvent) {
+          this.$emit('dt-unselect', rowId);
+        }
+      }
+    },
+    selectedRowId: function () {
+      return this.data.indexOf(this._prevSelectedRowData);
+    },
+    getSelectedCount: function () {
+      return (this._prevSelectedRowData === null ? 0 : 1);
+    },
+    getSelected: function () {
+      var idx = this.selectedRowId();
+      if (idx > -1) {
+        return this.data[idx];
+      }
+      return null;
+    },
+    getCheckedCount: function () {
+      var count = 0;
+      if (this.mutiSelect) {
+        this.data.forEach(function (item) {
+          if (item.checked) {
+            count++;
+          }
+        });
+        return count;
+      }
+      return 0;
+    },
+    getChecked: function () {
+      var arr = [];
+      this.data.forEach(function (item) {
+        if (item.checked) {
+          arr.push(item);
+        }
+      });
+      return arr;
+    },
+    checkedRowIds: function () {
+      var arr = [];
+      this.data.forEach(function (item, idx) {
+        if (item.checked) {
+          arr.push(idx);
+        }
+      });
+      return arr;
+    }
+  }
+});
+
+DataTable.STATE_ALL_SELECTED = STATE_ALL_SELECTED;
+DataTable.STATE_SOME_SELECTED = STATE_SOME_SELECTED;
+DataTable.STATE_UNSELECTED = STATE_UNSELECTED;
+
+export default DataTable;
+</script>

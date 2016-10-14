@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>i18n Demo</title>
+  <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+  <link href="/assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="block__header leader--large trailer--large">
+      <h2 class="title--medium">国际化演示</h2>
+    </div>
+    <div class="form-row">
+      <button v-on:click="changeLang" class="button button--action">切换语言({{ lang }})</button>
+    </div>
+    <h3 class="title--small">common</h3>
+    <p>common.success: {{ $t("common.success") }}</p>
+    <p>common.fail: {{ $t("common.fail") }}</p>
+    <p>common.ok: {{ $t("common.ok") }}</p>
+    <p>common.cancel: {{ $t("common.cancel") }}</p>
+    <t-box-group labels="选项1,选项2,选项3,选项4"
+      checked="0,1,1,0"
+      values="This,is,a,test"
+      mtop="1"
+      size="small"
+      v-ref:my-tag1></t-box-group>
+  </div>
+</body>
+</html>

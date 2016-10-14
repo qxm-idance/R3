@@ -1,0 +1,15 @@
+<div class="section--block">
+  <article class="markdown-body">
+    <!--编译后的markdown文件放在这个地方-->
+  </article>
+</div>
+<script type="text/javascript">
+  loadContent();
+  function loadContent() {
+    $.get('./faqs/faqs.html', function (data) {
+      $(".section--block .markdown-body").html(data);
+    }).error(function () {
+      $(".section--block .markdown-body").html('<div class="block__header leader--large trailer--large"> <h2 class="title--medium"> API DOC (Coming soon...)</h2> </div>');
+    })
+  }
+</script>

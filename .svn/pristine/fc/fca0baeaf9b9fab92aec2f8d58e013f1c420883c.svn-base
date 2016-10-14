@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" class="js canvas no-touch rgba borderradius boxshadow opacity cssanimations cssgradients csstransforms csstransforms3d fontface video audio localstorage svg json">
+<head>
+  <meta charset="UTF-8">
+  <title>DropDown Demo</title>
+  <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+  <link href="/assets/css/main.css" rel="stylesheet">
+  <style>
+    #select_drop_down_wrapper button.button--action, #sub_drop_down_wrapper button.button--action{
+      margin-top: 15px;
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="select_drop_down_wrapper" class="container">
+    <div class="block__header leader--large trailer--large">
+      <h2 class="title--medium">下拉框-SelectDropDown</h2>
+    </div>
+    <div class="form-row">
+      <button @click="reloadSelDropDown" class="button button--action">重载下拉框数据(reload)</button>
+      <button @click="getSelDropDownValue" class="button button--action">获取选中的值(getValue)</button>
+      <button @click="getSelDropDownText" class="button button--action">获取选中的文字(getText)</button>
+      <button @click="setSelDropDownValue" class="button button--action">设置下拉框的值(setValue)</button>
+      <button @click="clearDropDown" class="button button--action">清除下拉框的值(clear)</button>
+      <button @click="disableDropDown" class="button button--action">禁用(disable)</button>
+      <button @click="enableDropDown" class="button button--action">启用(enable)</button>
+    </div>
+    <div style="max-width: 360px;margin: 50px auto 0;">
+      <t-sel-drop-down :list="selDropDownData" :rename="selRename" :value.sync="finalValue" size="small" defaultvalue="3" :disabled="false" @on-value-change="onSelectValueChange" @on-show-panel="onSelectShowPanel" @on-hide-panel="onSelectHidePanel" v-ref:my-select-dropdown></t-sel-drop-down>
+    </div>
+  </div>
+
+  <div id="sub_drop_down_wrapper" class="container" style="margin-top: 310px">
+    <div class="block__header leader--large trailer--large">
+      <h2 class="title--medium">定制下拉框-SubscriptionDropDown</h2>
+    </div>
+    <div class="form-row">
+      <button @click="reloadSubDropDown" class="button button--action">重载下拉框数据(reload)</button>
+      <button @click="getSubDropDownValue" class="button button--action">获取选中的值(getValue)</button>
+      <button @click="getSubDropDownText" class="button button--action">获取选中的文字(getText)</button>
+      <button @click="setSubDropDownValue" class="button button--action">设置下拉框的值(setValue)</button>
+      <button @click="clearSubDropDown" class="button button--action">清除下拉框的值(clear)</button>
+      <button @click="disableSubDropDown" class="button button--action">禁用(disable)</button>
+      <button @click="enableSubDropDown" class="button button--action">启用(enable)</button>
+    </div>
+    <div style="max-width: 360px;margin: 50px auto 450px;">
+      <t-sub-drop-down :responsedata="subDropDownData" :rename="rename" size="small" :disabled="false" defaultvalue="2" @on-value-change="onSubValueChange" @on-show-panel="onSubShowPanel" @on-hide-panel="onSubHidePanel" v-ref:my-sub-dropdown></t-sub-drop-down>
+    </div>
+  </div>
+</body>
+</html>

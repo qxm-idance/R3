@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- content请填写业务模块编码，此编码与i18n目录下的对应模块的子目录名称保持一致 -->
+  <meta name="biz-code" content="eshop">
+  <title>Title</title>
+  <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+  <link href="/assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+<section class="container">
+  <div class="block__header box--white-bottom-gradient block__header--no-border-bottom">
+    <div class="block__header__link leader--small">
+    </div>
+  </div>
+  <div class="container border">
+    <div class="block--content box--greyed border--bottom--light">
+      <div class="sg-component__label">业务组件demo</div>
+    </div>
+    <div class="block--content">
+      <div class="sg-component__label">
+        <div class="form-item ">
+          <label for="form-field-simple-with-label">Username</label>
+          <div class="form-search is-empty " data-module="form.search">
+            <input id="search" type="search" placeholder="Search">
+            <button type="button" tabindex="-1" class="form-search__clear no-js--hidden icon-clear" data-list-clear=""><span class="aria--visible">Clear filter</span></button>
+            <button id="search-button" class="form-search__submit" tabindex="-1" @click="showUserModal">
+              <span class="icon-search"></span><span class="aria--visible">Search</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-item">
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="Fill in your email address">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

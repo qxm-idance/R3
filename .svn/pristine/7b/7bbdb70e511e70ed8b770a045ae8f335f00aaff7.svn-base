@@ -1,0 +1,83 @@
+# Number-Stepper组件
+
+
+# 组件概述
+
+> 数字输入框组件,支持以相应的步长增加或减少
+
+
+# 组件API
+
+## 1.Props \(参数\)
+
+| 名字 | 类型 | 是否必传 | 默认 | 描述 |
+| --- | --- | --- | --- | --- |
+| max | Number| No |  | 组件可达到的最大值 |
+| min | Number | No  | 0 | 组件对应的最小值，递减到最小值后停止减小|
+| step | Number | No  | 1 | 组件的增减步长，递增或递减以此作为步长|
+| defaultValue | Number | No | 0 | 组件的初始值，若默认值小于最小值，则将最小值设置为默认值；若默认值大于最大值，则将最大值设置为默认值 |
+| size | String | No |  | 可选择normal和small两种，不传入是默认为normal |
+| label | String | No |  | 组件的label,不传或传空时label不占位 |
+| disabled | String | No | false | 是否禁用组件，默认不禁用 |
+
+
+
+## 2.Methods \(方法\)
+
+| 名字 | 参数 | 描述 |
+| --- | --- | --- |
+| setValue | \(value\) | 设置组件的值 |
+| getValue |  | 获取组件的值 |
+| disable |  | 禁用组件 |
+| enable |  | 启用组件 |
+
+
+# 组件Demo示例
+
+## 1.组件Demo示例链接
+
+[组件Demo示例链接](http://localhost:8080/sample/number-stepper-demo/index.html)
+
+## 2.组件Demo代码示例
+### html代码
+```html
+<!--normal NumberStepper-->
+<t-number-stepper :min="min" :max="max" :step="step" label="Number Steppper" v-ref:ns-normal></t-number-stepper>
+
+<!--small NumberStepper-->
+<t-number-stepper min="0" max="100" step="1" v-ref:ns-small size="small"></t-number-stepper>
+```
+
+### js实例组件代码
+```JavaScript
+import Vue from 'vue';
+import NumberStepper from 'taurus/components/number-stepper/number-stepper';
+
+new Vue({
+  el: 'body',
+  components: {
+    't-number-stepper': NumberStepper
+  },
+  data: {
+    min: 0,
+    max: 10,
+    step: 2
+  },
+  methods: {
+    setNSValue: function (newValue) {
+      this.$refs.nsNormal.setValue(newValue);
+    },
+    getNSValue: function () {
+      let value = this.$refs.nsNormal.getValue();
+      alert('类型' + typeof value + '; 值:' + value);
+    },
+    enable: function () {
+      this.$refs.nsNormal.enable();
+    },
+    disable: function () {
+      this.$refs.nsNormal.disable();
+    }
+  }
+});
+
+```

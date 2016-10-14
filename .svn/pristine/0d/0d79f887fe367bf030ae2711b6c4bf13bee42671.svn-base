@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en" class="checked">
+<head>
+    <meta charset="UTF-8">
+    <title>Product List</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/telenor.css">
+    <link rel="stylesheet" href="../assets/css/grid.css">
+    <script type="text/javascript" src="../assets/js/jquery.js"></script>
+</head>
+<body class="offcanvas">
+<div class="section--oncanvas" style="padding-bottom: 470px;">
+<div class="section--wrap">
+    <!--header-->
+    <nav class="menu-wrapper">
+        <!--desktop:menu-->
+        <div id="ad" class="section mobile-hidden tablet-padding-toleft tablet-padding-toright">
+            <div class="container section--menu">
+                <a href="#nogo" class="link--logo float--left" title="home">
+                    <span class="link--text">Home</span>
+                </a>
+                <ul class="menu--main float--left clear">
+                    <li><a href="" class="active-trail track-element-click">Shop</a></li>
+                    <li><a href="" class="track-element-click">Kundeservice</a></li>
+                    <li><a href="" class="track-element-click">Mit Telenor</a></li>
+                    <li><a href="" class="track-element-click">Find butik</a></li>
+                </ul>
+                <div class="section--menu__service">
+                    <div class="menu--service">
+                        <a href="#nogo" class="active-trail">Privat</a>
+                        <a href="#nogo">Erhverv</a>
+                    </div>
+                    <div class="menu--user">
+                        <a href="#nogo">Log ind</a>
+                    </div>
+                </div>
+                <div class="menu--right float--right">
+                    <div class="menu--right__basket">
+                        <a href="#nogo" class="basket-icon">
+                            <span class="icon icon-basket text-size--24"></span>
+                        </a>
+                    </div>
+                    <div class="menu--right__search"></div>
+                </div>
+            </div>
+        </div>
+        <!--subnav menu -->
+        <div id="menu--subnav-sticky-wrapper" class="mobile-hidden menu-subnav-sticky-wrapper">
+
+            <div class="section section--subnav mobile-hidden tablet-padding-toleft tablet-padding-toright">
+                <div class="container">
+                    <div><a href="#nogo" class="link--logo float--left"></a></div>
+                    <div>
+                        <ul class="menu--subnav menu--flexnav flexnav--inited">
+                            <li>
+                                <a href="#nogo" class="active-trail  track-element-click">Mobiler</a>
+                            </li>
+                            <li>
+                                <a href="#nogo" class="track-element-click">Abonnementer</a>
+                            </li>
+                            <li>
+                                <a href="#nogo" class="track-element-click">Tablets</a>
+                            </li>
+                            <li>
+                                <a href="#nogo" class="track-element-click">Bredbånd</a>
+                            </li>
+                            <li>
+                                <a href="#nogo" class="track-element-click">Tilbehør</a>
+                            </li>
+                            <li>
+                                <a href="#nogo" class="track-element-click">Familierabat</a>
+                            </li>
+                            <li>
+                                <a href="#nogo" class="track-element-click">Viaplay</a>
+                            </li>
+                            <li>
+                                <a href="#nogo" class="track-element-click">Gør et kup!</a>
+                            </li>
+                            <li>
+                                <a href="#nogo" class="track-element-click">Mobilt Bredbånd</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--Mobile menu -->
+        <div class="nav-mobile desktop-hidden"></div>
+    </nav>
+    <!--header-end-->
+<div class="container--main">
+    <!--main section-->
+    <section class="product">
+        <!-- 选择配置产品规格时，加载状态,给标签［section］“product-container”添加样式“is-loading”,相应更替产品信息-->
+        <section class="product-container">
+            <div class="container padding-leader--large padding-trailer">
+                <div class="trailer">
+                    <div class="grid-row">
+                        <div class="col-md-4">
+                            <div class="padding-leader--large">
+                                <h1 class="text-size--54 mobile-text-size--30 text-light toright--large mobile-toright--none trailer--xxlarge mobile-trailer mobile-text--center">
+                                    Apple iPhone 6s
+                                </h1>
+                                <div class="mobile-hidden">
+                                    <p class="text-size-19 trailer">
+                                        DINE FORDELE MED TELENOR
+                                    </p>
+                                    <ul class="list list--check list--check--bullet list--blue">
+                                        <li>item 1</li>
+                                        <li>item 2</li>
+                                        <li>item 3</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-md--middle">
+                            <!-- flip pic-->
+                            <!-- add-flipped-->
+                            <div class="flip-container">
+                                <span class="flip-arrow icon-arrow-prev"></span>
+                                <div class="flipper">
+                                    <div class="front">
+                                        <img src="../assets/img/iPhone6s/iphone6s_spacegray_front_440.png" alt=""/>
+                                    </div>
+                                    <div class="back">
+                                        <img src="../assets/img/iPhone6s/iphone6s_spacegrey_back_220.png" alt=""/>
+                                    </div>
+                                </div>
+                                <span class="flip-arrow icon-arrow-next"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="product-config">
+                                <div class="product-config--overlay">
+                                    <div class="product-config--area">
+                                        <ul class="product-config__list">
+                                            <!--点击弹出层时的选中状态，给标签［li]"product-config__row" 添加样式“is-selected”-->
+                                            <li class="product-config__row">
+                                                <div class="product-config__text-wrap">
+                                                    <div class="clear">
+                                                        <span class="product-config__description text-size--13 color-blue">
+                                                            <span class="active-string">Skift farve</span>
+                                                            <span class="inactive-string">Farve</span>
+                                                            <span class="choose-string">Vælg</span>
+                                                        </span>
+                                                        <span class="product-config__name text-size--16">Rosa</span>
+                                                        <span class="load-tester">
+                                                            <span class="spinner"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <!-- 颜色配置弹出层－开始-->
+                                                <div class="slide-content">
+                                                    <div class="slide-content__holder">
+                                                        <ul class="options-list">
+                                                            <li class="options-list__item">
+                                                                <input id="color-0" name="color" type="radio" class="hidden-element" value="guld"/>
+                                                                <label for="color-0">
+                                                                    <span class="color-indicator" style="background:#E9C261;"></span>
+                                                                    <span class="options-list__color-name text-size--19 mobile-text-size--16 text-truncate">Guld</span>
+                                                                </label>
+                                                            </li>
+                                                            <li class="options-list__item">
+                                                                <input id="color-1" name="color" type="radio" class="hidden-element" value="guld"/>
+                                                                <label for="color-1">
+                                                                    <span class="color-indicator" style="background:#dadada;"></span>
+                                                                    <span class="options-list__color-name text-size--19 mobile-text-size--16 text-truncate">Sølv</span>
+                                                                </label>
+                                                            </li>
+                                                            <li class="options-list__item">
+                                                                <input id="color-2" name="color" type="radio" class="hidden-element" value="guld"/>
+                                                                <label for="color-2">
+                                                                    <span class="color-indicator" style="background:#e0b6b0;"></span>
+                                                                    <span class="options-list__color-name text-size--19 mobile-text-size--16 text-truncate">Rosa</span>
+                                                                </label>
+                                                            </li>
+                                                            <li class="options-list__item">
+                                                                <input id="color-3" name="color" type="radio" class="hidden-element" value="guld"/>
+                                                                <label for="color-3">
+                                                                    <span class="color-indicator" style="background:#747474;"></span>
+                                                                    <span class="options-list__color-name text-size--19 mobile-text-size--16 text-truncate">Grå</span>
+                                                                </label>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <!-- 颜色配置弹出层－结束-->
+                                            </li>
+                                            <!-- 若产品配置项只有一个选项的情况下，给标签［li］“product-config__row”添加样式“single-option”,该行鼠标状态为“小箭头”
+                                            ，不可以点击弹层,默认跟其他颜色选择一样，选中状态为“is-selected”-->
+                                            <li class="product-config__row">
+                                                <div class="product-config__text-wrap">
+                                                    <div class="clear">
+                                                        <span class="product-config__description text-size--13 color-blue">
+                                                            <span class="active-string">Skift størrelse</span>
+                                                            <span class="inactive-string">Størrelse</span>
+                                                            <span class="choose-string">Vælg størrelse</span>
+                                                        </span>
+                                                        <span class="product-config__name text-size--16">16GB</span>
+                                                        <span class="load-tester">
+                                                            <span class="spinner"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <!--内存配置弹出层－开始-->
+                                                <div class="slide-content">
+                                                    <div class="slide-content__holder">
+                                                        <ul class="options-list">
+                                                            <li class="options-list__item">
+                                                                <input id="capacity-0" name="capacity" type="radio" class="hidden-element" value="64"/>
+                                                                <label for="capacity-0">
+                                                                    <span class="options-list__memory-descriotion ">
+                                                                    <span class="text-size--19 mobile-text-size--16 text-truncate display--block">64GB</span>
+                                                                    <span class="text-size--13 color-steel-grey text-truncate display--block tablet-hidden">Plads til musik, billeder og video</span>
+                                                                    </span>
+                                                                </label>
+                                                            </li>
+                                                            <li class="options-list__item">
+                                                                <input id="capacity-1" name="capacity" type="radio" class="hidden-element" value="128"/>
+                                                                <label for="capacity-1">
+                                                                    <span class="options-list__memory-descriotion ">
+                                                                    <span class="text-size--19 mobile-text-size--16 text-truncate display--block">128GB</span>
+                                                                    <span class="text-size--13 color-steel-grey text-truncate display--block tablet-hidden">Plads til musik, billeder og video</span>
+                                                                    </span>
+                                                                </label>
+                                                            </li>
+                                                            <li class="options-list__item">
+                                                                <input id="capacity-2" name="capacity" type="radio" class="hidden-element" value="16"/>
+                                                                <label for="capacity-2">
+                                                                    <span class="options-list__memory-descriotion ">
+                                                                    <span class="text-size--19 mobile-text-size--16 text-truncate display--block">16GB</span>
+                                                                    <span class="text-size--13 color-steel-grey text-truncate display--block tablet-hidden">Plads til musik, billeder og video</span>
+                                                                    </span>
+                                                                </label>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <!--内存配置弹出层－结束-->
+                                            </li>
+                                            <li class="product-config__row">
+                                                <div class="product-config__text-wrap">
+                                                    <div class="clear">
+                                                        <span class="product-config__description text-size--13 color-blue">
+                                                            <span class="active-string">Skift abonnement</span>
+                                                            <span class="inactive-string">Abonnement</span>
+                                                            <span class="choose-string">Vælg abonnement</span>
+                                                        </span>
+                                                        <span class="product-config__name text-size--16">FRI+ 40 GB
+                                                        <span class="product-config__price">249,-</span>
+                                                        </span>
+                                                        <span class="load-tester">
+                                                            <span class="spinner"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <!-- offer配置弹出层－开始-->
+                                                <div class="slide-content slide-content--wide">
+                                                    <div class="slide-content__holder">
+                                                        <div class="overflow-auto-wrapper">
+                                                            <ul class="subscription-details--list ">
+                                                                <li class="subscription-details__item">
+                                                                    <input id="subscription-0" type="radio" name="subscription" class="hidden-element"/>
+                                                                    <label for="subscription-0" class="text-size--19 display--block">
+                                                                        <span class="display--block clear mobile-trailer--small">
+                                                                            <span class="subscription-details__heading display--block text-truncate">
+                                                                                <span class="text-size--16 display--block mobile-display--inline">FRI+</span>
+                                                                                <span class="text-size--30 mobile-text-size--16 display--block mobile-display--inline">10 GB</span>
+                                                                            </span>
+                                                                            <span class="subscription-details__price text-size--44 mobile-text-size--19 color-blue display--block">149,-</span>
+                                                                        </span>
+                                                                        <span class="text-size--11 padding-whole--small mobile-padding-whole--none">
+                                                                            <strong class="display--block trailer--xsmall">DET FÅR DU:</strong>
+                                                                            <span class="subscription-details__info display--block">
+                                                                                <span class="display--block">10 GB data</span>
+										                                        <span class="display--block">Fri tale, sms og mms</span>
+										                                        <span class="display--block">100 GB OneDrive lagerplads</span>
+										                                        <span class="display--block">Viaplay inkl. i 3 mdr.</span>
+                                                                            </span>
+                                                                        </span>
+                                                                        <span class="subscription-details__sale-info">
+                                                                            <span class="select-indicator"></span>
+                                                                            <span class="subscription-details__sale-info-text">
+                                                                                <span class="display--block text-size--11">Vælg og spar</span>
+                                                                                <span class="display--block text-size--19">-619,-</span>
+                                                                                <span class="display--block text-size--11">på din nye mobil</span>
+                                                                            </span>
+                                                                        </span>
+                                                                    </label>
+                                                                </li>
+                                                                <li class="subscription-details__item">
+                                                                    <input id="subscription-1" type="radio" name="subscription" class="hidden-element" checked/>
+                                                                    <label for="subscription-1" class="text-size--19 display--block">
+                                                                        <span class="display--block clear mobile-trailer--small">
+                                                                            <span class="subscription-details__heading display--block text-truncate">
+                                                                                <span class="text-size--16 display--block mobile-display--inline">FRI+</span>
+                                                                                <span class="text-size--30 mobile-text-size--16 display--block mobile-display--inline">10 GB</span>
+                                                                            </span>
+                                                                            <span class="subscription-details__price text-size--44 mobile-text-size--19 color-blue display--block">199,-</span>
+                                                                        </span>
+                                                                        <span class="text-size--11 padding-whole--small mobile-padding-whole--none">
+                                                                            <strong class="display--block trailer--xsmall">DET FÅR DU:</strong>
+                                                                            <span class="subscription-details__info display--block">
+                                                                                <span class="display--block">10 GB data</span>
+										                                        <span class="display--block">Fri tale, sms og mms</span>
+										                                        <span class="display--block">100 GB OneDrive lagerplads</span>
+										                                        <span class="display--block">Viaplay inkl. i 3 mdr.</span>
+                                                                            </span>
+                                                                        </span>
+                                                                        <span class="subscription-details__sale-info">
+                                                                            <span class="select-indicator"></span>
+                                                                            <span class="subscription-details__sale-info-text">
+                                                                                <span class="display--block text-size--11">Vælg og spar</span>
+                                                                                <span class="display--block text-size--19">-619,-</span>
+                                                                                <span class="display--block text-size--11">på din nye mobil</span>
+                                                                            </span>
+                                                                        </span>
+                                                                    </label>
+                                                                </li>
+                                                                <li class="subscription-details__item">
+                                                                    <input id="subscription-2" type="radio" name="subscription" class="hidden-element"/>
+                                                                    <label for="subscription-2" class="text-size--19 display--block">
+                                                                        <span class="display--block clear mobile-trailer--small">
+                                                                            <span class="subscription-details__heading display--block text-truncate">
+                                                                                <span class="text-size--16 display--block mobile-display--inline">FRI+</span>
+                                                                                <span class="text-size--30 mobile-text-size--16 display--block mobile-display--inline">10 GB</span>
+                                                                            </span>
+                                                                            <span class="subscription-details__price text-size--44 mobile-text-size--19 color-blue display--block">209,-</span>
+                                                                        </span>
+                                                                        <span class="text-size--11 padding-whole--small mobile-padding-whole--none">
+                                                                            <strong class="display--block trailer--xsmall">DET FÅR DU:</strong>
+                                                                            <span class="subscription-details__info display--block">
+                                                                                <span class="display--block">10 GB data</span>
+										                                        <span class="display--block">Fri tale, sms og mms</span>
+										                                        <span class="display--block">100 GB OneDrive lagerplads</span>
+										                                        <span class="display--block">Viaplay inkl. i 3 mdr.</span>
+                                                                            </span>
+                                                                        </span>
+                                                                        <span class="subscription-details__sale-info">
+                                                                            <span class="select-indicator"></span>
+                                                                            <span class="subscription-details__sale-info-text">
+                                                                                <span class="display--block text-size--11">Vælg og spar</span>
+                                                                                <span class="display--block text-size--19">-619,-</span>
+                                                                                <span class="display--block text-size--11">på din nye mobil</span>
+                                                                            </span>
+                                                                        </span>
+                                                                    </label>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- offer配置弹出层－结束-->
+                                            </li>
+                                            <li class="product-config__row">
+                                                <div class="product-config__text-wrap">
+                                                    <div class="clear">
+                                                        <span class="product-config__description text-size--13 color-blue">
+                                                            <span class="active-string">Vælg afbetaling</span>
+                                                            <span class="inactive-string">Afbetaling</span>
+                                                            <span class="choose-string">Vælg</span>
+                                                        </span>
+                                                        <span class="product-config__name text-size--16">24 Mdr.
+                                                        <span class="product-config__price">39,-</span>
+                                                        </span>
+                                                        <span class="load-tester">
+                                                            <span class="spinner"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <!-- 分期配置弹出层－开始-->
+                                                <div class="slide-content slide-content--installment">
+                                                    <div class="slide-content__holder">
+                                                        <ul class="options-list">
+                                                            <li class="options-list__item">
+                                                                <input id="installment-0" name="installment" type="radio" class="hidden-element" value="64"/>
+                                                                <label for="installment-0">
+                                                                    <span class="installment-name">
+                                                                    <span class="text-size--19 mobile-text-size--16 text-truncate trailer--xsmall tablet-trailer--none display--block">Kontant, intet abonnement</span>
+                                                                    <span class="text-size--13 color-steel-grey text-truncate display--block">Engangsbetaling</span>
+                                                                    </span>
+                                                                    <span class="installment-price">
+                                                                        <span class="installment-price__holder">
+                                                                            <span class="display--block text-size--24 mobile-text-size--19 text--right color-blue trailer--xsmall tablet-trailer--none">
+                                                                                5.899,-</span>
+                                                                            <span class="display--block text-size--13 color-steel-grey text--right installment-price__period">Pr. md.</span>
+                                                                        </span>
+                                                                    </span>
+                                                                </label>
+                                                            </li>
+                                                            <li class="options-list__item">
+                                                                <input id="installment-1" name="installment" type="radio" class="hidden-element" value="128"/>
+                                                                <label for="installment-1">
+                                                                    <span class="installment-name">
+                                                                    <span class="text-size--19 mobile-text-size--16 text-truncate display--block">Kontant</span>
+                                                                    <span class="text-size--13 color-steel-grey text-truncate display--block tablet-hidden">Engangsbetaling</span>
+                                                                    </span>
+                                                                    <span class="installment-price">
+                                                                        <span class="installment-price__holder">
+                                                                            <span class="display--block text-size--24 mobile-text-size--19 text--right color-blue trailer--xsmall tablet-trailer--none">
+                                                                                5.280,-</span>
+                                                                            <span class="display--block text-size--13 color-steel-grey text--right installment-price__period">Pr. md.</span>
+                                                                        </span>
+                                                                    </span>
+                                                                </label>
+                                                            </li>
+                                                            <li class="options-list__item">
+                                                            <input id="installment-2" name="installment" type="radio" class="hidden-element" value="16"/>
+                                                            <label for="installment-2">
+                                                                    <span class="options-list__memory-descriotion ">
+                                                                    <span class="text-size--19 mobile-text-size--16 text-truncate display--block">6 måneder</span>
+                                                                    <span class="text-size--13 color-steel-grey text-truncate display--block tablet-hidden">Plads til musik, billeder og video</span>
+                                                                    </span>
+                                                                    <span class="installment-price">
+                                                                        <span class="installment-price__holder">
+                                                                            <span class="display--block text-size--24 mobile-text-size--19 text--right color-blue trailer--xsmall tablet-trailer--none">
+                                                                                880,-</span>
+                                                                            <span class="display--block text-size--13 color-steel-grey text--right installment-price__period">Pr. md.</span>
+                                                                        </span>
+                                                                    </span>
+                                                            </label>
+                                                        </li>
+                                                            <li class="options-list__item">
+                                                            <input id="installment-3" name="installment" type="radio" class="hidden-element" value="16"/>
+                                                            <label for="installment-3">
+                                                                    <span class="options-list__memory-descriotion ">
+                                                                    <span class="text-size--19 mobile-text-size--16 text-truncate display--block">12 måneder</span>
+                                                                    <span class="text-size--13 color-steel-grey text-truncate display--block tablet-hidden">Plads til musik, billeder og video</span>
+                                                                    </span>
+                                                                    <span class="installment-price">
+                                                                        <span class="installment-price__holder">
+                                                                            <span class="display--block text-size--24 mobile-text-size--19 text--right color-blue trailer--xsmall tablet-trailer--none">
+                                                                                440,-</span>
+                                                                            <span class="display--block text-size--13 color-steel-grey text--right installment-price__period">Pr. md.</span>
+                                                                        </span>
+                                                                    </span>
+                                                            </label>
+                                                        </li>
+                                                            <li class="options-list__item">
+                                                                <input id="installment-4" name="installment" type="radio" class="hidden-element" value="16"  checked/>
+                                                                <label for="installment-4">
+                                                                    <span class="options-list__memory-descriotion ">
+                                                                    <span class="text-size--19 mobile-text-size--16 text-truncate display--block">24 måneder</span>
+                                                                    <span class="text-size--13 color-steel-grey text-truncate display--block tablet-hidden">Plads til musik, billeder og video</span>
+                                                                    </span>
+                                                                    <span class="installment-price">
+                                                                        <span class="installment-price__holder">
+                                                                            <span class="display--block text-size--24 mobile-text-size--19 text--right color-blue trailer--xsmall tablet-trailer--none">
+                                                                                220,-</span>
+                                                                            <span class="display--block text-size--13 color-steel-grey text--right installment-price__period">Pr. md.</span>
+                                                                        </span>
+                                                                    </span>
+                                                                </label>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <!-- 分期配置弹出层－结束-->
+                                            </li>
+                                            <li class="product-config__row">
+                                                <div class="product-config__text-wrap">
+                                                    <div class="clear">
+                                                        <span class="product-config__description text-size--13 color-blue">
+                                                            <span class="active-string">Se forsikring</span>
+                                                            <span class="inactive-string">Ønsker du forsikring</span>
+                                                            <span class="choose-string">Vælg</span>
+                                                        </span>
+                                                        <span class="product-config__name text-size--16">
+                                                            Ønsker du forsikring
+                                                            <!-- 保险默认没有价格，选中后带出价格-->
+                                                        <span class="product-config__price">89,-</span>
+                                                        </span>
+                                                        <span class="load-tester">
+                                                            <span class="spinner"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <!-- 保险配置弹出层－开始-->
+                                                <div class="slide-content slide-content--wide mobile-padding-toleft mobile-padding-toright">
+                                                    <div class="slide-content__holder padding-whole--xlarge padding-trailer--small mobile-padding-whole--none mobile-padding-trailer">
+                                                        <h2 class="mobile-padding-leader color-gray text-size--36 text-light trailer--small">
+                                                            Mobilforsikring
+                                                        </h2>
+                                                        <div class="insurance border border--without-left mobile-border--without grid-row--gutter-none trailer--small">
+                                                            <div class="insurance-info col-md-8 mobile-trailer">
+                                                                <ul class="services-list ovh trailer">
+                                                                    <li class="grid-row trailer">
+                                                                        <div class="col-xs-auto col-xs--middle">
+                                                                            <span class="text-size--28 icon icon-global circle-outline border-width-1 circle-insurance color-blue"></span>
+                                                                        </div>
+                                                                        <span class="text col-xs col-xs--middle">
+                                                                            Vi leverer erstatningsmobil allerede dagen efter på hverdage.
+                                                                        </span>
+                                                                    </li>
+                                                                    <li class="grid-row trailer">
+                                                                        <div class="col-xs-auto col-xs--middle">
+                                                                            <span class="text-size--28 icon icon-broken-screen circle-outline border-width-1 circle-insurance color-blue"></span>
+                                                                        </div>
+                                                                        <span class="text col-xs col-xs--middle">
+                                                                            Vi leverer erstatningsmobil allerede dagen efter på hverdage.
+                                                                        </span>
+                                                                    </li>
+                                                                    <li class="grid-row">
+                                                                        <div class="col-xs-auto col-xs--middle">
+                                                                            <span class="text-size--28 icon icon-time circle-outline border-width-1 circle-insurance color-blue"></span>
+                                                                        </div>
+                                                                        <span class="text col-xs col-xs--middle">
+                                                                            Vi leverer erstatningsmobil allerede dagen efter på hverdage.
+                                                                        </span>
+                                                                    </li>
+                                                                </ul>
+                                                                <div class="link-holder">
+                                                                    <ul class="list list--gt-bullet list--blue">
+                                                                        <li>
+                                                                            <a href="#nogo" class="color-blue bullet-link">Se alle fordele</a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="#nogo" class="color-blue bullet-link">Se vilkår og betingelser</a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div class="price-box-holder col-md-4 box--greyed text--center">
+                                                                <h2 class="trailer">Apple iPhone 6s</h2>
+                                                                <div class="trailer">
+                                                                    <span class="text-size--54 text-light">89,- <span class="text-size--21">/MD</span></span>
+                                                                </div>
+                                                                <p class="text-size--13 color-steel-grey trailer--large">Mindstepris: 89,-</p>
+                                                                <button class="button button--default trailer--med button--truncate">
+                                                                    <span class="button__label">
+                                                                        <span class="button__text">
+                                                                            <span title="Tilføj forsikring">Tilføj forsikring</span>
+                                                                        </span>
+                                                                    </span>
+                                                                </button>
+                                                                <button class="button button--accept trailer button--truncate">
+                                                                    <span class="button__label">
+                                                                        <span class="button__text">
+                                                                            <span title="Ingen forsikring">Ingen forsikring</span>
+                                                                        </span>
+                                                                    </span>
+                                                                </button>
+                                                                <p class="text-size--13 color-steel-grey">Selvrisiko pr. skade: 399,-</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- 保险配置弹出层－结束-->
+                                            </li>
+                                        </ul>
+                                        <!--product calc-->
+                                        <div class="product-calc">
+                                            <div class="product-calc__prices padding-trailer--small">
+                                                <div class="clear">
+                                                    <span>Betal nu</span>
+                                                    <span class="product-calc__price text-size--19">
+                                                        <span class="product-calc__price-now">200,-</span>
+                                                        <span class="load-tester"><span class="spinner"></span></span>
+                                                    </span>
+                                                </div>
+                                                <div class="clear">
+                                                    <span>MÅNEDLIG BETALING</span>
+                                                    <span class="product-calc__price text-size--19">
+                                                        <span class="product-calc__price-now">377,-</span>
+                                                        <span class="load-tester"><span class="spinner"></span></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="product-calc__minibasket padding-leader--small padding-trailer--small trailer--xsmall color-gray text-size--11">
+                                                <div class="clear">
+                                                    <span>Discount on the mobile</span>
+                                                    <span class="product-calc__price">
+                                                        <span class="product-calc__price-now">377,-</span>
+                                                        <span class="load-tester"><span class="spinner"></span></span>
+                                                    </span>
+                                                </div>
+                                                <div class="clear product-calc__discount">
+                                                    <span>Mobile's price(incl. discount)</span>
+                                                    <span class="product-calc__price">
+                                                        <span class="product-calc__price-now">-1.099,-</span>
+                                                        <span class="load-tester"><span class="spinner"></span></span>
+                                                    </span>
+                                                </div>
+                                                <div class="clear">
+                                                    <span>Subscription for 6 months(6x249,-)</span>
+                                                    <span class="product-calc__price">
+                                                        <span class="product-calc__price-now">377,-</span>
+                                                        <span class="load-tester"><span class="spinner"></span></span>
+                                                    </span>
+                                                </div>
+                                                <div class="clear">
+                                                    <span>Mobile insurance</span>
+                                                    <span class="product-calc__price">
+                                                        <span class="product-calc__price-now">377,-</span>
+                                                        <span class="load-tester"><span class="spinner"></span></span>
+                                                    </span>
+                                                </div>
+                                                <div class="clear">
+                                                    <span>Overall <a href="#nogo" class="color-blue">minimum</a></span>
+                                                    <span class="product-calc__price">
+                                                        <span class="product-calc__price-now">377,-</span>
+                                                        <span class="load-tester"><span class="spinner"></span></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="product-buy-btn trailer--small">
+                                                <div class="clear trailer--xsmall">
+                                                    <span class="text-size--11 float--left">
+                                                        <span class="toright--xsmall">Fri fragt</span>
+                                                        <span>1-2 dage</span>
+                                                    </span>
+                                                    <span class="text-size--11 float--right status-dot status-dot--small status-dot--dynamic">
+                                                        <span class="status-dot__icon" style="background:#00ff00"></span>
+                                                        <span>På lager</span>
+                                                    </span>
+                                                </div>
+                                                <!-- button-->
+                                                <div class="grid-row">
+                                                    <div class="col-xs">
+                                                        <button type="button" class="button button--accept">
+																<span class="button__label icon-arrow-next">Læg i kurv</span>
+                                                            <span class="button__label--success icon icon-thumb-up">Læg i kurv</span>
+                                                            <span class="button__spinner"><span class="spinner-holder"><span class="spinner-container"><em><span></span></em></span></span></span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!-- 自提点滑出给[div]'delivery-box'，添加样式“ is-selected”-->
+                                            <div class="delivery-box clear">
+                                                <div class="float--left mobile-float--none mobile-trailer text-size--11">
+                                                    <a href="#nogo" class="delivery-box--link color-blue bullet-link">
+                                                        Find din nærmeste butik
+                                                    </a>
+                                                </div>
+                                                <!-- 自提点滑出层-->
+                                                <div class="slide-content slide-content--wide slide-content--stores rel">
+                                                    <div class="padding-whole available-stores-wrap">
+                                                        <div class="available-stores-frame">
+                                                            <h2 class="text-size--36 text-light color-gray trailer--xsmall">
+                                                                Tjek lagerstatus i butikker
+                                                            </h2>
+                                                            <form action="#" class="trailer">
+                                                                <div class="form-search is-empty ">
+                                                                    <input type="search" placeholder="Søg med postnummer...">
+                                                                    <button type="button" tabindex="-1" class="form-search__clear icon-clear" style="display: none;"></button>
+                                                                    <button class="form-search__submit" tabindex="-1">
+                                                                        <span class="icon-search"></span>
+                                                                    </button>
+                                                                </div>
+                                                            </form>
+                                                            <!-- 自提点列表-->
+                                                            <div class="border--top padding-leader trailer--small text-size--13">
+                                                                <div class="available-stores">
+                                                                    <div class="grid-row">
+                                                                        <div class="col-md-4 mobile-trailer">
+                                                                            <div class="store-info">
+                                                                                <h3 class="text-bold trailer--xsmall">DK-Telenor butikken Silkeborg</h3>
+                                                                            </div>
+                                                                        <span class="text-size--13 display--block trailer--small status-dot status-dot--dynamic status-dot--small">
+				                                                            <span class="status-dot__icon" style="background-color: #ff0"></span>
+                                                                            Få på lager
+                                                                        </span>
+                                                                            <h3 class="text-bold trailer--xsmall">Adresse</h3>
+                                                                            <address class="store-address trailer--large">
+                                                                                Søndergade 2   <br>
+                                                                                8600 Silkeborg<br>
+                                                                                Telefon:  60504216
+                                                                            </address>
+                                                                            <h3 class="text-bold trailer--xsmall">
+                                                                                Åbningstider
+                                                                            </h3>
+                                                                            <dl class="clear">
+                                                                                <dt>Hverdage: </dt>
+                                                                                <dd></dd>
+                                                                                <dt>Weekender:</dt>
+                                                                                <dd></dd>
+                                                                            </dl>
+                                                                            <dl class="clear">
+                                                                                <dt>Afstand:</dt>
+                                                                                <dd>45,3 km fra dig</dd>
+                                                                            </dl>
+                                                                        </div>
+                                                                        <div class="col-md-4 mobile-trailer">
+                                                                            <div class="store-info">
+                                                                                <h3 class="text-bold trailer--xsmall">DK-5R Marketing (2 hold)</h3>
+                                                                            </div>
+                                                                        <span class="text-size--13 display--block trailer--small status-dot status-dot--dynamic status-dot--small">
+				                                                            <span class="status-dot__icon" style="background-color: #f00"></span>
+                                                                            Få på lager
+                                                                        </span>
+                                                                            <h3 class="text-bold trailer--xsmall">Adresse</h3>
+                                                                            <address class="store-address trailer--large">
+                                                                                Søndergade 2   <br>
+                                                                                8600 Silkeborg<br>
+                                                                                Telefon:  60504216
+                                                                            </address>
+                                                                            <h3 class="text-bold trailer--xsmall">
+                                                                                Åbningstider
+                                                                            </h3>
+                                                                            <dl class="clear">
+                                                                                <dt>Hverdage: </dt>
+                                                                                <dd></dd>
+                                                                                <dt>Weekender:</dt>
+                                                                                <dd></dd>
+                                                                            </dl>
+                                                                            <dl class="clear">
+                                                                                <dt>Afstand:</dt>
+                                                                                <dd>45,3 km fra dig</dd>
+                                                                            </dl>
+                                                                        </div>
+                                                                        <div class="col-md-4 mobile-trailer">
+                                                                            <div class="store-info">
+                                                                                <h3 class="text-bold trailer--xsmall">DK-Telenor butikken Århus Bruun¿s Galleri</h3>
+                                                                            </div>
+                                                                        <span class="text-size--13 display--block trailer--small status-dot status-dot--dynamic status-dot--small">
+				                                                            <span class="status-dot__icon" style="background-color: #0f0"></span>
+                                                                            Få på lager
+                                                                        </span>
+                                                                            <h3 class="text-bold trailer--xsmall">Adresse</h3>
+                                                                            <address class="store-address trailer--large">
+                                                                                Søndergade 2   <br>
+                                                                                8600 Silkeborg<br>
+                                                                                Telefon:  60504216
+                                                                            </address>
+                                                                            <h3 class="text-bold trailer--xsmall">
+                                                                                Åbningstider
+                                                                            </h3>
+                                                                            <dl class="clear">
+                                                                                <dt>Hverdage: </dt>
+                                                                                <dd></dd>
+                                                                                <dt>Weekender:</dt>
+                                                                                <dd></dd>
+                                                                            </dl>
+                                                                            <dl class="clear">
+                                                                                <dt>Afstand:</dt>
+                                                                                <dd>45,3 km fra dig</dd>
+                                                                            </dl>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="clear border-top padding-leader">
+                                                            <div class="grid-row">
+                                                                <div class="col-md-5 mobile-trailer--small mobile-text--center">
+                                                                    <div class="form-item">
+                                                                        <div class="form-checkbox form-checkbox--small">
+                                                                            <input type="checkbox" id="onlyInStock" class="display--inline-block align--middle">
+                                                                            <label class="text-size--13" for="onlyInStock">Vis kun butikker med lager</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-7">
+                                                                    <div class="text--right mobile-text--center">
+                                                                        <!-- pager-->
+                                                                        <div class="pager pager--default" data-component="pager" data-alias="pagination" style="display: inline-block;"><a class="pager__button previous" data-selector="page-previous">previous</a>
+<span data-selector="pages"><a class="pager__button" data-selector="page-button" data-page-number="1">1</a>
+<a class="pager__button" data-selector="page-button" data-page-number="2">2</a>
+<a class="pager__button" data-selector="page-button" data-page-number="3">3</a>
+<a class="pager__button current" data-selector="page-button" data-page-number="4">4</a>
+<a class="pager__button" data-selector="page-button" data-page-number="5">5</a>
+<span class="pager__elipsis">…</span>
+<a class="pager__button" data-selector="page-button" data-page-number="24">24</a>
+</span>
+                                                                            <a class="pager__button next" data-selector="page-next">next</a>
+                                                                        </div>
+                                                                        <!-- pager-end-->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- 产品详情-->
+        <section class="product-details padding-leader--xlarge trailer">
+            <div class="container">
+                <h2 class="text-size--36 trailer text--center text-light __web-inspector-hide-shortcut__">Alle mobiler er med Service Nonstop</h2>
+                <div class="container trsiler--small clear">
+                    <ul class="grid-row text--center">
+                        <li class="col-md-3 trailer">
+                            <img src="../assets/img/product-detail/blue-24-7.png" alt="" class="responsive"/>
+                            <span class="display--block">Altid åbent</span>
+                            <p class="text-size--13 color-gray">Få hjælp døgnet rundt, året rundt</p>
+                        </li>
+                        <li class="col-md-3 trailer">
+                            <img src="../assets/img/product-detail/blue-reparation.png" alt="" class="responsive"/>
+                            <span class="display--block">1:1 lånemobil</span>
+                            <p class="text-size--13 color-gray">Få en lånemobil med tilsvarende styresystem</p>
+                        </li>
+                        <li class="col-md-3 trailer">
+                            <img src="../assets/img/product-detail/blue-perfect-start.png" alt="" class="responsive"/>
+                            <span class="display--block">Perfekt start</span>
+                            <p class="text-size--13 color-gray">Få overført data fra din gamle til din nye mobil</p>
+                        </li>
+                        <li class="col-md-3 trailer">
+                            <img src="../assets/img/product-detail/blue-lost-phone.png" alt="" class="responsive"/>
+                            <span class="display--block">Mistet mobil</span>
+                            <p class="text-size--13 color-gray">Få hjælp, hvis du mister din mobil</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tabpanel">
+                    <nav class="trailer">
+                        <ul class="tabpanel__list trailer">
+                            <li class="tabpanel__tab">
+                                <a href="#nogo" class="tabpanel__link">Om Apple iPhone 6s</a>
+                            </li>
+                            <li class="tabpanel__tab">
+                                <a href="#nogo" class="tabpanel__link">Tekniske specifikationer</a>
+                            </li>
+                            <li class="tabpanel__tab">
+                                <a href="#nogo" class="tabpanel__link">Fortrydelse</a>
+                            </li>
+                            <li class="tabpanel__tab">
+                                <a href="#nogo" class="tabpanel__link">Levering</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div>
+                        <div class="tabpanel__panel padding-leader padding-trailer js-hidden">
+                            <div class="container"></div>
+                        </div>
+                        <div class="tabpanel__panel padding-leader padding-trailer js-hidden">
+                            <div class="container"></div>
+                        </div>
+                        <div class="tabpanel__panel padding-leader padding-trailer js-hidden">
+                            <div class="container"></div>
+                        </div>
+                        <div class="tabpanel__panel padding-leader padding-trailer js-hidden">
+                            <div class="container"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+    <!-- help section-->
+    <section class="section--help section--negative container--wide">
+        <div class="container text--center">
+            <p class="section--help__title text-size--54 text-light padding-leader--xlarge mobile-hidden">Få overblik på Mit Telenor</p>
+            <p class="section--help__subtitle">
+                <span>Selvbetjening er kun ét klik herfra </span>
+            </p>
+            <ul class="section--help__buttons">
+                <li><a class="button button--action-dark" href="/mit-telenor/"><span class="button__text">Mit Telenor</span></a></li>
+            </ul>
+        </div>
+    </section>
+    <!-- help section-end-->
+    <!--main section-end-->
+    <!-- footer section-->
+    <div id="footer" class="section-footer-scroll">
+        <nav class="section section--footer">
+            <div class="container">
+                <div class="grid-row trailer--small mobile-hidden">
+                    <!-- footer:breadbcrumb-->
+                    <div class="col-md-9">
+                        <div class="section--footer__breadcrumb">
+                            <ul>
+                                <li><a href="#nogo">Home</a></li>
+                                <li><a href="#nogo">Shop</a></li>
+                                <li><a href="#nogo">Moblie</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3 tablet-omega footer__social text--right">
+                        <a href="#nogo" class="icon-facebook track-social">
+                            <span class="icon--text">Facebook</span>
+                        </a>
+                        <a href="#nogo" class="icon-twitter-circle track-social">
+                            <span class="icon--text">Twitter</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- : Footer Navigation -->
+                <div class="section--footer__menu mobile-hidden">
+                    <div class="flex--row">
+                        <div class="flex-item footer-item">
+                            <h3><a href="#nogo">Om Telenor</a></h3>
+                            <ul class="list list--footer">
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                            </ul>
+                        </div>
+                        <div class="flex-item footer-item">
+                            <h3><a href="#nogo">Om Telenor</a></h3>
+                            <ul class="list list--footer">
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                            </ul>
+                        </div>
+                        <div class="flex-item footer-item">
+                            <h3><a href="#nogo">Om Telenor</a></h3>
+                            <ul class="list list--footer">
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                            </ul>
+                        </div>
+                        <div class="flex-item footer-item">
+                            <h3><a href="#nogo">Om Telenor</a></h3>
+                            <ul class="list list--footer">
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                            </ul>
+                        </div>
+                        <div class="flex-item footer-item">
+                            <h3><a href="#nogo">Om Telenor</a></h3>
+                            <ul class="list list--footer">
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--:section footer info -->
+                <div class="section--footer__info">
+                    <div class="grid-row">
+                        <div class="col-md-3 col-xs-6 padding-trailer">
+                            <div class="section--footer__info__icon icon-hotline circle-outline border-width-1"></div>
+                            <div class="section--footer__info__txt">
+                                Kundeservice har altid åbent
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-xs-6 padding-trailer">
+                            <div class="section--footer__info__icon icon-one-to-one-loaner-phone circle-outline border-width-1"></div>
+                            <div class="section--footer__info__txt">
+                                1:1 lånemobil
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-xs-6 padding-trailer">
+                            <div class="section--footer__info__icon icon-truck circle-outline border-width-1"></div>
+                            <div class="section--footer__info__txt">
+                                Fri fragt og ekspreslevering
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-xs-6 padding-trailer">
+                            <div class="section--footer__info__icon icon-perfect-start circle-outline border-width-1"></div>
+                            <div class="section--footer__info__txt">
+                                Kundeservice har altid åbent
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- section bottom-->
+        <div class="section section--bottom">
+            <div class="container">
+                <div class="desktop-hidden footer__social">
+                    <a href="#nogo" class="icon-facebook"><span class="icon--text">Facebook</span></a>
+                    <a href="#nogo" class="icon-twitter-circle"><span class="icon--text">Twitter</span></a>
+                </div>
+                <div class="section--bottom__holder mobile-text--center">
+                    <div class="leader--xsmall mobile-trailer--small float--right mobile-text--center clearImg">
+                        <div class="float--right toleft--xsmall mobile-toleft--none mobile-trailer--xsmall">
+                            <img src="../assets/img/paymenticons.png" alt="">
+                        </div>
+                        <div class="float--left">
+                            <img src="../assets/img/payment-icon2.png" alt="">
+                        </div>
+                    </div>
+                    <div class="float--left">
+                        <div>
+                            <ul class="adr-list">
+                                <li class="icon-telenor section--bottom__logo"></li>
+                                <li>Telenor</li>
+                                <li> · </li>
+                                <li>Frederikskaj 8</li>
+                                <li> · </li>
+                                <li>1780 København V</li>
+                                <li class="mobile-hidden"> · </li>
+                                <li class="mobile-hidden">CVR: 19433692</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer end-->
+</div>
+</div>
+</div>
+</body>
+</html>
+<script>
+    //导航条滚动效果
+    $(window).scroll(function(){
+        if ($(window).scrollTop()>=102 && $("#menu--subnav-sticky-wrapper .section--subnav").length) {
+            $("#menu--subnav-sticky-wrapper").addClass('section--sticky');
+        }else{
+            $("#menu--subnav-sticky-wrapper").removeClass('section--sticky');
+        }
+    });
+//product detail flip pic
+    $('.flip-container .flip-arrow').click(function(){
+        var FlipArrow=$('.flip-container .flip-arrow');
+        if(FlipArrow.parent().hasClass('flipped')){
+            FlipArrow.parent().removeClass('flipped');
+        }else{
+            FlipArrow.parent().addClass('flipped');
+        }
+    });
+    //delivery info
+    $(".delivery-box--link").click(function(e){
+        e.stopPropagation();
+        if($('.delivery-box').hasClass('is-selected')){
+            $('.delivery-box').removeClass('is-selected');
+            $('.product-config--overlay').removeClass('is-active');
+        }else{
+            $(".product-config__row").removeClass('is-selected');
+            $('.delivery-box').addClass('is-selected');
+            $('.product-config--overlay').addClass('is-active');
+        }
+    });
+    $(document).click(function(){
+        if($(".delivery-box").hasClass("is-selected")){
+            $(".delivery-box").removeClass("is-selected");
+            $('.product-config--overlay').removeClass('is-active');
+        }
+    });
+    //product config slide
+    $(".product-config__row").click(function(e){
+        e.stopPropagation();
+        if($(this).hasClass('is-selected')){
+            $(this).removeClass('is-selected');
+            $('.product-config--overlay').removeClass('is-active');
+
+        }else{
+            $('.delivery-box').removeClass('is-selected');
+            $(this).siblings().removeClass('is-selected');
+            $(this).addClass('is-selected');
+            $('.product-config--overlay').addClass('is-active');
+        }
+    });
+    $(document).click(function(){
+        if($(".product-config__row").hasClass("is-selected")){
+            $(".product-config__row").removeClass("is-selected");
+            $('.product-config--overlay').removeClass('is-active');
+        }
+    });
+    $(".slide-content").click(function(e){
+        e.stopPropagation();
+    });
+</script>

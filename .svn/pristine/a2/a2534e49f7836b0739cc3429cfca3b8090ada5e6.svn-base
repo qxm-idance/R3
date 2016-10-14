@@ -1,0 +1,89 @@
+import Vue from 'vue';
+import VueI18n from 'vue-i18n';
+import VueValidator from 'vue-validator';
+import VueResource from 'vue-resource';
+import conf from 'taurus/config/app-config.json';
+import VueTooltip from 'taurus/directives/tooltips/tooltip';
+import VueScrollTo from 'taurus/plugins/scoll-to';
+
+const SEC_AUTH_TOKEN_KEY = 'AppEngine_TokenId';
+const SEC_AUTH_TENANT_KEY = 'AE_TENANT';
+const SEC_AUTH_ROLETYPE_KEY = 'AE_ROLETYPE';
+const SEC_AUTH_ZONE_KEY = 'AE_ZONE';
+
+class Taurus {
+  constructor (appConfig) {
+    this._error = '';
+    this._conf = appConfig;
+  };
+  get SEC_AUTH_TOKEN_KEY () {
+    return SEC_AUTH_TOKEN_KEY;
+  };
+  get SEC_AUTH_TENANT_KEY () {
+    return SEC_AUTH_TENANT_KEY;
+  };
+  get SEC_AUTH_ROLETYPE_KEY () {
+    return SEC_AUTH_ROLETYPE_KEY;
+  };
+  get SEC_AUTH_ZONE_KEY () {
+    return SEC_AUTH_ZONE_KEY;
+  };
+  get WEB_ROOT () {
+    return this._conf.web.root;
+  };
+  get lastError () {
+    return this._error;
+  };
+  get lang () {
+    return Vue.config.lang;
+  };
+  /**
+   * 设置全局语言
+   * @param  {String} newLang 新语言编码
+   */
+  set lang (newLang) {
+    var self = this;
+    var res = conf.i18n.locales[newLang];
+    if (res && !Vue.locale(newLang)) { // 配置了资源文件且还未加载
+      res = conf.web.root + res;
+      Vue.locale(newLang, function () {
+        return fetch(res, {
+          method: 'get',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          }
+        }).then(function (res) {
+          return res.json();
+        }).then(function (json) {
+          if (Object.keys(json).length === 0) {
+            return Promise.reject(new Error('locale [' + newLang + '] empty !!'));
+          } else {
+            return Promise.resolve(json);
+          }
+        }).catch(function (error) {
+          self._error = error.message;
+          return Promise.reject();
+        });
+      }, function () {
+        Vue.config.lang = newLang;
+      });
+    }
+  };
+};
+
+var taurus = new Taurus(conf);
+
+// 加载插件
+Vue.use(VueI18n);
+Vue.use(VueResource);
+Vue.use(VueValidator);
+Vue.use(VueTooltip);
+Vue.use(VueScrollTo);
+
+// 处理国际化
+taurus.lang = conf.i18n.lang; // 从配置文件中加载默认语言
+
+// 导出模块
+window.Vue = Vue;
+export default taurus;

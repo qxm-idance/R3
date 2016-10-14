@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"
+      class="js canvas no-touch rgba borderradius boxshadow opacity cssanimations cssgradients csstransforms csstransforms3d fontface video audio localstorage svg json">
+<head>
+  <meta charset="UTF-8">
+  <title>Tabs Demo</title>
+  <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+  <link href="/assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <div class="block__header leader--large trailer--large">
+    <h2 class="title--medium">
+      <a target="_blank" href="http://vuejs.github.io/vue-validator/zh-cn/">Breadcrumbs</a>
+    </h2>
+  </div>
+
+  <div id="breadcrumbs" class="section--negative box--blue" style="background:#004773">
+    <t-breadcrumbs :crumbs="breadcrumbs"></t-breadcrumbs>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" class=" js canvas no-touch rgba borderradius boxshadow opacity cssanimations cssgradients csstransforms csstransforms3d fontface video audio localstorage svg json">
+<head>
+    <meta charset="UTF-8">
+    <link href="../assets/css/main.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/doc.css" rel="stylesheet" type="text/css">
+    <!-- highlight-->
+    <link href="../assets/doc/highlight/styles/github.css" rel="stylesheet" type="text/css">
+    <link href="../assets/doc/highlight/code.css" rel="stylesheet" type="text/css">
+    <script src="../assets/doc/highlight/highlight.pack.js" type="text/javascript"></script>
+    <script src="../assets/doc/js/jquery.js" type="text/javascript"></script>
+    <script></script>
+    <title>auto complete</title>
+</head>
+<body>
+    <!-- isopen 控制dropdown开关 -->
+    <div class="form-item form-item--required dropdown is-open" >
+        <input type="text" data-component="autocomplete" data-autocomplete-source="autocompleteDropdown" data-extensions="type-watch" />
+        <div class="dropdown__content" role="menu" id="autocompleteDropdown">
+            <div class="dropdown__scroll">
+                <ul class="dropdown__list" aria-live="polite">
+                    <li><a href="#" class="text-truncate">Alabama</a></li>
+                    <li><a href="#" class="text-truncate">Alaska</a></li>
+                    <li><a href="#" class="text-truncate">Arizona</a></li>
+                    <li><a href="#" class="text-truncate">Arkansas</a></li>
+                    <li><a href="#" class="text-truncate">California</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" class="js canvas no-touch rgba borderradius boxshadow opacity cssanimations cssgradients csstransforms csstransforms3d fontface video audio localstorage svg json checked">
+<head>
+  <meta charset="UTF-8">
+  <title>SpeechBubble Demo</title>
+  <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+  <link href="/assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <div class="block__header leader--large trailer--large">
+    <h2 class="title--medium">SpeechBubble</h2>
+  </div>
+  <div class="form-row" id = "speechBubbleDivLarge">
+    <button id="showSpeechBubbleBtnLarge" @click="showSpeechBubble = true">Show Speech Bubble Large</button>
+    <t-speech-bubble :show.sync="showSpeechBubble" :size="sizeSpeechBubble" :title="titleSpeechBubble" :target="showSpeechBubbleBtnId">
+      <h2>Some html content</h2>
+      <p>Some paregraph bla bla..</p>
+      <p>Some paregraph bla bla..</p>
+      <p>Some paregraph bla bla..</p>
+      <p>Some paregraph bla bla..</p>
+      <p>Some paregraph bla bla..</p>
+      <p>Some paregraph bla bla..</p>
+      <p>Some paregraph bla bla..</p>
+      <p>Some paregraph bla bla..</p>
+      <p>Some paregraph bla bla..</p>
+      <p>Some paregraph bla bla..</p>
+      <p>Some paregraph bla bla..</p>
+    </t-speech-bubble>
+  </div>
+  <div class="form-row" id = "speechBubbleDivSmall">
+    <button id="showSpeechBubbleBtnSmall" @click="showSpeechBubble = true">Show Speech Bubble Small</button>
+    <t-speech-bubble :show.sync="showSpeechBubble" :size="sizeSpeechBubble" :title="titleSpeechBubble" :target="showSpeechBubbleBtnId">
+      <h2>Some html content</h2>
+      <p>Some paregraph bla bla..</p>
+      <p>Some paregraph bla bla..</p>
+      <p>Some paregraph bla bla..</p>
+      <p>Some paregraph bla bla..</p>
+      <p>Some paregraph bla bla..</p>
+      <p>Some paregraph bla bla..</p>
+      <p>Some paregraph bla bla..</p>
+      <p>Some paregraph bla bla..</p>
+      <p>Some paregraph bla bla..</p>
+      <p>Some paregraph bla bla..</p>
+      <p>Some paregraph bla bla..</p>
+    </t-speech-bubble>
+  </div>
+
+  <div class="form-row" id = "speechBubbleFilterDivLarge">
+    <button id="showSpeechBubbleFilterBtnLarge" @click="showSpeechBubble = true">Show Speech Bubble Filter Large</button>
+    <t-speech-bubble-filter :show.sync="showSpeechBubble" :size="sizeSpeechBubble" :title="titleSpeechBubble" :target="showSpeechBubbleBtnId"
+                            :labels="labels" item-name="SpeechBubbleCheck" :checked="checked" :disabled="disabled" :values="values"
+                            :button-name="buttonName" v-ref:large-speech-bubble>
+    </t-speech-bubble-filter>
+  </div>
+  <div class="form-row" id = "speechBubbleFilterDivSmall">
+    <button id="showSpeechBubbleFilterBtnSmall" @click="showSpeechBubble = true">Show Speech Bubble Filter Small</button>
+    <t-speech-bubble-filter :show.sync="showSpeechBubble" :size="sizeSpeechBubble" :title="titleSpeechBubble" :target="showSpeechBubbleBtnId"
+                            :labels="labels" item-name="SpeechBubbleCheck" :checked="checked" :disabled="disabled" :values="values"
+                            :button-name="buttonName" v-ref:small-speech-bubble>
+    </t-speech-bubble-filter>
+  </div>
+
+  <div class="form-row" id = "speechBubbleDivLargeTree">
+    <button id="showSpeechBubbleBtnLargeTree" @click="showSpeechBubble = true">Show Speech Bubble Filter Tree Large</button>
+    <t-speech-bubble-filter-tree :show.sync="showSpeechBubble" :size="sizeSpeechBubble" :title="titleSpeechBubble" :target="showSpeechBubbleBtnId"
+                            item-name="SpeechBubbleCheck" :button-name="buttonName" :items="items" v-ref:large-speech-bubble-tree>
+    </t-speech-bubble-filter-tree>
+  </div>
+
+</div>
+</body>
+</html>
+

@@ -1,0 +1,205 @@
+import {TDoughnut, TGauge, TBars, TLine} from 'ai-taurus';
+new Vue({
+  el: '#doughnutDiv',
+  data: {
+    doughnutData: [
+      { 'country': 'USA', 'visits': 4252 },
+      { 'country': 'China', 'visits': 1882 },
+      { 'country': 'Japan', 'visits': 1809 },
+      { 'country': 'Germany', 'visits': 1322 },
+      { 'country': 'UK', 'visits': 1122 },
+      { 'country': 'France', 'visits': 1114 },
+      { 'country': 'India', 'visits': 984 },
+      { 'country': 'Spain', 'visits': 711 },
+      { 'country': 'Netherlands', 'visits': 665 },
+      { 'country': 'Russia', 'visits': 580 },
+      { 'country': 'South Korea', 'visits': 443 },
+      { 'country': 'Canada', 'visits': 441 },
+      { 'country': 'Brazil', 'visits': 395 },
+      { 'country': 'Italy', 'visits': 386 },
+      { 'country': 'Australia', 'visits': 384 },
+      { 'country': 'Taiwan', 'visits': 338 },
+      { 'country': 'Poland', 'visits': 328 }],
+    content: {
+      title: 'title for pie chart',
+      name: 'pie name',
+      desc: 'some description for name'
+    }
+  },
+  components: {
+    TDoughnut
+  },
+  methods: {
+    /**
+     * label重新渲染函数
+     * @param pie 图表对象
+     * @param label 原始label
+     * @returns {string}
+     */
+    labelFunction: function (pie, label) {
+      return label + 'test';
+    }
+  }
+});
+new Vue({
+  el: '#gaugeDiv',
+  data: {
+    multiValueData: [
+      { 'color': '#84b761', 'endValue': 30, 'startValue': 0 },
+      { 'color': '#fdd400', 'endValue': 60, 'startValue': 30 },
+      { 'color': '#cc4748', 'endValue': 90, 'startValue': 60 }
+    ],
+    lowValueData: [
+      { 'endValue': 2.5, 'startValue': 0 },
+      { 'endValue': 5, 'startValue': 2.5 }
+    ],
+    highValueData: [
+      { 'endValue': 600, 'startValue': 0 },
+      { 'endValue': 1200, 'startValue': 600 }
+    ],
+    lowValueTitle: 'title for low value gauge',
+    testValue: 3.5
+  },
+  methods: {
+    resetValue: function (value) {
+      this.testValue = value;
+      this.$refs.lowGauge.setValue(value);
+    },
+    randomValue: function () {
+      let value = Math.random() * 5;
+      this.$refs.lowGauge.setValue(value);
+    }
+  },
+  components: {
+    TGauge
+  }
+});
+
+const CHART_TYPE = {
+  bars: 'Bars',
+  barsWithLegend: 'Bars with Legend',
+  line: 'Line'
+};
+
+new Vue({
+  el: '#serial',
+
+  components: {
+    TBars,
+    TLine
+  },
+
+  data () {
+    return {
+      currentChart: '',
+      barsDataProvider: null,
+      lineDataProvider: null,
+      loadingData: false,
+      enableCategoryLegend: false
+    };
+  },
+
+  methods: {
+    fillBarsData: function () {
+      this.barsDataProvider = [{
+        'country': 'USA',
+        'visits': 3025,
+        'color': '#FF0F00'
+      }, {
+        'country': 'China',
+        'visits': 1882,
+        'color': '#FF6600'
+      }, {
+        'country': 'Japan',
+        'visits': 2009,
+        'color': '#FCDF02'
+      }, {
+        'country': 'Germany',
+        'visits': 1322,
+        'color': '#FCD202'
+      }, {
+        'country': 'France',
+        'visits': 1114,
+        'color': '#B0DE09'
+      }, {
+        'country': 'Russia',
+        'visits': 580,
+        'color': '#2A0CD0'
+      }];
+    },
+
+    clearBarsData: function () {
+      this.barsDataProvider = null;
+    },
+
+    fillLineData: function () {
+      this.lineDataProvider = [{
+        'date': '2012-01',
+        'value': 130
+      }, {
+        'date': '2012-02',
+        'value': 110
+      }, {
+        'date': '2012-03',
+        'value': 150
+      }, {
+        'date': '2012-04',
+        'value': 160
+      }, {
+        'date': '2012-05',
+        'value': 180
+      }, {
+        'date': '2012-06',
+        'value': 130
+      }, {
+        'date': '2012-07',
+        'value': 220
+      }, {
+        'date': '2012-08',
+        'value': 230
+      }, {
+        'date': '2012-09',
+        'value': 200
+      }, {
+        'date': '2012-10',
+        'value': 170
+      }, {
+        'date': '2012-11',
+        'value': 160
+      }, {
+        'date': '2012-12',
+        'value': 180
+      }];
+    },
+
+    clearLineData: function () {
+      this.lineDataProvider = null;
+    }
+  },
+
+  watch: {
+    currentChart: function (val, oldVal) {
+      // clear data provider for recreating charts components
+      this.clearBarsData();
+      this.clearLineData();
+
+      if (val === '请选择 Amchart 类型') {
+        return;
+      }
+
+      this.enableCategoryLegend = val === 'Bars with Legend';
+
+      this.loadingData = true;
+
+      let self = this;
+      setTimeout(function () {
+        if (val === CHART_TYPE.line) {
+          self.fillLineData();
+        } else {
+          self.fillBarsData();
+        }
+        self.loadingData = false;
+      }, 2000);
+    }
+  }
+});

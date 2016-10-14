@@ -1,0 +1,20 @@
+import taurus from '../../utils/taurus';
+import BoxGroup from '../../components/box-group/box-group';
+
+new Vue({
+  el: 'body',
+  components: {
+    't-box-group': BoxGroup
+  },
+  data: function () {
+    return {
+      'lang': '中文'
+    };
+  },
+  methods: {
+    changeLang: function () {
+      taurus.lang = (taurus.lang === 'cn') ? 'en' : 'cn';
+      this.lang = (taurus.lang === 'cn') ? '中文' : '英文';
+    }
+  }
+});

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modal-Box Demo</title>
+    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+    <link href="/assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+    <div id="defaultModal" style="margin-bottom:50px;">
+        <button id="show-modal" @click="showModal= true">Default Modal</button>
+        <!-- backdrop:true 点击空表处关闭,默认不关闭 -->
+        <t-modal-box :show.sync="showModal" :size="sizeModal" :backdrop="true">
+            <div>
+                <p>i`m a default modal</p>
+                <p>i`m a default modal</p>
+            </div>
+        </t-modal-box>
+    </div>
+    <div id="actionButtonModal">
+        <button id="show-modal" @click="showActionModal= true">Action Button Modal</button>
+        <!-- v-ref:modal 这种是通过父子组件通信，拿到子组件的方法 -->
+        <t-modal-box :show.sync="showActionModal" :size="sizeModal"  v-ref:modal>
+            <div>
+                <p>i`m a action-button-modal </p>
+                <p>i`m a action-button-modal </p>
+                <t-button text="Ok" class="button--action" v-on:btn-click="onOk"></t-button>
+                <t-button text="Cancel" class="button--action" v-on:btn-click="onCancel"></t-button>
+            </div>
+        </t-modal-box>
+    </div>
+</body>
+</html>

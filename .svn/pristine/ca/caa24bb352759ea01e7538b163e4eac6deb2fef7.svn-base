@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Date Picker Demo</title>
+    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+    <link href="/assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="block__header leader--large trailer--large">
+            <h2 class="title--medium">datePicker</h2>
+        </div>
+
+        <div class="sg-component__label">选择单个日期</div>
+        <div style="margin: 10px;">
+            <t-date-picker></t-date-picker>
+        </div>
+
+        <div class="sg-component__label">选择日期范围</div>
+        <div style="float1:left; margin: 10px;">
+            <t-date-picker :months-to-show="2" min-date="2016.07.11" max-date="2016.11.11" date-format="yyyy.mm.dd" :range-select="true"></t-date-picker>
+        </div>
+
+        <div class="sg-component__label">指定日期最大值，最小值</div>
+        <div style="float1:left; margin: 10px;">
+            <t-date-picker min-date="2016.07.11" max-date="2016.11.11" date-format="yyyy.mm.dd"></t-date-picker>
+        </div>
+
+        <div class="sg-component__label">禁用</div>
+        <div style="float1:left; margin: 10px;">
+            <t-date-picker :disabled="true" ></t-date-picker>
+        </div>
+
+        <div class="sg-component__label">change事件</div>
+        <div style="float1:left; margin: 10px;">
+            <t-date-picker :date-val.sync="dateVal" :range-select="true" date-format="yyyy.mm.dd" v-on:date-change="onChange"></t-date-picker>
+        </div>
+
+    </div>
+</body>
+</html>
