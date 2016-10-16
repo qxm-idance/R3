@@ -1,0 +1,305 @@
+<template>
+  <div class="t-modal" v-show="show" transition="t-modal-scale">
+    <div class="t-modal-header">
+      <slot name="header-icon"></slot>
+      <div class="t-modal-title text-light text-size--24 leader--xlarge" v-if="title">
+          {{title}}
+      </div>
+      <i class="modal-box__close-btn icon icon-reject" v-if="!hideIconClose" @click="close"></i>
+    </div>
+    <div class="t-modal-body">
+      <slot>
+        <div v-if="msg" v-html="msg"></div>
+      </slot>
+    </div>
+    <div class="t-modal-footer" v-if="!hideClose">
+      <slot name="footer"></slot>
+    </div>
+  </div>
+</template>
+
+<script>
+import Popup from '../popup/popup';
+
+const STYLE = `
+.t-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #000;
+  opacity: .4;
+  z-index: 1000;
+}
+.t-overlay-fade-transition {
+  -webkit-transition: all 0 linear;
+  transition: all 0 linear;
+}
+.t-overlay-fade-transition.t-overlay-fade-enter,
+.t-overlay-fade-transition.t-overlay-fade-leave {
+  opacity: 0 !important;
+}
+
+
+.t-modal {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+          transform: translate3d(-50%, -50%, 0);
+  outline: none;
+  margin: 0px auto;
+  padding: 0;
+  background-color: white;
+  max-height: 100vh;
+  max-width: 100vw;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-size: 14px;
+}
+.t-modal:before {
+  content: "";
+  display: block;
+  position: relative;
+  margin-bottom: -1px;
+  background-image: -webkit-linear-gradient(left, #6eb45b, #2b9ba8, #038cd6);
+  background-image: linear-gradient(to right, #6eb45b, #2b9ba8, #038cd6);
+  height: 3px;
+}
+.t-modal-header {
+  text-align: center;
+  padding: 10px 0;
+}
+.t-modal-header .t-modal-title {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0;
+  font-weight: normal;
+  color: #474a4f;
+}
+.t-modal-header + .t-modal-body {
+  clear: both;
+  padding-top: 0;
+}
+.t-modal-header div[slot=header-icon] {
+  margin-top: 40px;
+}
+.t-modal-body {
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 24px;
+  padding-bottom: 20px;
+}
+.t-modal-footer {
+  padding: 15px;
+  min-height: 48px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+.t-modal-footer .t-button-fill,
+.t-modal-footer .t-button-raise {
+  margin-left: 10px;
+}
+.t-modal-scale-transition {
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+.t-modal-scale-enter,
+.t-modal-scale-leave {
+  opacity: 0;
+}
+.t-modal-scale-enter {
+  -webkit-transform: translate3d(-50%, -50%, 0) scale(1.1);
+          transform: translate3d(-50%, -50%, 0) scale(1.1);
+}
+.t-modal-scale-leave {
+  -webkit-transform: translate3d(-50%, -50%, 0) scale(0.8);
+          transform: translate3d(-50%, -50%, 0) scale(0.8);
+}
+.button-flex {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin: 0 5px;
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.t-confirm-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.t-confirm-content .icon {
+  color: #2196f3;
+}
+.t-confirm-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.t-confirm-content .icon + .t-confirm-text {
+  margin-left: 12px;
+}
+
+
+.filter-transition {
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+  opacity: 1;
+}
+
+.filter-enter {
+  opacity: 0;
+}
+
+.filter-leave {
+  opacity: 0;
+}
+
+.t-popup {
+  position: fixed;
+  background: #fff;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+          transform: translate3d(-50%, -50%, 0);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.t-popup-top {
+  top: 0;
+  right: auto;
+  bottom: auto;
+  left: 50%;
+  -webkit-transform: translate3d(-50%, 0, 0);
+          transform: translate3d(-50%, 0, 0);
+}
+
+.t-popup-right {
+  top: 50%;
+  right: 0;
+  bottom: auto;
+  left: auto;
+  -webkit-transform: translate3d(0, -50%, 0);
+          transform: translate3d(0, -50%, 0);
+}
+.t-popup-bottom {
+  top: auto;
+  right: auto;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translate3d(-50%, 0, 0);
+          transform: translate3d(-50%, 0, 0);
+}
+
+.t-popup-left {
+  top: 50%;
+  right: auto;
+  bottom: auto;
+  left: 0;
+  -webkit-transform: translate3d(0, -50%, 0);
+          transform: translate3d(0, -50%, 0);
+}
+
+.popup-slide-top-transition,
+  .popup-slide-right-transition,
+  .popup-slide-bottom-transition,
+  .popup-slide-left-transition {
+    -webkit-transition: -webkit-transform .3s ease;
+    transition: -webkit-transform .3s ease;
+    transition: transform .3s ease;
+    transition: transform .3s ease, -webkit-transform .3s ease;
+  }
+
+  .popup-slide-top-enter,
+  .popup-slide-top-leave {
+    -webkit-transform: translate3d(-50%, -100%, 0);
+            transform: translate3d(-50%, -100%, 0);
+  }
+
+  .popup-slide-right-enter,
+  .popup-slide-right-leave {
+    -webkit-transform: translate3d(100%, -50%, 0);
+            transform: translate3d(100%, -50%, 0);
+  }
+
+  .popup-slide-bottom-enter,
+  .popup-slide-bottom-leave {
+    -webkit-transform: translate3d(-50%, 100%, 0);
+            transform: translate3d(-50%, 100%, 0);
+  }
+
+  .popup-slide-left-enter,
+  .popup-slide-left-leave {
+    -webkit-transform: translate3d(-100%, -50%, 0);
+            transform: translate3d(-100%, -50%, 0);
+  }
+
+  .popup-fade-transition {
+    -webkit-transition: opacity .3s;
+    transition: opacity .3s;
+  }
+
+  .popup-fade-enter,
+  .popup-fade-leave {
+    opacity: 0;
+  }
+`;
+export default {
+  mixins: [Popup],
+  props: {
+    title: {
+      type: String,
+      default: ''
+    },
+    msg: {
+      type: String,
+      default: ''
+    },
+    clickOverlayClose: {
+      type: Boolean,
+      default: true
+    },
+    hideClose: {
+      type: Boolean,
+      default: false
+    },
+    hideIconClose: {
+      type: Boolean,
+      default: true
+    }
+  },
+  methods: {
+    close () {
+      this.show = false;
+    },
+    overlayClick () {
+      if (this.clickOverlayClose) this.show = false;
+    },
+    escPress () {
+      this.show = false;
+    }
+  },
+  init () {
+    let fontEl = document.createElement('style');
+    document.documentElement.firstElementChild.appendChild(fontEl);
+    fontEl.innerHTML = STYLE;
+  }
+};
+</script>

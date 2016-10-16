@@ -22,7 +22,7 @@ import TDatepicker from './date-picker/date-picker.vue';
 import TSelectDropdown from './dropdown/select-dropdown.vue';
 import TSubDropdown from './dropdown/subscription-dropdown.vue';
 
-import TModalBox from './modal-box/modal-box.vue';
+// import TModalBox from './modal-box/modal-box.vue';
 import TNumberStepper from './number-stepper/number-stepper.vue';
 import TPager from './pager/pager.vue';
 import TRangeSlide from './range-slider/range-slider.vue';
@@ -43,6 +43,12 @@ import TFlatTabs from './tabs/flat-tabs.vue';
 import TVideo from './video/video-player.vue';
 import TLoading from './loading/loading.vue';
 import TSwitcher from './switcher/switcher.vue';
+
+// modal
+import TAlert from './modal/alert.vue';
+import TConfirm from './modal/confirm.vue';
+import TModal from './modal/modal.vue';
+import TPopup from './popup/popup.vue';
 
 // 指令
 import collapse from '../directives/collapse/collapse.vue';
@@ -87,7 +93,10 @@ export {
   TDatepicker,
   TSelectDropdown,
   TSubDropdown,
-  TModalBox,
+  TAlert,
+  TConfirm,
+  TModal,
+  TPopup,
   TNumberStepper,
   TPager,
   TRangeSlide,

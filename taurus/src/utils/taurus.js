@@ -19,7 +19,13 @@ import TButton from '../components/button/button.vue';
 import TDatePicker from '../components/date-picker/date-picker.vue';
 import TSelectDropdown from '../components/dropdown/select-dropdown.vue';
 import TSubDropdown from '../components/dropdown/subscription-dropdown.vue';
-import TModalBox from '../components/modal-box/modal-box.vue';
+
+// modal
+import TAlert from '../components/modal/alert.vue';
+import TConfirm from '../components/modal/confirm.vue';
+import TModal from '../components/modal/modal.vue';
+import TPopup from '../components/popup/popup.vue';
+
 import TNumberStepper from '../components/number-stepper/number-stepper.vue';
 import TPager from '../components/pager/pager.vue';
 import TRangeSlide from '../components/range-slider/range-slider.vue';
@@ -180,7 +186,10 @@ export {
   TDatePicker,
   TSelectDropdown,
   TSubDropdown,
-  TModalBox,
+  TAlert,
+  TConfirm,
+  TModal,
+  TPopup,
   TNumberStepper,
   TPager,
   TRangeSlide,

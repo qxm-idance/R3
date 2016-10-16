@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modal Demo</title>
+    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+    <link href="/assets/css/all.css" rel="stylesheet">
+</head>
+<body>
+    <h1>Default modal</h1>
+    <div>
+      <button @click="showMoal0">Click on the modal</button>
+
+      <t-modal title="" :show.sync="showMoal0State" :hide-close="true" :hide-icon-close="false" class="modal-box--size-small">
+        <div>modal content</div>
+      </t-modal>
+
+    </div>
+
+    <h1>Action buttons modal</h1>
+    <!-- <button @click="showAlert">Alert</button>
+    <t-alert :title="alert.title" :show.sync="alert.show" v-if="alert.show" :msg="alert.msg" >
+    </t-alert> -->
+
+    <button @click="showConfirm">Confirm</button>
+    <!--
+       type: 'info', 'success', 'error'
+    -->
+    <t-confirm :title="confirm.title" @sure="handlerSure" type="info" :show.sync="confirm.show" :msg="confirm.msg" >
+      <div slot="body">
+        10%	1-9 Subscription
+        15%	10-19 Subscription
+      </div>
+      <button class="button button--default button-flex" slot="footer">取消</button>
+      <button class="button button--default button-flex" slot="footer">取消</button>
+      <button class="button button--action  button-flex" slot="footer">确定</button>
+    </t-confirm>
+
+    <button @click="customShow">Custom Modal</button>
+    <t-modal title="Login Modal" :show.sync="loginModal">
+      <div class="login-modal">
+        <input label="用户名" placeholder="请输入用户名" v-model="loginModel.username"/>
+        <input label="密码" placeholder="请输入密码" v-model="loginModel.password" type="password"/>
+      </div>
+      <button text="取消" slot="footer" @click="this.loginModal = false">取消</button>
+      <button text="登录" slot="footer" @click="loginHandler" color="red">登录</button>
+    </t-modal>
+</body>
+</html>
