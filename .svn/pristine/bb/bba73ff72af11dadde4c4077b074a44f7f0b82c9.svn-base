@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modal-Box Demo</title>
+    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+    <link href="/assets/css/all.css" rel="stylesheet">
+</head>
+<body>
+<div id="defaultModal" style="margin-bottom:50px;">
+    <button id="show-modal" @click="showModal= true">Default Modal</button>
+    <!-- backdrop:true 点击空表处关闭,默认不关闭 -->
+    <t-modal-box :show.sync="showModal" :size="sizeModal" :backdrop="true">
+        <div>
+            <p>i`m a default modal</p>
+            <p>i`m a default modal</p>
+        </div>
+    </t-modal-box>
+</div>
+<div id="actionButtonModal">
+    <button id="show-modal" @click="showActionModal= true">Action Button Modal</button>
+    <!-- v-ref:modal 这种是通过父子组件通信，拿到子组件的方法 -->
+    <t-modal-box :show.sync="showActionModal" :size="sizeModal"  v-ref:modal>
+        <div>
+            <p>i`m a action-button-modal </p>
+            <p>i`m a action-button-modal </p>
+            <t-button text="Ok" class="button--action" v-on:btn-click="onOk"></t-button>
+            <t-button text="Cancel" class="button--action" v-on:btn-click="onCancel"></t-button>
+        </div>
+    </t-modal-box>
+</div>
+<div id="action-modal-info-overlay" class="modal-box__overlay modal-box--is-open">
+    <div class="modal-box--with-action-buttons modal-box__content gradient-line padding-whole--none modal-box--size-small">
+        <div class="modal-box__close-btn icon icon-document"></div>
+        <div class="modal-box__container text--center">
+            <div class="modal-box__icon-box modal-box__icon-box--blue trailer">
+                <span class="icon icon-document"></span>
+            </div>
+            <div class="text-size--13 leader--xlarge">
+                <p class="text-size--30 text-light trailer">Remove Agreement </p>
+                <p class="trailer--small">Are you sure you want to remove the agreement from your cart? </p>
+                <p class="trailer">The atreement cleared.</p>
+            </div>
+            <ul class="modal-box__action-buttons">
+                <slot>
+                    <li>
+                        <form action="">
+                            <button class="button button--default">
+                                <span class="button-text">Cancel</span>
+                            </button>
+                        </form>
+                    </li>
+                    <li>
+                        <form action="">
+                            <button class="button button--action">
+                                <span class="button__text">Remote</span>
+                            </button>
+                        </form>
+                    </li>
+                </slot>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

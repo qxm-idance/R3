@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="biz-code" content="agent-view">
+  <title>OSE Portal</title>
+  <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+  <link href="/assets/css/main.css" rel="stylesheet">
+  <!--此样式待移入框架!-->
+  <style>
+    [v-cloak] {display: none;}
+  </style>
+</head>
+<body v-cloak>
+  <p>{{hi}}</p>
+  <p>这是一个简单的 {{$t('portal')}} 演示页面</p>
+</body>
+</html>

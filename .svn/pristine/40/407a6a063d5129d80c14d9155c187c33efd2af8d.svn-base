@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+  <meta name="biz-code" content="agentview">
+  <title>auto complete</title>
+  <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+  <link href="/assets/css/main.css" rel="stylesheet">
+  <link href="/assets/css/agentview.css" rel="stylesheet">
+</head>
+<body>
+<div class="av-container">
+  <div class="av-header">
+    <div class="float--left">
+      <a href="#nogo" class="btn-menu">
+        <span class="icon icon-menu"></span>
+      </a>
+      <div class="av-header--model av-header--caller icon icon-telephone">
+        <div class="av-header--caller-name">
+          <span class="text-size--13">Inbound call</span>
+          <span class="text-size--16">Line S. Pedersen (60 50 22 11)</span>
+        </div>
+      </div>
+      <div class="av-header--model">
+        <span class="av-header--caller-time"> 06:42</span>
+        <span class="icon icon-play"></span>
+      </div>
+      <div class="av-header--model" style="display: none">
+        <span class="icon icon-voice-broadband"></span>
+        <span class="icon icon-telephone"></span>
+        <span class="icon icon-telephone"></span>
+      </div>
+      <div class="av-header--model" style="display: none">
+        <span class="icon icon-telephone"></span>
+      </div>
+
+    </div>
+    <div class="float--right">
+      <div class="av-header--model av-header--caller">
+        <div class="av-header--caller-name av-header--caller-shop">
+          <span class="text-size--16">Mona Schuster</span>
+          <span class="text-size--13">Shop: Århus Fredriksgade</span>
+          <div class="status-dot status-dot--small text--small status-dot--green" aria-hidden="true">Logged in</div>
+        </div>
+      </div>
+      <div class="av-header--model text-size--13">
+        <a href="#nogo" class="text-size--13 color-steel-grey">DK</a>/
+        <a href="#nogo" class="text-size--13 color-steel-grey">UK</a>
+      </div>
+      <div class="av-header--model text-size--13">
+        <span class="icon icon-open-right-panel"></span>
+      </div>
+    </div>
+
+  </div>
+  <div class="av-sidebar">
+    <ul>
+      <li>
+        <a href="#nogo" class="icon icon-home"></a>
+      </li>
+      <li>
+        <a href="#nogo" class="icon icon-search"></a>
+      </li>
+      <li>
+        <a href="#nogo" class="icon icon-knowledge_base"></a>
+      </li>
+      <li>
+        <a href="#nogo" class="icon icon-mail"></a>
+      </li>
+      <li>
+        <a href="#nogo" class="icon icon-14days"></a>
+      </li>
+      <li>
+        <a href="#nogo" class="icon-stock_management"></a>
+      </li>
+    </ul>
+  </div>
+  <div class="av-content">
+    <iframe src="fe-static/p-eshop/view/index.html" width="100%" height="100%" frameborder="0">
+
+    </iframe>
+  </div>
+</div>
+</body>
+<script src="js/jquery-1.11.1.js"></script>
+<script>
+  $('.btn-menu').click(function () {
+      //   var this = $('.av-sidebar');
+      if (!$('.av-sidebar').hasClass('is-hide')) {
+        $('.av-sidebar').addClass('is-hide');
+        $('.av-sidebar').siblings('.av-content').css('padding-left',"0")
+
+      } else {
+        $('.av-sidebar').removeClass('is-hide');
+        $('.av-sidebar').siblings('.av-content').css('padding-left',"50px")
+
+      }
+    }
+  );
+
+</script>
+</html>

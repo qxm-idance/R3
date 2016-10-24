@@ -1,0 +1,21 @@
+<div class="section--block container">
+    <div class="block__header leader--large trailer--large">
+        <h2 class="title--medium">shop</h2>
+    </div>
+    <div class="sgComponentWrapper">
+        <div class="container grid-row">
+            <div class="sg-content__header col-md-4">
+                <h2 class="title--medium-small">shop</h2>
+            </div>
+            <div class="col-md-8">
+                <ul>
+                    <li><a href="/elements/fe-static/p-eshop/view/index.html" target="_blank">index.html</a></li>
+                    <li><a href="/elements/fe-static/p-eshop/view/shop.html" target="_blank">shop.html</a></li>
+                    <li><a href="/elements/fe-static/p-eshop/view/product-list.html" target="_blank">product-list.html</a></li>
+                    <li><a href="/elements/fe-static/p-eshop/view/product-detail.html" target="_blank">product-detail.html</a></li>
+                    <li><a href="/elements/fe-static/p-eshop/view/basket.html" target="_blank">basket.html</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

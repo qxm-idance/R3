@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- content请填写业务模块编码，此编码与i18n目录下的对应模块的子目录名称保持一致 -->
+  <meta name="biz-code" content="busi-component">
+  <title>业务组件demo</title>
+  <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+  <link href="/assets/css/main.css" rel="stylesheet">
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+    /* 必需 */
+    .expand-entity-transition {
+      transition: height 0.6s ease;
+      height: 559px;
+    }
+
+    /* .expand-enter 定义进入的开始状态 */
+    /* .expand-leave 定义离开的结束状态 */
+    .expand-entity-enter, .expand-entity-leave {
+      height: 0;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+<section class="container">
+  <div class="grid-row">
+    <div class="col-md-8 padding-leader--med">
+      <h2 class="title--medium" v-cloak>{{ $t("head-title") }}</h2>
+    </div>
+    <div class="col-md-4 text--right align--middle padding-leader--med">
+      <button class="button button--small button--default" @click="toggleLang" v-cloak>{{ $t("chg-lang-btn") }}</button>
+      <button class="button button--small button--action" @click="toggleCreateWrap" v-cloak>{{ $t("create-btn") }}</button>
+    </div>
+  </div>
+
+  <t-agent-form v-show="operator.showForm" transition="expand-entity" :state="operator.state" :entity="entity" v-on:submit-value="saveEntity"></t-agent-form>
+  <div class="block__header box--white-bottom-gradient block__header--no-border-bottom">
+  </div>
+  <div class="container border">
+    <div class="block--content box--greyed border--bottom--light">
+      <div class="sg-component__label">
+        <div class="grid-row grid-row--gutter-none grid-row-md--between">
+          <div class="col-md-10">
+            <div class="grid-row">
+              <div class="col-md-4">
+                <t-dropdown  :list="statusOptions"  size="small" :bm-value.sync="queryCondition.status"></t-dropdown>
+              </div>
+
+              <div class="col-md-4">
+                <t-select-user v-on:selected-agent="setAgent" v-ref:user-selector></t-select-user>
+              </div>
+
+              <div class="col-md-4">
+                <t-date-picker :bm-value.sync="queryCondition.createTime"></t-date-picker>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 text--right">
+            <button class="button button--small button--default" @click="reset">Reset</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="block--content">
+      <div class="text--right">
+        <button class="button button--small button--default" v-cloak v-show="operator.showTabBtn" @click="modifyEntity">{{ $t("modify-btn") }}</button>
+        <button class="button button--small button--default" v-cloak v-show="operator.showTabBtn" @click="deleteEntity">{{ $t("delete-btn") }}</button>
+      </div>
+      <div class="sg-component__label">
+        <t-date-table
+          v-ref:entity-table
+          :columns="entitytable.columns"
+          :data="entitytable.data"
+          muti-select="true"
+          v-on:dt-check="rowChecked"
+          v-on:dt-uncheck="rowUnchecked">
+        </t-date-table>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

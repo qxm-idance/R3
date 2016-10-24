@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="../assets/css/agentview.min.css" rel="stylesheet" type="text/css">
+    <script src="../../../../assets/js/jquery.js" type="text/javascript"></script>
+    <script></script>
+    <title>Agent View</title>
+</head>
+<body>
+    <div class="container">
+        <div class="block--hero--support container">
+            <div class="grid-row padding-leader--large padding-trailer mobile-padding-leader mobile-padding-trailer--small">
+                <div class="col-md-8 trailer--small">
+                    <h1 class="text-size--36 mobile-text-size--30 text-light">
+                        Itemized usage
+                    </h1>
+                </div>
+                <!-- 下拉框 -->
+                <div class="col-md-4">
+                    <div class="dropdown dropdown--subscriptions" title="dsl5697261 (Haitao Ding)" data-component="Selfcare::subscriptions/dropdown" data-extensions="dropdown" data-alias="subscriptionDropdown" data-selected-value="42108100023505">
+                        <input type="hidden" name="subscriptionsdropdownid" data-selector="input" value="42108100023505">
+                        <div class="dropdown__label" role="button" data-toggle="dropdown">
+                            <div class="text-truncate" data-selector="label">
+                                    dsl5697261 (Haitao Ding)
+                            </div>
+                            <span class="icon-arrow-down"></span>
+                        </div>
+                        <div class="dropdown__content" role="menu" data-component="Selfcare::list" data-extensions="Selfcare::list/save-state" data-alias="mainList">
+                                <div class="dropdown__filter" data-component="Selfcare::list/filter" data-alias="filter">
+                                <form action="SubscriptionsDropdownAjax?SelectedEntityId=42108100023505" method="get" data-component="form" data-alias="filterForm">
+                                    <input name="__RequestVerificationToken" type="hidden" value="c9xM-zJ93YSGV5LAZ33_GOo_HHUENUj_pZ5R4q_DJzp-WwEV3RAmIJuK9yJpTGo101YnrPj761ZJf6ImL9j1_rpNshe_uObA229q3Y_j1dOp6Wf40">
+                                    <div data-component="form/search" class="is-empty">
+                                        <input class="dropdown__search" id="dropdown-search" name="Query" placeholder="Søg" type="text" value="">
+                                        <button class="icon-clear" data-list-clear="" style="display: none;"></button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="dropdown__scroll" data-name="subscriptionsdropdownid">
+                                <div class="js-hidden padding-leader--small padding-trailer--small" data-component="element" data-alias="loader">
+                                    <span class="load-tester" data-test="">
+                                        <span class="spinner"></span>
+                                    </span>
+                                </div>
+                                <div class="message message--error is-hidden" data-component="message" data-alias="errorMessage">
+                                    <div class="message__inner">
+                                        <span class="message__icon icon icon-reject"></span>
+                                        <div class="text-size--13 message__text">
+                                            <p>Der er opstået en uventet fejl. Prøv venligst igen.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="dropdown__list" aria-live="polite" data-component="element" data-alias="container">
+                                        <li data-selector="items" data-text="99410029886 (Haitao Ding)" data-value="42107020029467" class="" title="99410029886 (Haitao Ding)">
+                        <a class="media media--small" href="/mit-telenor/abonnement/forbrugsdetaljer/?id=42107020029467">
+                            <div class="media__image leader--xsmall">
+                                <span class="icon-person"></span>
+                            </div>
+                            <div class="media__body">
+                                <div class="text-truncate">Haitao Ding</div>
+                                <div class="text-truncate color-gray">99410029886 (Haitao Ding)</div>
+                            </div>
+                        </a>
+                    </li>
+
+                                </ul>
+                                <ul class="js-hidden" data-component="element" data-alias="hiddenContainer"></ul>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tabpanel"> 
+            <ul class="tabpanel__list trailer tabpanel__list--many"> 
+                <li class="tabpanel__tab"> <a class="tabpanel__link" href="javascript:void(0);">LongPanel 1</a> </li>
+                <li class="tabpanel__tab"> <a class="tabpanel__link" href="javascript:void(0);">LongPanel 2</a> </li>
+                <li class="tabpanel__tab"> <a class="tabpanel__link" href="javascript:void(0);">LongPanel 3</a> </li>
+                <li class="tabpanel__tab"> <a class="tabpanel__link" href="javascript:void(0);">LongPanel 4</a> </li>
+                <li class="tabpanel__tab is-active"> <a class="tabpanel__link" href="javascript:void(0);">LongPanel 5</a> </li>  
+            </ul> 
+            <!-- <div class="form-select"> <select> <option value="LongPanel 1">LongPanel 1</option><option value="LongPanel 2">LongPanel 2</option><option value="LongPanel 3">LongPanel 3</option><option value="LongPanel 4">LongPanel 4</option><option value="LongPanel 5">LongPanel 5</option> </select> <div class="form-select__field">LongPanel 5</div> </div> <div class="tabpanel__content-wrapper"> <section id="flat_panel_one" class="tabpanel__panel"> <div class="sg-component__label">Flat Tab 1</div> </section> <section id="flat_panel_two" class="tabpanel__panel"> <div class="sg-component__label">Flat Tab 2</div> </section> <section id="flat_panel_three" class="tabpanel__panel"> <div class="sg-component__label">Flat Tab 3</div> </section> <section id="flat_panel_four" class="tabpanel__panel"> <div class="sg-component__label">Flat Tab 4</div> </section> <section id="flat_panel_five" class="tabpanel__panel is-active"> <div class="sg-component__label">Flat Tab 5</div> </section> </div> </div> -->
+    </div>
+</body>
+</html>

@@ -1,0 +1,209 @@
+/*--mobile-side-panel---*/
+.section--oncanvas.is-disabled:after{
+    position:fixed;
+    top:0;
+    right:270px;
+    left:0;
+    opacity:1;
+    -moz-user-select: none;
+    user-select: none;
+    visibility: visible;
+}
+.section--oncanvas:after {
+    content:"";
+    background-color: rgba(0,0,0,.35);
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: opacity .5s;
+    visibility: hidden;
+    z-index: 800;
+}
+.offcanvas--open #footer, .offcanvas--open #main, .offcanvas--open .nav-mobile__container, .offcanvas--open .section--menu,
+.offcanvas--open .side-panel,.offcanvas--open .nav-mobile__container{
+    -webkit-transform: translateX(-270px);
+    transform: translateX(-270px);
+}
+#footer, #main, .nav-mobile__container, .section--menu {
+    transition: -webkit-transform .3s ease-out;
+    transition: transform .3s ease-out;
+}
+.offcanvas--open .section--oncanvas{
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+.section--oncanvas.is-disabled:after{
+    position:fixed;
+    top:0;
+    right:270px;
+    left:0;
+    opacity: 1;
+    visibility:visible;
+}
+.side-panel{
+    background:#038cd6;
+    height:100%;
+    overflow-x:hidden ;
+    overflow-y:auto;
+    position:fixed;
+    right:-270px;
+    top:0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width:270px;
+    z-index:999;
+    transition:transform 0.3s ease-out;
+}
+.nav-mobile__tabset {
+    margin-top:-25px;
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+}
+.nav-mobile__tabset .tabpanel__tab{
+    display:table-cell;
+    font-size:inherit;
+    line-height: 55px;
+    float: none;
+}
+.nav-mobile__tabset .tabpanel__tab a{
+    background:#0278b8;
+    color:rgba(255,255,255,0.5);
+    display:block;
+    position:relative;
+    text-align:center;
+    border:none;
+    line-height: 55px;
+    height:auto;
+    padding:0
+}
+
+.tabpanel__tab.is-active a {
+    background:none;
+    color: #fff;
+}
+.nav-mobile__search{
+    background:#fff;
+    height:55px;
+}
+.nav-mobile__search__text{
+    float:left;
+    line-height:3.125rem;
+    outline:0;
+    padding:10px 15px;
+    width:80%;
+    border:0;
+    background: #fff;
+    color:#b8b8b8;
+    height:100%;
+}
+.nav-mobile__search__button{
+    float:right;
+    font-size:16px;
+    lien-height:20px;
+    padding:16px 10px 12px;
+    width:20%;
+    border:none;
+    background:#fff;
+    color:#b8b8b8;
+    height:100%;
+
+}
+/*aside panel accordion*/
+.nav-mobile__accordion li{
+    position:relative;
+    color:#fff;
+    line-height:55px;
+}
+.nav-mobile__accordion li a{
+    color:#fff;
+    display:block;
+    height:100%;
+    position:relative;
+    z-index:1;
+    padding:0 15px;
+    transition:all 220ms ease;
+}
+.nav-mobile__accordion >li > a{
+    font-size:1.2em;
+    border-bottom:1px solid  rgba(255,255,255,.2);
+}
+.nav-mobile__accordion li span{
+    height:55px;
+    border-left:1px solid rgba(255,255,255,.2);
+    font-size:14px;
+    width:55px;
+    position:absolute;
+    right:0;
+    top:0;
+    bottom:0;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:flex;
+    cursor:pointer;
+    opacity: .6;
+    z-index:2;
+    transition: all 220ms ease;
+}
+.nav-mobile__accordion li span.is-expanded:before{
+    transform:rotate(90deg);
+}
+.nav-mobile__accordion li span:before{
+    margin:auto
+}
+.nav-mobile__accordion li.is-active>.nav-mobile__accordion__drop {
+    max-height: 100em;
+}
+.nav-mobile__accordion__drop{
+    background: #0278b8;
+    border-bottom:1px solid rgba(255,255,255,.2);
+    overflow:hidden;
+    transition:max-height .3s ease-out
+}
+.nav-mobile__accordion__drop a:hover {
+    opacity: .5;
+}
+.nav-mobile__accordion__drop li:first-child{
+    padding-top:5px
+}
+.nav-mobile__accordion__drop li{
+    line-height: 45px;
+}
+/*identification*/
+.identification-switcher .form-radio--large label{
+    padding-top:10px;
+    padding-bottom:5px
+}
+.section--login-block .login-block{
+    position:relative;
+    overflow: hidden;
+    background: url("../img/bg/bgnemid.png");
+}
+.section--login-block .card-number{
+    position:relative;
+    width:200px;
+    margin:0 auto;
+    overflow: hidden;
+}
+.section--login-block .card-number .icon-login{
+    border-radius: 50%;
+    color:#fff;
+    font-size: 20px;
+    display:inline-block;
+    width:40px;
+    height:40px;
+    vertical-align: middle;
+}
+.section--login-block .card-number .icon-login:before{
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+.section--login-block .card-number span.box--yellow-light{
+    color:#474747
+}

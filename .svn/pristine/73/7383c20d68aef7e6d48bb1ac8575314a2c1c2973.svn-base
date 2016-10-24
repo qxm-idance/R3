@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modal Demo</title>
+    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+    <link href="/assets/css/all.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1>Default modal</h1>
+    <div style="margin-bottom:40px">
+      <button @click="showMoal0" class="button button--action">Click on the modal</button>
+      <t-modal title="" :show.sync="showMoal0State" :hide-close="true" :hide-icon-close="false" class="modal-box--size-large">
+        <div>modal content</div>
+      </t-modal>
+    </div>
+    <h1>Action buttons modal</h1>
+
+    <button @click="showAlert" class="button button--action">Alert</button>
+    <t-alert :title="alert.title" :show.sync="alert.show" v-if="alert.show" :msg="alert.msg" >
+    </t-alert>
+
+    <button @click="showConfirm" class="button button--action">Confirm</button>
+    <!--
+       type: 'info', 'success', 'error'
+    -->
+    <t-confirm :title="confirm.title" @sure="handlerSure" @cancel="handlerCancel" type="info" :show.sync="confirm.show" :msg="confirm.msg">
+    </t-confirm>
+
+    <button @click="showConfirm2" class="button button--action" >Confirm2</button>
+    <t-confirm :title="confirm2.title" type="success" :show.sync="confirm2.show" :msg="confirm2.msg" >
+      <div slot="body">
+        自定义自定义{{confirm2.msg}}
+      </div>
+      <button class="button button--default button-flex" slot="footer" @click="act1">btn-1</button>
+      <button class="button button--default button-flex" slot="footer" @click="act2">btn-2</button>
+      <button class="button button--action  button-flex" slot="footer">确定</button>
+    </t-confirm>
+
+    <button @click="customShow" class="button button--action">Custom Modal</button>
+    <t-modal title="Login Modal" :show.sync="loginModal" :click-overlay-close="false">
+      <div class="login-modal">
+        <div class="form-item--multi form-row">
+          <div class="form-item form-col--med">
+              <input label="用户名" type="text" placeholder="User name" v-model="loginModel.username">
+          </div>
+          <div class="form-item">
+              <input label="密码" type="text" placeholder="Password" v-model="loginModel.password" type="password">
+          </div>
+        </div>
+      </div>
+      <div class="block--col">
+        <div class="float--right row">
+          <button text="取消" slot="footer" class="button button--action" @click="this.loginModal = false">取消</button>
+          <button text="登录" slot="footer" class="button button--action" @click="loginHandler" color="red">登录</button>
+        </div>
+      </div>
+    </t-modal>
+  </div>
+</body>
+</html>

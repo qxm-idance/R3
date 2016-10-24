@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../assets/css/telenor.min.css" rel="stylesheet" type="text/css">
+    <script src="../assets/js/jquery.js" type="text/javascript"></script>
+    <title>delivery</title>
+</head>
+<body class="offcanvas">
+   <div class="section--oncanvas" style="padding-bottom: 470px;">
+    <div class="section--wrap">
+        <!--header-->
+        <nav class="menu-wrapper">
+            <!--desktop:menu-->
+            <div id="ad" class="section mobile-hidden tablet-padding-toleft tablet-padding-toright">
+                <div class="container section--menu">
+                    <a href="index.html" class="link--logo float--left" title="home">
+                        <span class="link--text">Home</span>
+                    </a>
+                    <ul class="menu--main float--left clear">
+                        <li><a href="shop.html" class="active-trail track-element-click">Shop</a></li>
+                        <li><a href="" class="track-element-click">Customer Service</a></li>
+                        <li><a href="" class="track-element-click">My Telenor</a></li>
+                        <li><a href="" class="track-element-click">Find Store</a></li>
+                    </ul>
+                    <div class="section--menu__service">
+                        <div class="menu--service">
+                            <a href="#nogo" class="active-trail">Private</a>
+                            <a href="#nogo">Business</a>
+                        </div>
+                        <div class="menu--user">
+                            <a href="#nogo">Sign in</a>
+                        </div>
+                    </div>
+                    <div class="menu--right float--right">
+                        <div class="menu--right__basket">
+                            <a href="#nogo" class="basket-icon">
+                                <span class="icon icon-basket text-size--24"></span>
+                            </a>
+                        </div>
+                        <div class="menu--right__search"></div>
+                    </div>
+                </div>
+            </div>
+            <!--subnav menu -->
+            <div id="menu--subnav-sticky-wrapper" class="mobile-hidden menu-subnav-sticky-wrapper">
+
+                <div class="section section--subnav mobile-hidden tablet-padding-toleft tablet-padding-toright">
+                    <div class="container">
+                        <div><a href="#nogo" class="link--logo float--left"></a></div>
+                        <div>
+                            <ul class="menu--subnav menu--flexnav flexnav--inited">
+                                <li>
+                                    <a href="product-list.html" class="active-trail  track-element-click">Mobiles</a>
+                                </li>
+                                <li>
+                                    <a href="#nogo" class="track-element-click">Subscriptions</a>
+                                </li>
+                                <li>
+                                    <a href="#nogo" class="track-element-click">Tablets</a>
+                                </li>
+                                <li>
+                                    <a href="#nogo" class="track-element-click">Mobile Broadband</a>
+                                </li>
+                                <li>
+                                    <a href="#nogo" class="track-element-click">Broadband</a>
+                                </li>
+                                <li>
+                                    <a href="#nogo" class="track-element-click">Accessories</a>
+                                </li>
+                                <li>
+                                    <a href="#nogo" class="track-element-click">Family Discont</a>
+                                </li>
+                                <li class="flexnav is-open"><a class="flexnav__toggler">Mere</a>
+                                    <ul class="flexnav__subnav">
+                                        <li>
+                                            <a href="#nogo" class="track-element-click">Roam Away</a>
+                                        </li>
+                                        <li>
+                                            <a href="＃nogo" class="track-element-click" >On Sales</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--Mobile menu -->
+            <div class="nav-mobile desktop-hidden">
+                <div class="nav-mobile__container">
+                    <a class="logo" href="#nogo" title="home">
+                        <span class="icon--text">Views.Root.Home</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="#nogo">
+                                <span class="icon icon-user"></span>
+                                <span class="icon--text">Log ind</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#nogo" class="basket-icon">
+                                <span class="icon icon-basket"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a id="mobile-menu" href="#nogo">
+                                <span class="icon--text">Menu</span>
+                                <span class="icon icon-hamburger-menu"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!--header-end-->
+        <div id="main" class="container--main" role="main">
+            <div class="container padding-leader--xxlarge padding-trailer--xxlarge delivery">
+                <h1 class="text-size--36 text-light trailer--small">Levering</h1>
+                <div class="border trailer gradient-line--with-border">
+                    <div class="padding-whole border--bottom box--greyed clear">
+                        <div class="grid-row">
+                            <div class="col-md-6">
+                                <div data-component="select" data-alias="deliveryType" class="form-select form-item">
+                                    <label for="Item2_DeliveryType">Vælg leveringstype</label>
+                                    <select id="SelectedAddress_Value" name="SelectedAddress.Value"><option selected="selected" value="home">Hjemmeadresse</option>
+                                        <option value="alternative">Alternativ adresse</option>
+                                    </select>
+                                    <div class="form-select__field">Hjemmeadresse</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--法律地址“Home Address” start-->
+                    <div data-alias="home" class="">
+                        <form data-component="form" data-extensions="form/validation" data-alias="homeAddressForm" data-model-name="HomeAddress">
+                            <div class="padding-whole">
+                                <div class="grid-row">
+                                    <div class="col-md-6 trailer">
+                                        <div class="form-item form-item--required">
+                                            <label for="fn">Fornavn</label>
+                                            <div>
+                                                <input data-val="true" data-val-required="Feltet skal være udfyldt" disabled="disabled" id="HomeAddress_InitialName" name="HomeAddress.InitialName" placeholder="Jens" type="text" value="Haitao">
+                                                <span class="field-validation-valid"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 trailer">
+                                        <div class="form-item form-item--required">
+                                            <label for="ln">Efternavn</label>
+                                            <div>
+                                                <input data-val="true" data-val-required="Feltet skal være udfyldt" disabled="disabled" id="HomeAddress_SecondName" name="HomeAddress.SecondName" placeholder="Jensen" type="text" value="Ding">
+                                                <span class="field-validation-valid" data-valmsg-for="HomeAddress.SecondName" data-valmsg-replace="true"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid-row">
+                                    <div class="col-md-6 trailer">
+                                        <div class="form-item form-item--required">
+                                            <label for="street-name">Adresse</label>
+                                            <div class="autocomplete">
+                                                <input data-alias="streetName" data-autocomplete-url="/da/custom/AddressValidation/StreetAutocomplete/f038f9f9-9582-4eee-bcf3-b6e074210159" data-component="autocomplete" data-extensions="type-watch" data-payload-zipcode="HomeAddress_Zip" data-related-fields="streetNumber,floor" data-val="true" data-val-required="Feltet skal være udfyldt" data-value="Nøvlingvej" disabled="disabled" id="HomeAddress_StreetName" name="HomeAddress.StreetName" placeholder="Hovedgaden" type="text" value="Nøvlingvej" autocomplete="off"><div class="autocomplete__dropdown"><div class="dropdown__content" role="menu"><div class="dropdown__scroll"><ul class="dropdown__list" aria-live="polite"></ul></div></div></div>
+                                                <span class="field-validation-valid" data-valmsg-for="HomeAddress.StreetName" data-valmsg-replace="true"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 trailer">
+                                        <div class="grid-row grid-row--gutter-none form-item--multi-fields grid-row-xs--bottom">
+                                            <div class="col-xs-3">
+                                                <div class="form-item form-item--required">
+                                                    <label for="no">Nr. </label>
+                                                    <div class="autocomplete">
+                                                        <input data-alias="streetNumber" data-autocomplete-url="/da/custom/AddressValidation/StreetNumberAutocomplete/f038f9f9-9582-4eee-bcf3-b6e074210159" data-component="autocomplete" data-extensions="type-watch" data-payload-street="HomeAddress_StreetName" data-payload-zipcode="HomeAddress_Zip" data-related-fields="floor" data-val="true" data-val-required="Feltet skal være udfyldt" data-value="144" disabled="disabled" id="HomeAddress_Number" name="HomeAddress.Number" placeholder="55" type="text" value="144" autocomplete="off"><div class="autocomplete__dropdown"><div class="dropdown__content" role="menu"><div class="dropdown__scroll"><ul class="dropdown__list" aria-live="polite"></ul></div></div></div>
+                                                        <span class="field-validation-valid" data-valmsg-for="HomeAddress.Number" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <div class="form-item">
+                                                    <label for="letter">Bogstav</label>
+                                                    <div>
+                                                        <input disabled="disabled" id="HomeAddress_Letter" name="HomeAddress.Letter" placeholder="A" type="text" value="C">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <div class="form-item">
+                                                    <label for="floor">Etage</label>
+                                                    <div class="autocomplete">
+                                                        <input data-alias="floor" data-autocomplete-url="/da/custom/AddressValidation/AddressAutocomplete/f038f9f9-9582-4eee-bcf3-b6e074210159" data-component="autocomplete" data-extensions="type-watch" data-value="" id="HomeAddress_Floor" name="HomeAddress.Floor" placeholder="32" type="text" value="" autocomplete="off"><div class="autocomplete__dropdown"><div class="dropdown__content" role="menu"><div class="dropdown__scroll"><ul class="dropdown__list" aria-live="polite"></ul></div></div></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <div class="form-item">
+                                                    <label for="apt">Dør nr.</label>
+                                                    <div>
+                                                        <input id="HomeAddress_DoorNumber" name="HomeAddress.DoorNumber" placeholder="307" type="text" value="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid-row">
+                                    <div class="col-md-6 trailer">
+                                        <div class="grid-row grid-row--gutter-none form-item--multi-fields grid-row-xs--bottom">
+                                            <div class="col-xs-3">
+                                                <div class="form-item form-item--required">
+                                                    <label for="zip">Postnr.</label>
+                                                    <div class="autocomplete">
+                                                        <input data-alias="zip" data-autocomplete-url="/da/custom/AddressValidation/ZipAutocomplete/f038f9f9-9582-4eee-bcf3-b6e074210159" data-component="autocomplete" data-extensions="type-watch" data-related-fields="city,streetName,streetNumber,floor" data-val="true" data-val-required="Feltet skal være udfyldt" data-value="9260" disabled="disabled" id="HomeAddress_Zip" name="HomeAddress.Zip" placeholder="2100" type="text" value="9260" autocomplete="off"><div class="autocomplete__dropdown"><div class="dropdown__content" role="menu"><div class="dropdown__scroll"><ul class="dropdown__list" aria-live="polite"></ul></div></div></div>
+                                                        <span class="field-validation-valid" data-valmsg-for="HomeAddress.Zip" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <div class="form-item form-item--required">
+                                                    <label for="сity">By</label>
+                                                    <div class="autocomplete">
+                                                        <input data-alias="city" data-autocomplete-url="/da/custom/AddressValidation/CityAutocomplete/f038f9f9-9582-4eee-bcf3-b6e074210159" data-component="autocomplete" data-extensions="type-watch" data-payload-zipcode="HomeAddress_Zip" data-related-fields="streetName,streetNumber,floor" data-val="true" data-val-length="Feltet må maksimum indeholde 50 tegn." data-val-length-max="50" data-val-required="Feltet skal være udfyldt" data-value="Gistrup" disabled="disabled" id="HomeAddress_City" name="HomeAddress.City" placeholder="København Ø" type="text" value="Gistrup" autocomplete="off"><div class="autocomplete__dropdown"><div class="dropdown__content" role="menu"><div class="dropdown__scroll"><ul class="dropdown__list" aria-live="polite"></ul></div></div></div>
+                                                        <span class="field-validation-valid" data-valmsg-for="HomeAddress.City" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 trailer">
+                                        <div class="form-item">
+                                            <label for="county">Stednavn</label>
+                                            <div>
+                                                <input id="HomeAddress_Country" name="HomeAddress.Country" placeholder="Område eller stednavn" type="text" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid-row">
+                                    <div class="col-md-6 trailer--small mobile-trailer">
+                                        <div class="form-item form-item--required">
+                                            <label for="email">E-mail</label>
+                                            <div>
+                                                <input data-alias="email" data-val="true" data-val-regex="Der mangler et @ eller et punktum i din e-mail." data-val-regex-pattern="^$|^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,4})$" data-val-required="Feltet skal være udfyldt" disabled="disabled" id="HomeAddress_Email" name="HomeAddress.Email" placeholder="john@smith.com" type="text" value="dinght@sina.com">
+                                                <span class="field-validation-valid" data-valmsg-for="HomeAddress.Email" data-valmsg-replace="true"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 trailer--small">
+                                        <div class="form-item form-item--required">
+                                            <label for="phone">Mobilnummer</label>
+                                            <div>
+                                                <input data-alias="phone-number" data-val="true" data-val-regex="Ugyldigt telefonnummer. Indtast maks. 8 cifre (ingen landekode)." data-val-regex-pattern="^$|^[1-9]\d{7}$" data-val-required="Feltet skal være udfyldt" id="HomeAddress_PhoneNumber" name="HomeAddress.PhoneNumber" type="text" value="">
+                                                <span class="field-validation-valid" data-valmsg-for="HomeAddress.PhoneNumber" data-valmsg-replace="true"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!--法律地址“Home Address” end-->
+                    <!--Alternative Address start-->
+                    <div data-alias="alternative" data-block-selector="delivery-variant" class="">
+                        <form data-component="form" data-extensions="form/validation" data-alias="alternateAddressForm" data-model-name="AlternativeAddress" action="/da/custom/DeliveryPage/DeliveryAddress/f038f9f9-9582-4eee-bcf3-b6e074210159" novalidate="novalidate">
+                            <div class="padding-whole">
+                                <div class="grid-row">
+                                    <div class="col-md-6 trailer">
+                                        <div class="form-item form-item--required">
+                                            <label for="fn">Fornavn</label>
+                                            <div>
+                                                <input data-val="true" data-val-required="Feltet skal være udfyldt" id="AlternativeAddress_InitialName" name="AlternativeAddress.InitialName" placeholder="Jens" type="text" value="Haitao">
+                                                <span class="field-validation-valid" data-valmsg-for="AlternativeAddress.InitialName" data-valmsg-replace="true"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 trailer">
+                                        <div class="form-item form-item--required">
+                                            <label for="ln">Efternavn</label>
+                                            <div>
+                                                <input data-val="true" data-val-required="Feltet skal være udfyldt" id="AlternativeAddress_SecondName" name="AlternativeAddress.SecondName" placeholder="Jensen" type="text" value="Ding">
+                                                <span class="field-validation-valid" data-valmsg-for="AlternativeAddress.SecondName" data-valmsg-replace="true"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid-row">
+                                    <div class="col-md-6 trailer">
+                                        <div class="form-item form-item--required">
+                                            <label for="street-name">Adresse</label>
+                                            <div class="autocomplete">
+                                                <input data-alias="streetName" data-autocomplete-url="/da/custom/AddressValidation/StreetAutocomplete/f038f9f9-9582-4eee-bcf3-b6e074210159" data-component="autocomplete" data-extensions="type-watch" data-payload-zipcode="AlternativeAddress_Zip" data-related-fields="streetNumber,floor" data-val="true" data-val-required="Feltet skal være udfyldt" data-value="Nøvlingvej" id="AlternativeAddress_StreetName" name="AlternativeAddress.StreetName" placeholder="Hovedgaden" type="text" value="Nøvlingvej" autocomplete="off"><div class="autocomplete__dropdown"><div class="dropdown__content" role="menu"><div class="dropdown__scroll"><ul class="dropdown__list" aria-live="polite"></ul></div></div></div>
+                                                <span class="field-validation-valid" data-valmsg-for="AlternativeAddress.StreetName" data-valmsg-replace="true"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 trailer">
+                                        <div class="grid-row grid-row--gutter-none form-item--multi-fields grid-row-xs--bottom">
+                                            <div class="col-xs-3">
+                                                <div class="form-item form-item--required">
+                                                    <label for="no">Nr. </label>
+                                                    <div class="autocomplete">
+                                                        <input data-alias="streetNumber" data-autocomplete-url="/da/custom/AddressValidation/StreetNumberAutocomplete/f038f9f9-9582-4eee-bcf3-b6e074210159" data-component="autocomplete" data-extensions="type-watch" data-payload-street="AlternativeAddress_StreetName" data-payload-zipcode="AlternativeAddress_Zip" data-related-fields="floor" data-val="true" data-val-required="Feltet skal være udfyldt" data-value="144" id="AlternativeAddress_Number" name="AlternativeAddress.Number" placeholder="55" type="text" value="144" autocomplete="off"><div class="autocomplete__dropdown"><div class="dropdown__content" role="menu"><div class="dropdown__scroll"><ul class="dropdown__list" aria-live="polite"></ul></div></div></div>
+                                                        <span class="field-validation-valid" data-valmsg-for="AlternativeAddress.Number" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <div class="form-item">
+                                                    <label for="letter">Bogstav</label>
+                                                    <div>
+                                                        <input id="AlternativeAddress_Letter" name="AlternativeAddress.Letter" placeholder="A" type="text" value="C">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <div class="form-item">
+                                                    <label for="floor">Etage</label>
+                                                    <div class="autocomplete">
+                                                        <input data-alias="floor" data-autocomplete-url="/da/custom/AddressValidation/AddressAutocomplete/f038f9f9-9582-4eee-bcf3-b6e074210159" data-component="autocomplete" data-extensions="type-watch" data-value="" id="AlternativeAddress_Floor" name="AlternativeAddress.Floor" placeholder="32" type="text" value="" autocomplete="off"><div class="autocomplete__dropdown"><div class="dropdown__content" role="menu"><div class="dropdown__scroll"><ul class="dropdown__list" aria-live="polite"></ul></div></div></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <div class="form-item">
+                                                    <label for="apt">Dør nr.</label>
+                                                    <div>
+                                                        <input id="AlternativeAddress_DoorNumber" name="AlternativeAddress.DoorNumber" placeholder="307" type="text" value="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid-row">
+                                    <div class="col-md-6 trailer">
+                                        <div class="grid-row grid-row--gutter-none form-item--multi-fields grid-row-xs--bottom">
+                                            <div class="col-xs-3">
+                                                <div class="form-item form-item--required">
+                                                    <label for="zip">Postnr.</label>
+                                                    <div class="autocomplete">
+                                                        <input data-alias="zip" data-autocomplete-url="/da/custom/AddressValidation/ZipAutocomplete/f038f9f9-9582-4eee-bcf3-b6e074210159" data-component="autocomplete" data-extensions="type-watch" data-related-fields="city,streetName,streetNumber,floor" data-val="true" data-val-required="Feltet skal være udfyldt" data-value="9260" id="AlternativeAddress_Zip" name="AlternativeAddress.Zip" placeholder="2100" type="text" value="9260" autocomplete="off"><div class="autocomplete__dropdown"><div class="dropdown__content" role="menu"><div class="dropdown__scroll"><ul class="dropdown__list" aria-live="polite"></ul></div></div></div>
+                                                        <span class="field-validation-valid" data-valmsg-for="AlternativeAddress.Zip" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <div class="form-item form-item--required">
+                                                    <label for="сity">By</label>
+                                                    <div class="autocomplete">
+                                                        <input data-alias="city" data-autocomplete-url="/da/custom/AddressValidation/CityAutocomplete/f038f9f9-9582-4eee-bcf3-b6e074210159" data-component="autocomplete" data-extensions="type-watch" data-payload-zipcode="AlternativeAddress_Zip" data-related-fields="streetName,streetNumber,floor" data-val="true" data-val-length="Feltet må maksimum indeholde 50 tegn." data-val-length-max="50" data-val-required="Feltet skal være udfyldt" data-value="Gistrup" id="AlternativeAddress_City" name="AlternativeAddress.City" placeholder="København Ø" type="text" value="Gistrup" autocomplete="off"><div class="autocomplete__dropdown"><div class="dropdown__content" role="menu"><div class="dropdown__scroll"><ul class="dropdown__list" aria-live="polite"></ul></div></div></div>
+                                                        <span class="field-validation-valid" data-valmsg-for="AlternativeAddress.City" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 trailer">
+                                        <div class="form-item form-item--required">
+                                            <label for="county">Stednavn</label>
+                                            <div>
+                                                <input id="AlternativeAddress_Country" name="AlternativeAddress.Country" placeholder="Område eller stednavn" type="text" value="">
+                                                <span class="field-validation-valid" data-valmsg-for="AlternativeAddress.Country" data-valmsg-replace="true"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid-row">
+                                    <div class="col-md-6 trailer--small mobile-trailer">
+                                        <div class="form-item form-item--required">
+                                            <label for="email">E-mail</label>
+                                            <div>
+                                                <input data-alias="email" data-val="true" data-val-regex="Der mangler et @ eller et punktum i din e-mail." data-val-regex-pattern="^$|^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,4})$" data-val-required="Feltet skal være udfyldt" disabled="disabled" id="AlternativeAddress_Email" name="AlternativeAddress.Email" placeholder="john@smith.com" type="text" value="dinght@sina.com">
+                                                <span class="field-validation-valid" data-valmsg-for="AlternativeAddress.Email" data-valmsg-replace="true"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 trailer--small">
+                                        <div class="form-item form-item--required">
+                                            <label for="phone">Mobilnummer</label>
+                                            <div>
+                                                <input data-alias="phone-number" data-val="true" data-val-regex="Ugyldigt telefonnummer. Indtast maks. 8 cifre (ingen landekode)." data-val-regex-pattern="^$|^[1-9]\d{7}$" data-val-required="Feltet skal være udfyldt" id="AlternativeAddress_PhoneNumber" name="AlternativeAddress.PhoneNumber" type="text" value="">
+                                                <span class="field-validation-valid" data-valmsg-for="AlternativeAddress.PhoneNumber" data-valmsg-replace="true"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!--Alternative Address end-->
+                    <!--用户可到附近运营商门店自取商品 form start-->
+                    <div data-alias="shop" data-block-selector="delivery-variant" class="">
+                        <form data-component="form" data-extensions="form/validation" data-alias="pickStoreForm" data-model-name="ShopAddress" action="/da/custom/DeliveryPage/DeliveryShop/f038f9f9-9582-4eee-bcf3-b6e074210159" novalidate="novalidate">
+                            <div class="padding-whole">
+                                <div class="padding-trailer--large">
+                                    <div class="grid-row">
+                                        <div class="col-md-6 trailer">
+                                            <div class="form-item form-item--required">
+                                                <label for="fn2">Fornavn</label>
+                                                <div>
+                                                    <input data-val="true" data-val-required="Feltet skal være udfyldt" id="ShopAddress_FirstName" name="ShopAddress.FirstName" placeholder="Jens" type="text" value="">
+                                                    <span class="field-validation-valid" data-valmsg-for="ShopAddress.FirstName" data-valmsg-replace="true"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 trailer">
+                                            <div class="form-item form-item--required">
+                                                <label for="ln2">Efternavn</label>
+                                                <div>
+                                                    <input data-val="true" data-val-required="Feltet skal være udfyldt" id="ShopAddress_LastName" name="ShopAddress.LastName" placeholder="Jensen" type="text" value="">
+                                                    <span class="field-validation-valid" data-valmsg-for="ShopAddress.LastName" data-valmsg-replace="true"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="grid-row">
+                                        <div class="col-md-6 trailer--small mobile-trailer">
+                                            <div class="form-item form-item--required">
+                                                <label for="email2">E-mail</label>
+                                                <div>
+                                                    <input data-val="true" data-val-regex="Der mangler et @ eller et punktum i din e-mail." data-val-regex-pattern="^$|^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,4})$" data-val-required="Feltet skal være udfyldt" id="ShopAddress_Email" name="ShopAddress.Email" placeholder="jens@outlook.com" type="text" value="">
+                                                    <span class="field-validation-valid" data-valmsg-for="ShopAddress.Email" data-valmsg-replace="true"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 trailer--small">
+                                            <div class="form-item form-item--required">
+                                                <label for="phone2">Mobilnummer</label>
+                                                <div>
+                                                    <input data-val="true" data-val-regex="Ugyldigt telefonnummer. Indtast maks. 8 cifre (ingen landekode)." data-val-regex-pattern="^$|^[1-9]\d{7}$" data-val-required="Feltet skal være udfyldt" id="ShopAddress_PhoneNumber" name="ShopAddress.PhoneNumber" type="text" value="">
+                                                    <span class="field-validation-valid" data-valmsg-for="ShopAddress.PhoneNumber" data-valmsg-replace="true"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padding-whole">
+                                <h2 class="text-size--36 text-light trailer--small">Find din butik</h2>
+                                <div class="rel">
+                                    <div data-component="Shop::stores-list" data-alias="stores" data-extensions="loader" data-load-url="/da/custom/StoresBlock/ChangePage/f038f9f9-9582-4eee-bcf3-b6e074210159">
+
+                                        <div class="border--top border--bottom trailer padding-leader padding-trailer " data-alias="search-form">
+                                            <div class="grid-row">
+                                                <div class="col-md-6">
+                                                    <div class="form-search is-empty" data-component="form/search" data-alias="componentSearch">
+                                                        <input type="search" placeholder="Søg på postnummer" data-component="type-watch" data-capture-length="1" data-alias="search-address">
+                                                        <button type="button" tabindex="-1" class="form-search__clear icon-clear" data-list-clear="" style="display: none;"></button>
+                                                        <button id="search-field-one-button" class="form-search__submit" tabindex="-1">
+                                                            <span class="icon-search"></span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="available-stores">
+                                            <div data-alias="stores">
+                                                <div class="trailer--small text-size--13">
+                                                    <div class="available-stores">
+                                                        <div class="grid-row">
+                                                            <div class="col-md-4 mobile-trailer">
+                                                                <div class="store-info">
+                                                                    <!--<h3 class="text-bold trailer&#45;&#45;xsmall">DK-Telenor butikken Silkeborg</h3>-->
+                                                                        <ul>
+                                                                            <li class="form-radio">
+                                                                                <input type="radio" checked="" id="rad-inline-2" name="rad-inline" value="--some-value--">
+                                                                                <label class="" for="radio-2">
+                                                                                    <span class="text-bold trailer--xsmall display--inline-block">DK-Telenor butikken Silkeborg</span>
+                                                                                </label>
+                                                                            </li>
+                                                                        </ul>
+                                                                </div>
+                                                                <h3 class="text-bold trailer--xsmall">Adresse</h3>
+                                                                <address class="store-address trailer--large">
+                                                                    Søndergade 2   <br>
+                                                                    8600 Silkeborg<br>
+                                                                    Telefon:  60504216
+                                                                </address>
+                                                                <h3 class="text-bold trailer--xsmall">
+                                                                    Åbningstider
+                                                                </h3>
+                                                                <dl class="clear">
+                                                                    <dt>Hverdage: </dt>
+                                                                    <dd></dd>
+                                                                    <dt>Weekender:</dt>
+                                                                    <dd></dd>
+                                                                </dl>
+                                                                <dl class="clear">
+                                                                    <dt>Afstand:</dt>
+                                                                    <dd>45,3 km fra dig</dd>
+                                                                </dl>
+                                                            </div>
+                                                            <div class="col-md-4 mobile-trailer">
+                                                                <div class="store-info">
+                                                                    <!--<h3 class="text-bold trailer&#45;&#45;xsmall">DK-5R Marketing (2 hold)</h3>-->
+                                                                    <ul>
+                                                                        <li class="form-radio">
+                                                                            <input type="radio" checked="" id="rad-inline-2" name="rad-inline" value="--some-value--">
+                                                                            <label class="" for="radio-2">
+                                                                                <span class="text-bold trailer--xsmall display--inline-block">DK-Telenor butikken Silkeborg</span>
+                                                                            </label>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                                <h3 class="text-bold trailer--xsmall">Adresse</h3>
+                                                                <address class="store-address trailer--large">
+                                                                    Søndergade 2   <br>
+                                                                    8600 Silkeborg<br>
+                                                                    Telefon:  60504216
+                                                                </address>
+                                                                <h3 class="text-bold trailer--xsmall">
+                                                                    Åbningstider
+                                                                </h3>
+                                                                <dl class="clear">
+                                                                    <dt>Hverdage: </dt>
+                                                                    <dd></dd>
+                                                                    <dt>Weekender:</dt>
+                                                                    <dd></dd>
+                                                                </dl>
+                                                                <dl class="clear">
+                                                                    <dt>Afstand:</dt>
+                                                                    <dd>45,3 km fra dig</dd>
+                                                                </dl>
+                                                            </div>
+                                                            <div class="col-md-4 mobile-trailer">
+                                                                <div class="store-info">
+                                                                    <!--<h3 class="text-bold trailer&#45;&#45;xsmall">DK-Telenor butikken Århus Bruun¿s Galleri</h3>-->
+                                                                    <ul>
+                                                                        <li class="form-radio">
+                                                                            <input type="radio" checked="" id="rad-inline-2" name="rad-inline" value="--some-value--">
+                                                                            <label class="" for="radio-2">
+                                                                                <span class="text-bold trailer--xsmall display--inline-block">DK-Telenor butikken Silkeborg</span>
+                                                                            </label>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                                <h3 class="text-bold trailer--xsmall">Adresse</h3>
+                                                                <address class="store-address trailer--large">
+                                                                    Søndergade 2   <br>
+                                                                    8600 Silkeborg<br>
+                                                                    Telefon:  60504216
+                                                                </address>
+                                                                <h3 class="text-bold trailer--xsmall">
+                                                                    Åbningstider
+                                                                </h3>
+                                                                <dl class="clear">
+                                                                    <dt>Hverdage: </dt>
+                                                                    <dd></dd>
+                                                                    <dt>Weekender:</dt>
+                                                                    <dd></dd>
+                                                                </dl>
+                                                                <dl class="clear">
+                                                                    <dt>Afstand:</dt>
+                                                                    <dd>45,3 km fra dig</dd>
+                                                                </dl>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="text--left js--hidden">
+                                                <div class=" mobile-trailer--small mobile-text--center">
+                                                    <button class="button button--accept  mobile-float--none stretch-mobile" data-component="button" data-alias="optionalLogin">
+                                                        <span class="button__label icon--right icon-arrow-next"><span class="button__text">Exit</span></span>
+                                                        <span class="button__spinner"><span class="spinner-holder"><span class="spinner-container"><em><span></span></em></span></span></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="text--center">
+                                                <div class="pager pager--default" data-component="pager" data-alias="pagination" style="display: inline-block;"><a class="pager__button previous" data-selector="page-previous">previous</a>
+                                                    <span data-selector="pages"><a class="pager__button" data-selector="page-button" data-page-number="1">1</a>
+                                                    <a class="pager__button" data-selector="page-button" data-page-number="2">2</a>
+                                                    <a class="pager__button" data-selector="page-button" data-page-number="3">3</a>
+                                                    <a class="pager__button current" data-selector="page-button" data-page-number="4">4</a>
+                                                    <a class="pager__button" data-selector="page-button" data-page-number="5">5</a>
+                                                    <span class="pager__elipsis">…</span>
+                                                    <a class="pager__button" data-selector="page-button" data-page-number="24">24</a>
+                                                    </span>
+                                                    <a class="pager__button next" data-selector="page-next">next</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="loader__overlay">
+                                            <div class="loader--centered">
+                                                <span class="loader__spinner"><i></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!--用户可到附近运营商门店自取商品 form end-->
+                </div>
+                <div class="trailer clear">
+                    <!--submit address error 提示 start-->
+                    <div class="message message--error leader trailer" data-component="message" data-alias="submitAddressError">
+                        <div class="message__inner">
+                            <span class="message__icon icon icon-reject"></span>
+                            <div class="text-size--13 message__text">
+                                <p>Adressen er ikke gyldig. Se venligst dine informationer igennem og prøv igen</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--submit address error 提示 end-->
+                    <div class="clear">
+                        <button class="button button--accept float--right mobile-float--none stretch-mobile mobile-trailer" data-component="button" data-alias="submitDelivery">
+                            <span class="button__label icon--right icon-arrow-next"><span class="button__text">Fortsæt</span></span>
+                            <span class="button__label--success icon--left icon-thumb-up"><span class="button__text">Gemt</span></span>
+                            <span class="button__spinner"><span class="spinner-holder"><span class="spinner-container"><em><span></span></em></span></span></span>
+                        </button>
+                        <!--未登录用户购裸机 button start-->
+                        <button class="button button--accept float--right mobile-float--none stretch-mobile" data-component="button" data-alias="optionalLogin">
+                            <span class="button__label icon--right icon-arrow-next"><span class="button__text">Log ind</span></span>
+                            <span class="button__spinner"><span class="spinner-holder"><span class="spinner-container"><em><span></span></em></span></span></span>
+                        </button>
+                        <!--未登录用户购裸机 button end-->
+                    </div>
+                </div>
+            </div>
+            <div id="help" class="section--help section--negative container--wide" role="complementary">
+                <div class="container text--center">
+                    <p class="section--help__title mobile-hidden">Få overblik på Mit Telenor</p>
+                    <p class="section--help__subtitle"><span>Selvbetjening er kun ét klik herfra </span><span class="mobile-display--block"></span></p>
+                    <ul class="section--help__buttons">
+                        <li><a class="button button--action-dark" href="/mit-telenor/"><span class="button__text">Mit Telenor</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer section-->
+    <div id="footer" class="section-footer-scroll" data-component="footer/scroll">
+        <nav class="section section--footer">
+            <div class="container">
+                <div class="grid-row trailer--small mobile-hidden">
+                    <!-- footer:breadbcrumb-->
+                    <div class="col-md-9">
+                        <div class="section--footer__breadcrumb">
+                            <ul>
+                                <li><a href="#nogo">Home</a></li>
+                                <li><a href="#nogo">Shop</a></li>
+                                <li><a href="#nogo">Moblie</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3 tablet-omega footer__social text--right">
+                        <a href="#nogo" class="icon-facebook track-social">
+                            <span class="icon--text">Facebook</span>
+                        </a>
+                        <a href="#nogo" class="icon-twitter-circle track-social">
+                            <span class="icon--text">Twitter</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- : Footer Navigation -->
+                <div class="section--footer__menu mobile-hidden">
+                    <div class="flex--row">
+                        <div class="flex-item footer-item">
+                            <h3><a href="#nogo">Om Telenor</a></h3>
+                            <ul class="list list--footer">
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                            </ul>
+                        </div>
+                        <div class="flex-item footer-item">
+                            <h3><a href="#nogo">Om Telenor</a></h3>
+                            <ul class="list list--footer">
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                            </ul>
+                        </div>
+                        <div class="flex-item footer-item">
+                            <h3><a href="#nogo">Om Telenor</a></h3>
+                            <ul class="list list--footer">
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                            </ul>
+                        </div>
+                        <div class="flex-item footer-item">
+                            <h3><a href="#nogo">Om Telenor</a></h3>
+                            <ul class="list list--footer">
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                            </ul>
+                        </div>
+                        <div class="flex-item footer-item">
+                            <h3><a href="#nogo">Om Telenor</a></h3>
+                            <ul class="list list--footer">
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                                <li><a href="#nogo" class="track-element-click">Job hos Telenor</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--:section footer info -->
+                <div class="section--footer__info">
+                    <div class="grid-row">
+                        <div class="col-md-3 col-xs-6 padding-trailer">
+                            <div class="section--footer__info__icon icon-hotline circle-outline border-width-1"></div>
+                            <div class="section--footer__info__txt">
+                                Kundeservice har altid åbent
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-xs-6 padding-trailer">
+                            <div class="section--footer__info__icon icon-one-to-one-loaner-phone circle-outline border-width-1"></div>
+                            <div class="section--footer__info__txt">
+                                1:1 lånemobil
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-xs-6 padding-trailer">
+                            <div class="section--footer__info__icon icon-truck circle-outline border-width-1"></div>
+                            <div class="section--footer__info__txt">
+                                Fri fragt og ekspreslevering
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-xs-6 padding-trailer">
+                            <div class="section--footer__info__icon icon-perfect-start circle-outline border-width-1"></div>
+                            <div class="section--footer__info__txt">
+                                Kundeservice har altid åbent
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- section bottom-->
+        <div class="section section--bottom">
+            <div class="container">
+                <div class="desktop-hidden footer__social">
+                    <a href="#nogo" class="icon-facebook"><span class="icon--text">Facebook</span></a>
+                    <a href="#nogo" class="icon-twitter-circle"><span class="icon--text">Twitter</span></a>
+                </div>
+                <div class="section--bottom__holder mobile-text--center">
+                    <div class="leader--xsmall mobile-trailer--small float--right mobile-text--center clearImg">
+                        <div class="float--right toleft--xsmall mobile-toleft--none mobile-trailer--xsmall">
+                            <img src="../assets/img/paymenticons.png" alt="">
+                        </div>
+                        <div class="float--left">
+                            <img src="../assets/img/payment-icon2.png" alt="">
+                        </div>
+                    </div>
+                    <div class="float--left">
+                        <div>
+                            <ul class="adr-list">
+                                <li class="icon-telenor section--bottom__logo"></li>
+                                <li>Telenor</li>
+                                <li> · </li>
+                                <li>Frederikskaj 8</li>
+                                <li> · </li>
+                                <li>1780 København V</li>
+                                <li class="mobile-hidden"> · </li>
+                                <li class="mobile-hidden">CVR: 19433692</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer end-->
+</div>
+</body>
+<script type="text/javascript">
+
+</script>
+</html>

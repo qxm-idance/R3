@@ -1,0 +1,17 @@
+<div class="section--block container">
+    <div class="block__header leader--large trailer--large">
+        <h2 class="title--medium">AgentView</h2>
+    </div>
+    <div class="sgComponentWrapper">
+        <div class="container">
+            <div class="sg-content__header tablet-one-third">
+                <h2 class="title--medium-small">AgentView</h2>
+            </div>
+            <div class="tablet-two-thirds">
+                <ul>
+                    <li><a href="/elements/fe-static/agent-view/view/agentview.html" target="_blank">AgentView</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

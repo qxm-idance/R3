@@ -1,0 +1,262 @@
+# JS开发规范
+
+## 文件模版
+
+新开发的页面推荐基于下面的模版来创建。
+
+### 1. index.html文件模版
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <!-- content请填写业务模块编码，此编码与i18n目录下对应模块的子目录名称保持一致,这里以eshop为例子 -->
+    <meta name="biz-code" content="eshop">
+    <title></title>
+    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+    <link href="/assets/css/main.css" rel="stylesheet">
+    <!-- 此处定义业务样式 -->
+</head>
+<body>
+  <!-- 此处放置HTML内容 -->
+</body>
+<!-- 此处放置需要引入的业务侧js文件 -->
+</html>
+```
+
+> 注意：`name`为`biz-code`的`meta`标记是必须定义的，否则，此页面的国际化内容将失效！
+
+业务模块编码如下：
+
+|业务模块|编码|
+|-------|---|
+|eshop|eshop|
+|self care|self-care|
+|agent view|agent-view|
+|customer managment|customer-mgmt|
+|resource managment|resource-mgmt|
+
+> 注意：如果需要扩展业务编码请联系Taurus团队。
+
+### 2. index.js文件模版
+
+```js
+import {...} from 'aii-taurus';
+new Vue({
+  el: 'body', // 推荐定义为body，极少数情况可以定义为某个容器元素的选择器，如：'#myTag'等
+  ready: function () { // 初始化
+  },
+  components: { // 注册需要使用的组件
+  },
+  data: function() {
+    return {}; // 自定义数据结构
+  },
+  events: { // 事件处理定义
+  },
+  methods: { // 方法定义
+  }
+});
+```
+
+以上模版中的`...`为某些可用的模块名，如：
+
+```js
+import {taurus, TBars, TButton} from 'aii-taurus';
+```
+
+Taurus中可导出使用的模块如下：
+
+|模块|描述| |
+|---|---|---|
+|TBars| 柱状图组件 | [Demo][amcharts-demo] |
+|TDoughnut| 饼图组件 | [Demo][amcharts-demo] |
+|TGauge| 仪表盘组件 | [Demo][amcharts-demo] |
+|TLine| 折线图组件 | [Demo][amcharts-demo] |
+|TAutocomplete| 自动完成输入框组件 | [Demo][autocomplete-demo] |
+|TBoxGroup| 单选框组、多选框组、多选按钮组组件 | [Demo][box-group-demo] |
+|TBreadcrumbs| 面包屑组件 | [Demo][breadcrumbs-demo] |
+|TButton| 按钮组件 | [Demo][button-demo] |
+|TDatePicker| 日期选择组件 | [Demo][date-picker-demo] |
+|TSelectDropdown| 选择下拉框 | [Demo][dropdown-demo] |
+|TSubDropdown| 树状选择下拉框 | [Demo][dropdown-demo] |
+|TAlert| 提示对话框 | [Demo][modal-demo] |
+|TConfirm| 确认对话框 | [Demo][modal-demo] |
+|TModal| 模态对话框 | [Demo][modal-demo] |
+|TModalBox| 自定义模态对话框 | [Demo][modal-box-demo] |
+|TNumberStepper| 数字输入框 | [Demo][number-stepper-demo] |
+|TPager| 翻页组件 | [Demo][pager-demo] |
+|TRangeSlide| 数值范围组件 | [Demo][range-slider-demo] |
+|TSearchFilter| 搜索、查询框组件 | [Demo][search-filter-demo] |
+|TSelect| 简单下拉框组件 | [Demo][select-demo] |
+|TSpeechBubble| 聊天下拉框组件 | [Demo][speech-bubble-demo] |
+|TSpeechBubbleFilter| 聊天过滤下拉框组件 | [Demo][speech-bubble-demo] |
+|TSpeechBubbleFilterTree| 聊天过滤树下拉框组件 | [Demo][speech-bubble-demo] |
+|TStatusMessage| 消息组件 | [Demo][status-message-demo] |
+|TTabs| 页签组件 | [Demo][tabs-demo] |
+|TFlatTabs| 平面页签组件 | [Demo][tabs-demo] |
+|TVideoPlayer| 视频(Youtobe)组件 | [Demo][video-player-demo] |
+|TSimpleTable| 简单表格组件 | [Demo][simple-table-demo] |
+|TDataTable| 数据表格组件 | [Demo][data-table-demo] |
+|TSwitcher| 开关组件 | [Demo][switcher-demo] |
+|TLoading| 加载进度组件 | [Demo][loading-demo] |
+|cookieHelper| Cookie读写模块 | [Demo][cookie-helper-demo] |
+|localStorage| 浏览器本地存储模块 | [Demo][cookie-helper-demo] |
+|taurus| 全局辅助模块，包括国际化、读写Session信息等全局控制功能 | |
+
+插件：
+
+|模块|描述| |
+|---|---|---|
+|scrollTo|实现了页面中不同位置之间的平滑滚动能力| [Demo][scroll-to-demo] |
+|statusMessage|实现了消息提示框组件的封装| [Demo][status-message-demo] |
+|restfulService|实现了RESTful方式服务调用能力 | [Demo][restful-service-demo] |
+
+指令：
+
+|模块|描述| |
+|---|---|---|
+|collapse|实现了页面元素折叠能力| [Demo][collapse-demo] |
+|tooltip|实现了鼠标提示功能| [Demo][tooltips-demo] |
+
+> 注意：
+> 1. 组件都需要显示使用`import`关键字(ES6关键字)进行导出后使用；
+> 2. 插件和指令可以直接使用，不需要再使用`Vue.use`或`Vue.directive`进行注册！
+
+### 3. 业务组件文件模版
+
+以下是业务组件文件模版。
+
+```html
+<style scoped>
+</style>
+<template>
+</template>
+<script>
+export default {
+  // 初始化，参见：http://vuejs.org.cn/guide/instance.html#生命周期图示
+  ready: function () {
+
+  }
+  // 参见：http://vuejs.org.cn/api/#data
+  data: function () {
+    return {};
+  },
+  // 参见：http://vuejs.org.cn/api/#props
+  props: { // props data
+
+  },
+  // 参见：http://vuejs.org.cn/api/#methods
+  methods: { // methods
+
+  }
+};
+</script>
+```
+
+## 代码书写风格
+
+所有javascript脚本书写风格按照ESLint静态检查规则实现（不同的编辑器需要安装不同的ESLint插件，参见附录）。
+
+> 注意：由于工程编译脚本已经整合ESLint进行代码静态检查，因此，如果在开发时手动禁用 > 了ESLint插件进行静态代码检查，那么可能在编译时不能通过代码静态检查环节导致编译失败!
+
+## 文件和目录
+
+所有文件名使用全小写命名，单词之间使用`-`号分割，如：
+
+```text
+box-group.vue
+service.js
+main.css
+```
+
+开发一个新页面时，你需要在`src`目录对应业务模块的目录里创建一个子目录，然后把该页面的源码放到此子目录中。例如：新写一个eshop业务模块的页面family时，你需要将这个页面的源码放到`src/eshop/family`目录内。
+
+## 组件（component）
+
+所有组件注册的自定义标记都需要带上`t-`前缀。如：
+
+```js
+import {TBizComp} from 'common/biz-comp';
+Vue.component('t-biz-comp', TBizComp);
+```
+
+```js
+// 推荐写法
+import {TBizComp} from 'common/biz-comp';
+new Vue({
+  el: 'body',
+  components: {
+    TBizComp
+  }
+});
+```
+
+```js
+import {TBizComp} from 'common/biz-comp';
+new Vue({
+  el: 'body',
+  components: {
+    't-biz-comp': TBizComp
+  }
+});
+```
+
+## 模版片段（partial）
+
+所有使用`Vue.partial`方法注册的模版片段的Id（建议带前缀）都不允许重复。
+
+## 过滤器（filter）
+
+业务侧禁止自定义过滤器。
+
+## ECMAScript6
+
+Taurus通过Babel来支持ES6语法，由于Babel当前没有完全实现ES6标准，因此，某些不常用ES6特性将不被支持，具体情况请查看[兼容列表][es6-compat]。
+
+[nodejs]: https://nodejs.org/en/
+[webpack]: http://webpack.github.io/
+[vue]: http://vuejs.org.cn/
+[vue-cli]: https://github.com/vuejs/vue-cli
+[vue-github]: https://github.com/vuejs/vue/
+[vuex-github]: https://github.com/vuejs/vuex
+[vue-router-github]: https://github.com/vuejs/vue-router
+[vue-resource-github]: https://github.com/vuejs/vue-resource
+[vuex]: https://github.com/vuejs/vuex/tree/1.0/docs/zh-cn
+[vue-router]: http://router.vuejs.org/zh-cn/index.html
+[awesome-vue]: https://github.com/vuejs/awesome-vue
+[iso_3166-2]: https://en.wikipedia.org/wiki/ISO_3166-2
+[vue-i18n-doc]: https://kazupon.github.io/vue-i18n/
+[vue-i18n]: https://github.com/kazupon/vue-i18n
+[es6-compat]: http://kangax.github.io/compat-table/es6/
+
+[amcharts-demo]: http://10.19.18.95:48888/examples/amcharts-demo/index.html
+[autocomplete-demo]: http://10.19.18.95:48888/examples/autocomplete-demo/index.html
+[box-group-demo]: http://10.19.18.95:48888/examples/box-group-demo/index.html
+[breadcrumbs-demo]: http://10.19.18.95:48888/examples/breadcrumbs-demo/index.html
+[button-demo]: http://10.19.18.95:48888/examples/button-demo/index.html
+[collapse-demo]: http://10.19.18.95:48888/examples/collapse-demo/index.html
+[cookie-helper-demo]: http://10.19.18.95:48888/examples/cookie-helper-demo/index.html
+[data-table-demo]: http://10.19.18.95:48888/examples/data-table-demo/index.html
+[date-picker-demo]: http://10.19.18.95:48888/examples/date-picker-demo/index.html
+[dropdown-demo]: http://10.19.18.95:48888/examples/dropdown-demo/index.html
+[form-validation-demo]: http://10.19.18.95:48888/examples/form-validation-demo/index.html
+[loading-demo]: http://10.19.18.95:48888/examples/loading-demo/index.html
+[modal-box-demo]: http://10.19.18.95:48888/examples/modal-box-demo/index.html
+[modal-demo]: http://10.19.18.95:48888/examples/modal-demo/index.html
+[number-stepper-demo]: http://10.19.18.95:48888/examples/number-stepper-demo/index.html
+[pager-demo]: http://10.19.18.95:48888/examples/pager-demo/index.html
+[range-slider-demo]: http://10.19.18.95:48888/examples/range-slider-demo/index.html
+[restful-service-demo]: http://10.19.18.95:48888/examples/restful-service-demo/index.html
+[scroll-to-demo]: http://10.19.18.95:48888/examples/scroll-to-demo/index.html
+[search-filter-demo]: http://10.19.18.95:48888/examples/search-filter-demo/index.html
+[select-demo]: http://10.19.18.95:48888/examples/select-demo/index.html
+[simple-table-demo]: http://10.19.18.95:48888/examples/simple-table-demo/index.html
+[speech-bubble-demo]: http://10.19.18.95:48888/examples/speech-bubble-demo/index.html
+[status-message-demo]: http://10.19.18.95:48888/examples/status-message/index.html
+[switcher-demo]: http://10.19.18.95:48888/examples/switcher-demo/index.html
+[tabs-demo]: http://10.19.18.95:48888/examples/tabs-demo/index.html
+[tooltips-demo]: http://10.19.18.95:48888/examples/tooltips-demo/index.html
+[video-player-demo]: http://10.19.18.95:48888/examples/video-player-demo/index.html

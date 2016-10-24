@@ -111,7 +111,7 @@ examples:
 
 	&:before {
 		z-index: 5;
-		position: absolute;
+		position: relative;
 		@extend %icon-vertical-align;
 	}
 

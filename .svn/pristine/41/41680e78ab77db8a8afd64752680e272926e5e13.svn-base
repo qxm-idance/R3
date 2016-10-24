@@ -1,0 +1,31 @@
+<div class="doc-side-list">
+    <!--component list add to here-->
+</div>
+<div class="section--block">
+    <article class="markdown-body">
+        <!--编译后的markdown文件放在这个地方-->
+    </article>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.get('apis/component-list/directive.html',function (data) {
+            $('.doc-side-list').html(data);
+            $($('.doc-side-list').find('li a')[0]).trigger('click');
+        });
+        $('.doc-side-list').on('click', 'li a', hrefAnimate);
+        $($('.doc-side-list li')[0]).trigger('click');
+    });
+    function hrefAnimate(e) {
+
+        e.preventDefault();
+        $(this).parent("li").addClass('current').siblings("li").removeClass('current');
+        var anchor = $(this).attr('href');
+
+        $.get(anchor, function (data) {
+            $(".section--block .markdown-body").html(data);
+        }).error(function () {
+            $(".section--block .markdown-body").html('<div class="block__header leader--large trailer--large"> <h2 class="title--medium"> API DOC (Coming soon...)</h2> </div>');
+        })
+    }
+</script>

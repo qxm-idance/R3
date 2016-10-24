@@ -1,0 +1,6 @@
+/*delivery.scss  by tangll 2016-10-18*/
+.delivery .form-item label{
+  margin-top: 0 ;
+  display: inline-block;
+  line-height: 18px;
+}
