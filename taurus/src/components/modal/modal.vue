@@ -1,11 +1,11 @@
 <template>
-  <div class="t-modal"  v-show="show" transition="t-modal-scale">
-    <div class="t-modal-header">
+  <div class="t-modal modal-box__content{{classes}}"  v-show="show" transition="t-modal-scale">
+    <div class="t-modal-header {{hdBackCss}}">
       <slot name="header-icon"></slot>
       <div class="t-modal-title text-light text-size--24 leader--xlarge" v-if="title">
           {{title}}
       </div>
-      <i class="modal-box__close-btn icon icon-reject" v-if="!hideIconClose" @click="close"></i>
+      <i class="modal-box__close-btn icon {{closeIcon}}" v-if="!hideIconClose" @click="close"></i>
     </div>
     <div class="t-modal-body">
       <slot>
@@ -41,7 +41,6 @@ const STYLE = `
   opacity: 0 !important;
 }
 
-
 .t-modal {
   position: fixed;
   left: 50%;
@@ -58,14 +57,9 @@ const STYLE = `
   overflow-y: auto;
   font-size: 14px;
 }
-.t-modal:before {
-  content: "";
-  display: block;
-  position: relative;
-  margin-bottom: -1px;
-  background-image: -webkit-linear-gradient(left, #6eb45b, #2b9ba8, #038cd6);
-  background-image: linear-gradient(to right, #6eb45b, #2b9ba8, #038cd6);
-  height: 3px;
+
+.t-modal.modal-box__content {
+  display:block;
 }
 .t-modal-header {
   text-align: center;
@@ -91,6 +85,9 @@ const STYLE = `
   padding-right: 24px;
   padding-top: 24px;
   padding-bottom: 20px;
+}
+.t-modal.modal-box__content--full .t-modal-body{
+    padding: 0;
 }
 .t-modal-footer {
   padding: 15px;
@@ -261,6 +258,17 @@ const STYLE = `
     opacity: 0;
   }
 `;
+const SIZE_LARGE = 'lg';
+const SIZE_SMALL = 'sm';
+const CSS_LARGE = 'modal-box--size-large';
+const CSS_SMALL = 'modal-box--size-small';
+const CSS_GRADIENT = 'gradient-line';
+const CSS_PRELIGHT = 'pre-lightbox section--negative';
+const CSS_ICON_REJECT = 'icon-reject';
+const CSS_ICON_REJECT_PRE = 'icon-close-cross';
+const CSS_FULL = 'modal-box__content--full';
+const CSS_FULL_HD = 'padding-whole--large padding-toright--huge box--greyed rel border--bottom';
+const CSS_ICON_BK = 'circle-background white with-border color-gray';
 export default {
   mixins: [Popup],
   props: {
@@ -283,6 +291,26 @@ export default {
     hideIconClose: {
       type: Boolean,
       default: true
+    },
+    special: {
+      type: Boolean,
+      default: false
+    },
+    size: {
+      type: String,
+      default: SIZE_SMALL
+    },
+    preLight: {
+      type: Boolean,
+      default: false
+    },
+    fullButton: {
+      type: Boolean,
+      default: false
+    },
+    fullHeader: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
@@ -294,19 +322,62 @@ export default {
     },
     escPress () {
       this.show = false;
-    },
-    sizeClass: function () {
-      if (this.size === SIZE_LARGE) {
-        return CSS_LARGE;
-      } else {
-        return CSS_SMALL;
+    }
+  },
+  computed: {
+    classes: function () {
+      var classes = '';
+      if (this.class) {
+        classes += ' ' + this.class;
       }
+      if (this.size === SIZE_LARGE) {
+        classes += ' ' + CSS_LARGE;
+      } else {
+        classes += ' ' + CSS_SMALL;
+      }
+      if (!this.special) {
+        classes += ' ' + CSS_GRADIENT;
+      }
+
+      if (this.preLight) {
+        classes += ' ' + CSS_PRELIGHT;
+      }
+      if (this.fullButton) {
+        classes += ' ' + CSS_FULL;
+      }
+      return classes;
+    },
+    closeIcon: function () {
+      var classes = '';
+      if (this.class) {
+        classes += ' ' + this.class;
+      }
+      if (this.preLight || this.fullButton || this.fullHeader) {
+        classes += ' ' + CSS_ICON_REJECT_PRE;
+      } else {
+        classes += ' ' + CSS_ICON_REJECT;
+      }
+      if (this.fullHeader) {
+        classes += ' ' + CSS_ICON_BK;
+      }
+      return classes;
+    },
+    hdBackCss: function () {
+      var classes = '';
+      if (this.class) {
+        classes += ' ' + this.class;
+      }
+      if (this.fullHeader) {
+        classes += ' ' + CSS_FULL_HD;
+      }
+      return classes;
     }
   },
   init () {
     let fontEl = document.createElement('style');
     document.documentElement.firstElementChild.appendChild(fontEl);
     fontEl.innerHTML = STYLE;
+    // this.classList.add('gradient-line');
   }
 };
 </script>
