@@ -24,7 +24,12 @@ new Vue({
       loginModel: {
         username: '',
         password: ''
-      }
+      },
+      showSpeState0: false,
+      showSpeState1: false,
+      showFormState: false,
+      fullModalState0: false,
+      fullModalState1: false
     };
   },
   methods: {
@@ -77,6 +82,39 @@ new Vue({
     loginHandler () {
       alert(JSON.stringify(this.loginModel));
       this.loginModal = false;
+    },
+    showSpecial0 () {
+      this.showSpeState0 = true;
+    },
+    showSpecial1 () {
+      this.showSpeState1 = true;
+    },
+    test () {
+      this.showSpeState0 = false;
+    },
+    showForm () {
+      this.showFormState = true;
+    },
+    formSend () {
+      this.showFormState = false;
+    },
+    fullModal0 () {
+      this.fullModalState0 = true;
+    },
+    full0No () {
+      this.fullModalState0 = false;
+    },
+    full0Yes () {
+      this.fullModalState0 = false;
+    },
+    fullModal1 () {
+      this.fullModalState1 = true;
+    },
+    full1No () {
+      this.fullModalState1 = false;
+    },
+    full1Yes () {
+      this.fullModalState1 = false;
     }
   }
 });

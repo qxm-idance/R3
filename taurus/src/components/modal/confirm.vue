@@ -1,5 +1,5 @@
 <template>
-  <t-modal :click-overlay-close="false" :show.sync="show" :title="title" class="modal-box--size-small">
+  <t-modal :click-overlay-close="false" :show.sync="show" :title="title" :size="size">
     <div class="modal-box__icon-box modal-box__icon-box--blue trailer" slot="header-icon">
       <i class="icon" :class="_type"></i>
     </div>
@@ -17,7 +17,6 @@
 
 <script>
 import TModal from './modal';
-
 export default {
   components: {
     TModal
@@ -37,13 +36,17 @@ export default {
     },
     type: {
       type: String,
-      default: 'info' // 'info', 'success', 'error'
+      default: 'info' // 'info', 'success', 'error' ,'question'
     },
     onSure: {
       type: Function
     },
     onCancel: {
       type: Function
+    },
+    size: {
+      type: String,
+      default: ''
     }
   },
   computed: {
@@ -51,7 +54,8 @@ export default {
       return {
         info: 'icon-document',
         success: 'icon-check',
-        error: 'icon-reject'
+        error: 'icon-reject',
+        question: 'icon-question'
       }[this.type];
     }
   },
