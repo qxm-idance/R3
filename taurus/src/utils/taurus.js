@@ -24,7 +24,6 @@ import TSubDropdown from '../components/dropdown/subscription-dropdown.vue';
 import TAlert from '../components/modal/alert.vue';
 import TConfirm from '../components/modal/confirm.vue';
 import TModal from '../components/modal/modal.vue';
-import TModalBox from '../components/modal-box/modal-box.vue';
 import TPopup from '../components/popup/popup.vue';
 
 import TNumberStepper from '../components/number-stepper/number-stepper.vue';
@@ -230,7 +229,6 @@ export {
   TAlert,
   TConfirm,
   TModal,
-  TModalBox,
   TPopup,
   TNumberStepper,
   TPager,
