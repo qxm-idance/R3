@@ -19,20 +19,46 @@ export default {
       default: '#000'
     }
   },
-  attached () {
-    if (this.show && this.overlay) {
-      PopupManager.open(this);
-    }
+  mounted: function () {
+    this.$nextTick(function () {
+      if (this.show && this.overlay) {
+        PopupManager.open(this);
+      }
+    });
   },
-  detached () {
-    PopupManager.close(this);
+  destroyed () {
+    this.$nextTick(function () {
+      if (this.show && this.overlay) {
+        PopupManager.close(this);
+      }
+    });
   },
+  data () {
+    return {
+      showCtrol: false
+    };
+  },
+  created () {
+    console.log('1');
+    this.showCtrol = this.show;
+  },
+  // computed: {
+  //   close: function () {
+  //     this.showCtrol = false;
+  //   },
+  //   open: function () {
+  //     this.showCtrol = true;
+  //   }
+  // },
   watch: {
-    show (val) {
+    'showCtrol' (val) {
+      // console.log(val);
       if (val && this.overlay) {
         PopupManager.open(this);
+        this.$emit('open');
       } else {
         PopupManager.close(this);
+        this.$emit('close');
       }
     }
   },

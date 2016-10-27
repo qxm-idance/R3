@@ -1,9 +1,8 @@
-import { TAlert, TConfirm, TModal } from '../../utils/taurus';
+import { TConfirm, TModal } from '../../utils/taurus';
 
 new Vue({
-  el: document.body,
+  el: '#container',
   components: {
-    TAlert,
     TConfirm,
     TModal
   },
@@ -35,16 +34,10 @@ new Vue({
   methods: {
     showMoal0 () {
       this.showMoal0State = true;
+      this.$refs.modal0.open();
     },
     showMoal1 () {
       this.showMoal1State = true;
-    },
-    showAlert () {
-      this.alert = {
-        title: '提示',
-        msg: '这是普通提示信息',
-        show: true
-      };
     },
     showConfirm (type) {
       this.confirm = {
@@ -55,11 +48,13 @@ new Vue({
     },
     handlerSure () {
       alert('点了确定');
-      this.alert.show = false;
+      // this.alert.show = false;
+      // this.$refs.modal1.close();
     },
     handlerCancel () {
       alert('点了取消');
-      this.alert.show = false;
+      // this.alert.show = false;
+      // this.$refs.modal1.close();
     },
     showConfirm2 (type) {
       this.confirm2 = {
@@ -108,13 +103,19 @@ new Vue({
       this.fullModalState0 = false;
     },
     fullModal1 () {
-      this.fullModalState1 = true;
+      this.$refs.modal8.openM();
     },
     full1No () {
       this.fullModalState1 = false;
     },
     full1Yes () {
       this.fullModalState1 = false;
+    },
+    open1 () {
+      this.showMoal0State = true;
+    },
+    close1 () {
+      this.showMoal0State = false;
     }
   }
 });

@@ -1,0 +1,323 @@
+<template>
+  <div :id="nextId" :class="['dropdown', 'dropdown--subscriptions', {'is-open': this.isOpen}, {'disabled': this.disableTag}, {'dropdown--small': this.size === 'small'}]" @click.stop="showDropList">
+    <div class="dropdown__label ">
+      <div class="text-truncate sub-dd-init-label" v-show="!this.selectedLabel">{{initLabel}}</div>
+      <div class="text-truncate sub-dd-selected-label" :data-value="selectedValue" v-show="!!this.selectedLabel" :title="selectedLabel">{{selectedLabel}}</div>
+    </div>
+    <div class="dropdown__content" @click.stop>
+      <div class="dropdown__filter">
+        <!--<input name="" type="hidden" value="">-->
+        <div class="is-empty">
+          <input class="dropdown__search" :id="nextSearchInputId" placeholder="Search" type="text" v-model="searchValue" @keyup="filterListData">
+          <button v-show="searchValue" class="icon-clear" @click="clearSearchValue"></button>
+        </div>
+      </div>
+      <div class="dropdown__scroll">
+        <!--loading-->
+        <div class="js-hidden padding-leader--small padding-trailer--small">
+          <span class="load-tester">
+            <span class="spinner"></span>
+          </span>
+        </div>
+        <!--loading-end-->
+        <!-- message error-->
+        <div :class="['message', 'message--error', {'is-hidden': !isError}]">
+          <div class="message__inner">
+            <span class="message__icon icon icon-reject"></span>
+            <div class="text-size--13 message__text">
+              <p>An error happened. Please try again later.</p>
+            </div>
+          </div>
+        </div>
+        <!-- message error-end-->
+        <ul class="dropdown__list">
+          <li v-for="listItem in showList" v-show="!listItem.filtered" :data-value="listItem.value" @click="echoSelectedValue(listItem.value)">
+            <a :class="['media', 'media--small', {'active': listItem.active}]" href="javascript: void (0);" :title="listItem.detailInfo">
+              <div class="media__image leader--xsmall">
+                <span :class="listItem.icon"></span>
+              </div>
+              <div class="media__body">
+                <div class="text-truncate">{{listItem.baseInfo}}</div>
+                <div class="text-truncate color-gray">{{listItem.detailInfo}}</div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div :class="['dropdown__more', this.listLen > 6 ? this.isShowMore ? 'js-hidden' : '' : 'js-hidden']">
+        <button class="button button--default button--small button--stretch" @click="showMoreData">
+          <span class="button__label">Show more results</span>
+          <span class="button__spinner"><span class="spinner-holder"><span class="spinner-container"><em><span></span></em></span></span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  import Vue from 'vue';
+
+  const DEFAULT_LIST_LENGTH = 6;
+  const EMPTY_STRING = '';
+
+  var seed = 0;
+  var searchInputSeed = 0;
+
+  var subscriptionDropDown = Vue.component('taurus-subscription-dropdown', {
+    data: function () {
+      return {
+        listData: [],
+        showList: [],
+        searchValue: '',
+        isOpen: false,
+        isShowMore: false,
+        isError: false,
+        disableTag: false
+      };
+    },
+    props: {
+      list: {
+        default: function () {
+          return [];
+        },
+        required: true,
+        type: Array
+      },
+      rename: {
+        default: function () {
+          return {
+            value: 'value',
+            icon: 'icon',
+            base: 'baseInfo',
+            detail: 'detailInfo'
+          };
+        },
+        type: Object
+      },
+      defaultValue: {
+        default: -1,
+        type: [String, Number]
+      },
+      size: {
+        default: EMPTY_STRING,
+        type: String
+      },
+      disabled: {
+        default: false,
+        type: Boolean
+      }
+    },
+    created: function () {
+      var processedData = this._processResponseData(this.list);
+      this.listData = processedData || [];
+      this.disableTag = this.disabled;
+      // 在created的时候对showList进行赋值
+      this._processShowListData();
+      // 给document绑定click事件关闭dropList
+      document.addEventListener('click', function () {
+        if (this.isOpen) {
+          // 列表关闭同时触发on-hide-panel的回调,处理相关操作
+          this.$emit('on-hide-panel');
+          this.isOpen = false;
+        }
+      }.bind(this), false);
+    },
+    computed: {
+      showListLen: function () {
+        return this.showList.length;
+      },
+      listLen: function () {
+        return this.listData.length;
+      },
+      initLabel: function () {
+        return 'All items (' + this.showListLen + ')';
+      },
+      selectedLabel: function () {
+        var selectedObj = this._getSelectedData();
+        return selectedObj ? selectedObj.detailInfo : this.initLabel;
+      },
+      selectedValue: function () {
+        var selectedObj = this._getSelectedData();
+        return selectedObj ? selectedObj.value : 0;
+      },
+      nextId: function () {
+        return 'tau_sub_dd_' + seed++;
+      },
+      nextSearchInputId: function () {
+        return 'tau_sub_dd_input_' + searchInputSeed++;
+      }
+    },
+    methods: {
+      reload: function (data) {
+        if (data instanceof Array && data.length > 0) {
+          // reload的同时, 初始化默认值
+          this.defaultValue = EMPTY_STRING;
+          this.listData = this._processResponseData(data);
+          if (this.listData.length > DEFAULT_LIST_LENGTH) {
+            this.isShowMore = false;
+          }
+          this._processShowListData();
+          this.searchValue = EMPTY_STRING;
+        }
+      },
+      getValue: function () {
+        return this.selectedValue;
+      },
+      getText: function () {
+        return this.selectedLabel;
+      },
+      setValue: function (value) {
+        this._setSelectedData(value);
+        this.searchValue = EMPTY_STRING;
+        this.filterListData();
+      },
+      clear: function () {
+        if (this.isOpen) {
+          this.isOpen = false;
+          // 列表关闭同时触发on-hide-panel的回调,处理相关操作
+          this.$emit('on-hide-panel');
+        }
+        this.searchValue = EMPTY_STRING;
+        this.filterListData();
+        this._clearData();
+      },
+      enable: function () {
+        this.disableTag = false;
+      },
+      disable: function () {
+        if (this.isOpen) {
+          this.isOpen = false;
+          // 列表关闭同时触发on-hide-panel的回调,处理相关操作
+          this.$emit('on-hide-panel');
+        }
+        this.disableTag = true;
+      },
+      showDropList: function () {
+        // 如果是禁用状态，禁止点击并且不展示DropList(为了兼容IE9,10)
+        if (this.disableTag) {
+          return;
+        }
+        if (this.isOpen) {
+          this.isOpen = false;
+          // 列表关闭同时触发on-hide-panel的回调,处理相关操作
+          this.$emit('on-hide-panel');
+        } else {
+          this.isOpen = true;
+          // 列表展示同时触发on-show-panel的回调,处理相关操作
+          this.$emit('on-show-panel');
+        }
+      },
+      echoSelectedValue: function (currentValue) {
+        for (var i = 0; i < this.showList.length; i++) {
+          var listItem = this.showList[i];
+          if (currentValue === listItem['value']) {
+            listItem['active'] = true;
+          } else {
+            listItem['active'] = false;
+          }
+        }
+        // 标志isOpen为false，关闭dropList
+        this.isOpen = false;
+        // 列表关闭同时触发on-hide-panel的回调,处理相关操作
+        this.$emit('on-hide-panel');
+      },
+      showMoreData: function () {
+        // 展示全部数据
+        this._cloneActiveItem(this.listData);
+        // 展示全部数据后重新过滤
+        this.filterListData();
+        this.isShowMore = true;
+      },
+      filterListData: function () {
+        for (var i = 0; i < this.showList.length; i++) {
+          var listItem = this.showList[i];
+          if (listItem['detailInfo'].toLowerCase().indexOf(this.searchValue.toLowerCase()) >= 0) {
+            listItem['filtered'] = false;
+          } else {
+            listItem['filtered'] = true;
+          }
+        }
+      },
+      clearSearchValue: function () {
+        if (this.searchValue) {
+          this.searchValue = EMPTY_STRING;
+          this.filterListData();
+        }
+      },
+      _processResponseData: function (data) {
+        var tempArr = [];
+        if (data.length > 0) {
+          for (var i = 0; i < data.length; i++) {
+            var tempObj = {};
+            tempObj['value'] = this.rename.value ? data[i][this.rename.value] : data[i]['value'];
+            tempObj['icon'] = this.rename.icon ? data[i][this.rename.icon] : data[i]['icon'];
+            tempObj['baseInfo'] = this.rename.base ? data[i][this.rename.base] : data[i]['baseInfo'];
+            tempObj['detailInfo'] = this.rename.detail ? data[i][this.rename.detail] : data[i]['detailInfo'];
+            if (this.defaultValue && tempObj['value'] === this.defaultValue) {
+              tempObj['active'] = true;
+            } else {
+              tempObj['active'] = false;
+            }
+            tempObj['filtered'] = false;
+            tempArr.push(tempObj);
+          }
+          this.isError = false;
+        } else {
+          this.isError = true;
+          return;
+        }
+        return tempArr;
+      },
+      _processShowListData: function () {
+        if (this.listData.length > DEFAULT_LIST_LENGTH) {
+          this.showList = this.listData.slice(0, DEFAULT_LIST_LENGTH);
+        } else {
+          this.showList = this.listData;
+        }
+      },
+      _cloneActiveItem: function (list) {
+        this.showList = this.showList.concat(list.slice(this.showList.length));
+      },
+      _getSelectedData: function () {
+        var selectedObj;
+        if (this.showList && this.showList.length > 0) {
+          for (var i = 0; i < this.showList.length; i++) {
+            if (this.showList[i]['active']) {
+              selectedObj = this.showList[i];
+            }
+          }
+        }
+        return selectedObj;
+      },
+      _setSelectedData: function (value) {
+        var selectedObj;
+        if (this.showList && this.showList.length > 0) {
+          for (var i = 0; i < this.showList.length; i++) {
+            if (Number(this.showList[i]['value']) === Number(value)) {
+              this.showList[i]['active'] = true;
+              selectedObj = this.list[i];
+            } else {
+              this.showList[i]['active'] = false;
+            }
+          }
+        } else {
+          return;
+        }
+        return selectedObj;
+      },
+      _clearData: function () {
+        if (this.showList && this.showList.length > 0) {
+          for (var i = 0; i < this.showList.length; i++) {
+            this.showList[i]['active'] = false;
+          }
+        }
+      }
+    },
+    watch: {
+      selectedValue: function (newValue, oldValue) {
+        this.$emit('on-value-change', newValue, oldValue);
+      }
+    }
+  });
+
+  module.exports = subscriptionDropDown;
+</script>

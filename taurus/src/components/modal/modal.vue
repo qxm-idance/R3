@@ -1,21 +1,23 @@
 <template>
-  <div class="t-modal modal-box__content{{classes}}"  v-show="show" transition="t-modal-scale">
-    <div class="t-modal-header {{hdBackCss}}">
-      <slot name="header-icon"></slot>
-      <div class="t-modal-title text-light text-size--24 leader--xlarge" v-if="title">
-          {{title}}
+  <transition name="t-modal-scale">
+    <div :class="'t-modal modal-box__content ' + classes"  v-show="showCtrol">
+      <div :class="'t-modal-header ' + hdBackCss">
+        <slot name="header-icon"></slot>
+        <div class="t-modal-title text-light text-size--24 leader--xlarge" v-if="title">
+            {{title}}
+        </div>
+        <i :class="'modal-box__close-btn icon ' + closeIcon" v-if="!hideIconClose" @click="close"></i>
       </div>
-      <i class="modal-box__close-btn icon {{closeIcon}}" v-if="!hideIconClose" @click="close"></i>
+      <div class="t-modal-body">
+        <slot>
+          <div v-if="msg" v-html="msg"></div>
+        </slot>
+      </div>
+      <div class="t-modal-footer" v-if="!hideClose">
+        <slot name="footer"></slot>
+      </div>
     </div>
-    <div class="t-modal-body">
-      <slot>
-        <div v-if="msg" v-html="msg"></div>
-      </slot>
-    </div>
-    <div class="t-modal-footer" v-if="!hideClose">
-      <slot name="footer"></slot>
-    </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -315,13 +317,16 @@ export default {
   },
   methods: {
     close () {
-      this.show = false;
+      this.showCtrol = false;
+    },
+    openM () {
+      this.showCtrol = true;
     },
     overlayClick () {
-      if (this.clickOverlayClose) this.show = false;
+      if (this.clickOverlayClose) this.showCtrol = false;
     },
     escPress () {
-      this.show = false;
+      this.showCtrol = false;
     }
   },
   computed: {
@@ -338,7 +343,6 @@ export default {
       if (!this.special) {
         classes += ' ' + CSS_GRADIENT;
       }
-
       if (this.preLight) {
         classes += ' ' + CSS_PRELIGHT;
       }
@@ -373,11 +377,18 @@ export default {
       return classes;
     }
   },
-  init () {
+  watch: {
+    'show': function (newVal, oldVal) {
+      this.showCtrol = newVal;
+    }
+  },
+  // created () {
+  //   console.log(this.show);
+  // },
+  beforeCreate () {
     let fontEl = document.createElement('style');
     document.documentElement.firstElementChild.appendChild(fontEl);
     fontEl.innerHTML = STYLE;
-    // this.classList.add('gradient-line');
   }
 };
 </script>

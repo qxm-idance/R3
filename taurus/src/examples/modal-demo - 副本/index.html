@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modal Demo</title>
+    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+    <link href="/assets/css/all.css" rel="stylesheet">
+</head>
+<style>
+  [v-cloak] {
+    display: none;
+  }
+</style>
+<body>
+  <div id="container" class="container" v-cloak>
+    <h1>Default modal</h1>
+    <div style="margin-bottom:40px">
+      <button @click="showMoal0" class="button button--action">Click on the modal</button>
+      <t-modal title="" :show.sync="showMoal0State" :hide-close="true" :hide-icon-close="false" :size="'lg'">
+        <div>modal content</div>
+      </t-modal>
+    </div>
+    <h1>Action buttons modal</h1>
+    <button @click="showConfirm" class="button button--action">Confirm</button>
+    <!--
+       type: 'info', 'success', 'error', 'question'
+    -->
+    <t-confirm :title="confirm.title" @sure="handlerSure" @cancel="handlerCancel" type="info" :show.sync="confirm.show" :msg="confirm.msg">
+    </t-confirm>
+
+    <button @click="showConfirm2" class="button button--action" >Confirm2</button>
+    <t-confirm :title="confirm2.title" type="success" :show.sync="confirm2.show" :msg="confirm2.msg"  :size="'lg'">
+      <div slot="body">
+        自定义自定义{{confirm2.msg}}
+      </div>
+      <button class="button button--default button-flex" slot="footer" @click="act1">btn-1</button>
+      <button class="button button--default button-flex" slot="footer" @click="act2">btn-2</button>
+      <button class="button button--action  button-flex" slot="footer">确定</button>
+    </t-confirm>
+
+    <button @click="customShow" class="button button--action">Custom Modal</button>
+    <t-modal title="Login Modal" :show.sync="loginModal" :click-overlay-close="false">
+      <div class="login-modal">
+        <div class="form-item--multi form-row">
+          <div class="form-item form-col--med">
+            <input label="用户名" type="text" placeholder="User name" v-model="loginModel.username">
+          </div>
+          <div class="form-item">
+            <input label="密码" type="text" placeholder="Password" v-model="loginModel.password" type="password">
+          </div>
+        </div>
+      </div>
+      <div class="block--col">
+        <div class="float--right row">
+          <button text="取消" slot="footer" class="button button--action" @click="this.loginModal = false">取消</button>
+          <button text="登录" slot="footer" class="button button--action" @click="loginHandler" color="red">登录</button>
+        </div>
+      </div>
+    </t-modal>
+    <div style="margin-bottom:40px"></div>
+
+    <h1>Special-modal</h1>
+    <button @click="showSpecial0" class="button button--action" >Click on the form modal</button>
+    <t-modal title="" :show.sync="showSpeState0" :hide-close="true" :hide-icon-close="false" :size="'lg'" :special="true" :pre-light="true">
+      <div>
+      <!-- 自定义内容 -->
+        <form>
+          <div class="form-item form-item--required">
+            <label>Husnr.</label>
+            <div class="rel leader--xsmall">
+              <input type="text">
+            </div>
+          </div>
+          <button  @click="test" class="button button--accept stretch-mobile toleft mobile-toleft--none" tabindex="12">
+              <span class="button__label icon--right icon-arrow-next"><span class="button__text">Test</span></span>
+              <span class="button__spinner"><span class="button__spinner-container"><i></i></span></span>
+          </button>
+        </form>
+      </div>
+    </t-modal>
+    <button @click="showSpecial1" class="button button--action" >Click on the system error modal</button>
+    <t-modal title="An error occured" :show.sync="showSpeState1" :hide-close="true" :hide-icon-close="false" :size="'lg'" :special="true" :pre-light="true">
+      <div slot="header-icon">
+        <div class="leader--xlarge">
+          <span class="icon icon-document"></span>
+        </div>
+      </div>
+      <div>modal content</div>
+    </t-modal>
+    <div style="margin-bottom:40px"></div>
+
+    <h1>form modal</h1>
+    <button @click="showForm" class="button button--action" >Click on the address modal</button>
+    <t-modal title="" :show.sync="showFormState" :hide-close="true" :hide-icon-close="false" :size="'lg'" :special="true">
+      <div>
+      <!-- 自定义内容 -->
+        <div class="border box--greyed padding-whole leader trailer">
+            <div class="form-item form-item--required">
+                <label>Label</label>
+
+                <div class="rel leader--xsmall">
+                    <input type="text">
+                </div>
+            </div>
+            <div class="form-item form-item--required">
+                <label>Email</label>
+
+                <div class="rel leader--xsmall">
+                    <input type="text">
+                </div>
+            </div>
+            <div class="form-item">
+                <div class="form-checkbox form-checkbox--small">
+                    <input type="checkbox" checked="" name="cbs-small-0" id="cbs-small-0" value="--some-value--">
+                    <label class="text--small" for="cbs-inline-0">Yes, Telenor may contact me via
+                        email about the selected telephone.</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-item text--right">
+            <button type="submit" class="button button--action" name="subscribe" data-submit="true" data-component="button">
+                <span class="button__label padding-toleft padding-toright" @click="formSend">Send</span>
+            </button>
+        </div>
+      </div>
+    </t-modal>
+    <div style="margin-bottom:40px"></div>
+
+    <h1>full modal</h1>
+    <button @click="fullModal0" class="button button--action" >Click on the full-button modal</button>
+    <t-modal title="Produktnummeret står på din sidste regning - og på Mit Telenor" :show.sync="fullModalState0" :hide-close="true" :hide-icon-close="false" :size="'lg'" :special="true" :full-button="true">
+      <div >
+        <div class="padding-whole">填充内容</div>
+        <div class="grid-row--gutter-none mobile-padding-whole--xlarge text--center">
+            <div class="col-md-6">
+                <a href="#" class="display--block button-right button button--default text-size--21 mobile-text-size--16 text-light" style="padding:20px;border-radius: 0;border:0;height:auto;" @click="full0No">No</a>
+            </div>
+            <div class="col-md-6">
+                <a href="#" class="display--block button-right button button--action text-size--21 mobile-text-size--16 text-light" style="padding:20px;border-radius: 0;border:0;height:auto;" @click="full0Yes">
+                    Yes</a>
+            </div>
+        </div>
+      </div>
+    </t-modal>
+    <button @click="fullModal1" class="button button--action" >Click on the full-header modal</button>
+    <t-modal title="Produktnummeret står på din sidste regning - og på Mit Telenor" :show.sync="fullModalState1" :hide-close="true" :hide-icon-close="false" :size="'lg'" :special="true" :full-header="true">
+      <div >
+        <div class="padding-whole">填充内容</div>
+      </div>
+    </t-modal>
+  </div>
+</body>
+</html>

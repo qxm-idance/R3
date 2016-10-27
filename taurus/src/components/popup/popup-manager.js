@@ -43,7 +43,8 @@ const PopupManager = {
     overlay.color = color;
     overlay.opacity = opacity;
     overlay.onClick = this.handlerOverlayClick.bind(this);
-    overlay.$appendTo(document.body);
+    // overlay.$appendTo(document.body);
+    document.body.appendChild(overlay.$el);
 
     // body 操作
     this.bodyOverflow = document.body.style.overflow;
@@ -54,7 +55,7 @@ const PopupManager = {
     document.body.style.overflow = this.bodyOverflow;
     let overlay = this.overlay;
     this.overlay = null;
-    overlay.$remove(() => {
+    overlay.$el.remove(() => {
       overlay.$destroy();
     });
   },

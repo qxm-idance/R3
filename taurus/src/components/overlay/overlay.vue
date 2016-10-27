@@ -1,5 +1,7 @@
 <template>
-  <div class="t-overlay" @click="handlerClick" @touchmove="prevent" :style="style" transition="t-overlay-fade"></div>
+  <transition name="t-overlay-fade">
+    <div class="t-overlay" @click="handlerClick" @touchmove="prevent" :style="style"></div>
+  </transition>
 </template>
 <script>
 import { getZIndex } from '../../utils/common';

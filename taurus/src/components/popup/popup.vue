@@ -1,7 +1,9 @@
 <template>
-  <div v-show="show" class="t-popup" :style="{'z-index': zIndex}" :class="[position ? 't-popup-' + position : '']" :transition="popupTransition">
-    <slot></slot>
-  </div>
+  <transition :name="popupTransitionMutaion">
+    <div v-show="showCtrol" class="t-popup" :style="{'z-index': zIndex}" :class="[position ? 't-popup-' + position : '']">
+      <slot></slot>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -29,17 +31,14 @@ export default {
   computed: {
     zIndex () {
       return this.overlay ? '' : getZIndex();
+    },
+    popupTransitionMutaion () {
+      return (this.popupTransition !== 'popup-fade') ? `popup-slide-${this.position}` : this.popupTransition;
     }
   },
-  compiled () {
-    if (this.popupTransition !== 'popup-fade') {
-      this.popupTransition = `popup-slide-${this.position}`;
-    }
-  },
-
   methods: {
     overlayClick () {
-      if (this.clickOverlayClose) this.show = false;
+      if (this.clickOverlayClose) this.showCtrol = false;
     }
   }
 };
