@@ -34,7 +34,6 @@ new Vue({
   methods: {
     showMoal0 () {
       this.showMoal0State = true;
-      this.$refs.modal0.open();
     },
     showMoal1 () {
       this.showMoal1State = true;
@@ -110,12 +109,6 @@ new Vue({
     },
     full1Yes () {
       this.fullModalState1 = false;
-    },
-    open1 () {
-      this.showMoal0State = true;
-    },
-    close1 () {
-      this.showMoal0State = false;
     }
   }
 });

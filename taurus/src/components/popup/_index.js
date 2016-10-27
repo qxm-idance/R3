@@ -2,7 +2,7 @@ import PopupManager from './popup-manager';
 
 export default {
   props: {
-    show: {
+    value: {
       type: Boolean,
       default: false
     },
@@ -21,38 +21,20 @@ export default {
   },
   mounted: function () {
     this.$nextTick(function () {
-      if (this.show && this.overlay) {
+      if (this.value && this.overlay) {
         PopupManager.open(this);
       }
     });
   },
   destroyed () {
     this.$nextTick(function () {
-      if (this.show && this.overlay) {
+      if (this.value && this.overlay) {
         PopupManager.close(this);
       }
     });
   },
-  data () {
-    return {
-      showCtrol: false
-    };
-  },
-  created () {
-    console.log('1');
-    this.showCtrol = this.show;
-  },
-  // computed: {
-  //   close: function () {
-  //     this.showCtrol = false;
-  //   },
-  //   open: function () {
-  //     this.showCtrol = true;
-  //   }
-  // },
   watch: {
-    'showCtrol' (val) {
-      // console.log(val);
+    'value' (val) {
       if (val && this.overlay) {
         PopupManager.open(this);
         this.$emit('open');

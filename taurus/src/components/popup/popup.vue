@@ -1,6 +1,6 @@
 <template>
   <transition :name="popupTransitionMutaion">
-    <div v-show="showCtrol" class="t-popup" :style="{'z-index': zIndex}" :class="[position ? 't-popup-' + position : '']">
+    <div v-show="value" class="t-popup" :style="{'z-index': zIndex}" :class="[position ? 't-popup-' + position : '']">
       <slot></slot>
     </div>
   </transition>
@@ -38,7 +38,8 @@ export default {
   },
   methods: {
     overlayClick () {
-      if (this.clickOverlayClose) this.showCtrol = false;
+      if (this.clickOverlayClose) this.$emit('input', false);
+      // if (this.clickOverlayClose) this.value = false;
     }
   }
 };

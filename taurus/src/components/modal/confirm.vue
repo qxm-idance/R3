@@ -1,5 +1,6 @@
 <template>
-  <t-modal :click-overlay-close="false" :show.sync="show" :title="title" :size="size">
+  <!--  @open="open" @close="close" -->
+  <t-modal :click-overlay-close="false" v-model="value" :title="title" :size="size">
     <div class="modal-box__icon-box modal-box__icon-box--blue trailer" slot="header-icon">
       <i class="icon" :class="_type"></i>
     </div>
@@ -22,7 +23,7 @@ export default {
     TModal
   },
   props: {
-    show: {
+    value: {
       type: Boolean,
       default: false
     },
@@ -61,12 +62,12 @@ export default {
   },
   methods: {
     cancel () {
-      this.show = false;
+      this.$emit('input', false);
       if (this.onCancel) this.onCancel();
       this.$emit('cancel');
     },
     sure () {
-      this.show = false;
+      this.$emit('input', false);
       if (this.onSure) this.onSure();
       this.$emit('sure');
     }
